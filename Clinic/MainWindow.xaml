@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="1000">
 
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="18"
+                   VerticalAlignment="Center">HOSPITAL "-"
+        </TextBlock>
+
+        <RadioButton Grid.Row="1" 
+                     Margin="0,0,0,77"
+                     Click="Main_RadioButton">Главная</RadioButton>
+        <RadioButton Grid.Row="1" 
+                     Margin="0,28,0,50"
+                     Click="Reception_RadioButton">Привем</RadioButton>
+        <RadioButton Grid.Row="1" 
+                     Margin="0,55,0,22">Регистрация</RadioButton>
+        <RadioButton Grid.Row="1" 
+                     Margin="0,78,0,2">Персонал</RadioButton>
+        <Frame Grid.Row="1"
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden"
+               Name="MainFrame"></Frame>
     </Grid>
 </Window>

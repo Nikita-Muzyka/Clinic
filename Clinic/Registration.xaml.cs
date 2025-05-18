@@ -32,21 +32,6 @@ namespace Clinic
         public Registration()
         {
             InitializeComponent();
-            //DoctorsPassword pass1 = new DoctorsPassword
-            //{
-            //    Id = 1,
-            //    Login = "11",
-            //    Password = "22"
-            //};
-            //Doctors doc1 = new Doctors
-            //{
-            //    Id = 1,
-            //    FirstName = "Foo",
-            //    LastName = "Bar",
-            //    Salary = "20000",
-            //    Title = "Title",
-            //    infoReg = pass1
-            //};
         }
 
         private void Close_Button(object sender, RoutedEventArgs e)
@@ -56,39 +41,39 @@ namespace Clinic
 
         private void LogIn_Button(object sender, RoutedEventArgs e)
         {
-            _login = Login.Text;
-            _password = Password.Text;
-            loginAccept= CheckLogin();
-            passwordAccept = CheckPassword();
-            AcceptReg();
+            //_login = Login.Text;
+            //_password = Password.Text;
+            //loginAccept= CheckLogin();
+            //passwordAccept = CheckPassword();
+            //AcceptReg();
         }
 
-        bool CheckLogin()
-        {
-            using (var db = new DoctorsContext())
-            {
-                return db.Doctors.Any(u => u.infoReg.Login == _login);
-            }
-        }
-        bool CheckPassword()
-        {
-            using (var db = new DoctorsContext())
-            {
-                return db.Doctors.Any(u => u.infoReg.Password == _password);
-            }
-        }
+        //bool CheckLogin()
+        //{
+        //    using (var db = new ClinicContext())
+        //    {
+        //        return db.Doctors.Any(u => u.infoReg.Login == _login);
+        //    }
+        //}
+        //bool CheckPassword()
+        //{
+        //    using (var db = new ClinicContext())
+        //    {
+        //        return db.Doctors.Any(u => u.infoReg.Password == _password);
+        //    }
+        //}
 
-        void AcceptReg()
-        {
-            if (loginAccept == true && passwordAccept == true)
-            {
-                MyEvent.Invoke();
-                this.Close();
-            }
-            else
-            {
-                Verification.Visibility = Visibility.Visible;
-            }
-        }
+        //void AcceptReg()
+        //{
+        //    if (loginAccept == true && passwordAccept == true)
+        //    {
+        //        MyEvent.Invoke();
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        Verification.Visibility = Visibility.Visible;
+        //    }
+        //}
     }
 }
