@@ -7,11 +7,10 @@ using Microsoft.Identity.Client;
 
 namespace Clinic
 {
-    public class MedCard
+    public interface IPatient
     {
-        public int Id { get; set; }
         public string Diagnosis { get; set; } // диагнозы
-        public string CardNumber { get; set; } // номер карты
         public string Weight { get; set; } // вес
+        public string YearsCreate { get; set; } // год создания
     }
 }

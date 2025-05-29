@@ -21,7 +21,6 @@ namespace Clinic
 
         private Registration regWindow = new Registration();
         private ClinicPerson worker;
-        private MainPage main;
 
         public MainWindow()
         {
@@ -30,6 +29,32 @@ namespace Clinic
             //regWindow.ShowDialog();
             //CheckReg();
             //main = new MainPage(worker);
+            worker = new Worker
+            {
+                Id = 1,
+                Age = 25,
+                FirstName = "Dima",
+                LastName = "tIMOFEEV",
+                Gender = "Male",
+            };
+            Database.Instance.Workers.Add(worker);
+            Patient pat = new Patient
+            {
+                Id = 1,
+                FirstName = "Nikita",
+                LastName = "Vasiliv",
+                Age = 12,
+                Diagnosis = "Kardiologia"
+            };
+            Database.Instance.Patients.Add(pat);
+
+            Appointment ap = new Appointment
+            {
+                Id = 1,
+                Workers = worker,
+                Patients = pat,
+            };
+            Database.Instance.Appos.Add(ap);
         }
 
         void CheckReg()
@@ -54,12 +79,17 @@ namespace Clinic
 
         private void Reception_RadioButton(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ReceptionPage());
+            MainFrame.Navigate(new ReceptionPage(worker));
         }
 
         private void RegistrationPage_Button(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new RegistrationPage());
+        }
+
+        private void ClinicPersonal_Button(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClinicPersonalPage());
         }
     }
 }

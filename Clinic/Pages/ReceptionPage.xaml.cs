@@ -20,9 +20,22 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ReceptionPage : Page
     {
-        public ReceptionPage()
+        private List<ClinicPerson> patientList = new List<ClinicPerson>();
+        private ClinicPerson worker;
+        public ReceptionPage(ClinicPerson work)
         {
             InitializeComponent();
+            this.worker = work;
+            for (int i = 0; i < Database.Instance.Appos.Count;i++)
+            {
+                if (Database.Instance.Appos[i].Workers.Id == worker.Id)
+                {
+                    patientList.Add(Database.Instance.Appos[i].Patients);
+                }
+            }
+            ListB.ItemsSource = patientList;
         }
+
     }
+
 }

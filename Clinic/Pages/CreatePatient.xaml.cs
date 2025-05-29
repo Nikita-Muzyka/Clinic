@@ -32,11 +32,22 @@ namespace Clinic.Pages
 
         void createPatient()
         {
+            int count = Database.Instance.Patients.Count;
+            count++;
             Patient patient = new Patient
             {
-                FirstName = firstName.Text,
-                LastName = lastName.Text
+                Id = count,
+                FirstName = firstNameBox.Text,
+                LastName = lastNameBox.Text,
+                Patronymic = PatronymicBox.Text,
+                Age = byte.Parse(AgeBox.Text),
+                Gender = GenderBox.Text,
+                Weight = WeightBox.Text,
+                Contact = ContactBox.Text,
+                Diagnosis = DiagnosisBox.Text
             };
+            Database.Instance.Patients.Add(patient);
+            MessageBox.Show("CREATE");
         }
     }
 }

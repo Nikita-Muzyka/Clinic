@@ -29,5 +29,15 @@ namespace Clinic.Pages
         {
             RegFrame.Navigate(new CreatePatient());
         }
+
+        private void ListPatient_Button(object sender, RoutedEventArgs e)
+        {
+            RegFrame.Navigate(new ListPatientPage());
+        }
+
+        private void AppointmentCreate_Button(object sender, RoutedEventArgs e)
+        {
+            RegFrame.Navigate(new AppointmentPage());
+        }
     }
 }

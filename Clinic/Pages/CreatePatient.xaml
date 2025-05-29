@@ -12,31 +12,44 @@
     <Grid>
         <TextBlock Margin="10,0,751,429">Имя</TextBlock>
         <TextBox Margin="36,0,623,429"
-                 Name="firstName">-</TextBox>
+                 Name="firstNameBox">-</TextBox>
 
         <TextBlock Margin="0,38,737,391">Фамилия</TextBlock>
         <TextBox Margin="68,38,591,391"
-                 Name="lastName">-</TextBox>
+                 Name="lastNameBox">-</TextBox>
 
         <TextBlock Margin="10,78,737,351">Отчество</TextBlock>
-        <TextBox Margin="68,78,591,351">-</TextBox>
+        <TextBox Margin="68,78,591,351"
+                 Name="PatronymicBox">-</TextBox>
 
         <TextBlock Margin="10,119,737,310">Возраст</TextBlock>
-        <TextBox Margin="68,119,591,310">-</TextBox>
+        <TextBox Margin="68,119,591,310"
+                 Name="AgeBox">-</TextBox>
 
         <TextBlock Margin="10,157,737,272">Пол</TextBlock>
-        <TextBox Margin="68,157,591,272">-</TextBox>
+        <TextBox Margin="68,157,591,272"
+                 Name="GenderBox">-</TextBox>
 
         <TextBlock Margin="10,191,737,238" >Вес</TextBlock>
-        <TextBox Margin="68,194,591,236">-</TextBox>
+        <TextBox Margin="68,194,591,236"
+                 Name="WeightBox">-</TextBox>
 
         <TextBlock Margin="10,217,737,212">Контакты</TextBlock>
-        <TextBox Margin="68,225,591,205">-</TextBox>
+        <TextBox Margin="68,225,591,205"
+                 Name="ContactBox">-</TextBox>
 
         <TextBlock Margin="10,259,737,170">Место проживания</TextBlock>
-        <TextBox Margin="81,260,578,170">-</TextBox>
+        <TextBox Margin="81,260,578,170"
+                 Name="PlaceBox">-</TextBox>
+
+        <TextBlock Margin="10,292,737,137">Дигноз</TextBlock>
+        <TextBox Margin="81,293,578,137" 
+                 Text="-"
+                 Name="DiagnosisBox"/>
+
 
         <Button Margin="68,328,510,63"
                 Click="Create_Button">Создать</Button>
+
     </Grid>
 </Page>

@@ -24,7 +24,14 @@
         <Button
             Height="30" 
             Margin="286,10,389,10"
+            Click="ListPatient_Button"
         >Карточки пациентов</Button>
+
+        <Button
+            Height="30" 
+            Margin="474,10,201,10"
+            Click="AppointmentCreate_Button"
+        >Записать на прием </Button>
 
         <Frame Grid.Row="1"
                NavigationUIVisibility="Hidden"
