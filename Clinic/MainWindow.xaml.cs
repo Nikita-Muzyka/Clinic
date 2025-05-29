@@ -18,14 +18,18 @@ namespace Clinic
     public partial class MainWindow : Window
     {
         private bool registration = false;
-        Registration regWindow = new Registration();
+
+        private Registration regWindow = new Registration();
+        private ClinicPerson worker;
+        private MainPage main;
+
         public MainWindow()
         {
             InitializeComponent();
-            // regWindow.MyEvent += ChangeReg;
+            //regWindow.MyEvent += ChangeReg;
             //regWindow.ShowDialog();
             //CheckReg();
-            MainFrame.Navigate(new MainPage());
+            //main = new MainPage(worker);
         }
 
         void CheckReg()
@@ -39,6 +43,7 @@ namespace Clinic
         void ChangeReg()
         {
             registration = true;
+            worker = regWindow.work;
         }
 
 
@@ -50,6 +55,11 @@ namespace Clinic
         private void Reception_RadioButton(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ReceptionPage());
+        }
+
+        private void RegistrationPage_Button(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RegistrationPage());
         }
     }
 }

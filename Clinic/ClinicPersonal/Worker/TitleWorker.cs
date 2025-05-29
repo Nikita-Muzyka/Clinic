@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    internal class TitleWorker
+    public class TitleWorker
     {
         public int Id { get; set; }
         public string NameTitle { get; set; }

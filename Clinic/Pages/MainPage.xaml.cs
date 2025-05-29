@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Clinic.Doctor;
 
 namespace Clinic.Pages
 {
@@ -20,40 +21,66 @@ namespace Clinic.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        private ClinicPerson worker;
+        public MainPage(ClinicPerson worker)
         {
+            this.worker = worker;
             InitializeComponent();
             Change_tb();
         }
+        public MainPage()
+        {
+            InitializeComponent();
+        }
         void Change_tb()
         {
-            TitleWorker tl1 = new TitleWorker
-            {
-                Id = 1,
-                AccessTitle = 1,
-                NameTitle = "Doctor"
-            };
-            PeopleRegistration reg1 = new PeopleRegistration
-            {
-                Id = 1,
-                Login = "11",
-                Password = "119"
-            };
-            ClinicPersonal work1 = new Worker
-            {
-                Id = 1,
-                FirstName = "DIma",
-                LastName = "Sosin",
-                Salary = "10000",
-                Age = 20,
-                Title = tl1,
-                infoReg = reg1
-            };
-
-            FirstNameWorker.Text = work1.FirstName;
-            LastNameWorker.Text = work1.LastName;
-            AgeWorker.Text = work1.Age.ToString();
-
+            FirstNameWorker.Text = worker.FirstName;
+            LastNameWorker.Text = worker.LastName;
+            AgeWorker.Text = worker.Age.ToString();
         }
     }
 }
+
+
+
+
+
+
+
+//    //TitleWorker tl1 = new TitleWorker
+//    //{
+//    //    AccessTitle = 1,
+//    //    NameTitle = "Doctor"
+//    //};
+//    //PeopleRegistration reg1 = new PeopleRegistration
+//    //{
+//    //    Login = "11",
+//    //    Password = "11"
+//    //};
+//    //PeopleRegistration reg2 = new PeopleRegistration
+//    //{
+//    //    Id = 1,
+//    //    Login = "55",
+//    //    Password = "55"
+//    //};
+//    //Worker work1 = new Worker
+//    //{
+//    //    FirstName = "DIma",
+//    //    LastName = "Sosin",
+//    //    Salary = "10000",
+//    //    Age = 20,
+//    //    Title = tl1,
+//    //    infoReg = reg1
+//    //};
+
+//    //Administrator admin = new Administrator
+//    //{
+//    //    FirstName = "admin",
+//    //    infoReg = reg1
+//    //};
+//    //using (ClinicContext db = new ClinicContext())
+//    //{
+//    //    db.Admins.Add(admin);
+//    //    db.Workers.Add(work1);
+//    //    db.SaveChanges();
+//    //}

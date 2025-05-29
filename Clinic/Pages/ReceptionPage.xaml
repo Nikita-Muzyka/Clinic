@@ -5,10 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReceptionPage">
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
+      Title="ReceptionPage"
+      Background ="MediumBlue">
 
     <Grid>
-        <TextBlock>wadadadawdawdawdawdaw</TextBlock>
+        <TextBlock
+            FontSize="16" 
+            Margin="287,21,351,399"
+            Height="30">Приемы пациентов</TextBlock>
     </Grid>
 </Page>

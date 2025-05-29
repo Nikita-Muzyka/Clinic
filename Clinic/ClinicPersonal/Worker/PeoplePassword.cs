@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    class PeopleRegistration
+    public class PeopleRegistration
     {
         public byte Id { get; set; }
         public string Login { get; set; }

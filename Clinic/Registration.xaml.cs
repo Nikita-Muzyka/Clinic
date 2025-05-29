@@ -19,16 +19,18 @@ namespace Clinic
     /// Логика взаимодействия для Registration.xaml
     /// </summary>
     public partial class Registration : Window
-    {
+    { 
+        public Worker work;
+
         private string _login;
         private string _password;
 
-        private bool loginAccept;
-        private bool passwordAccept;
+        private bool loginCheck;
+        private bool passwordCheck;
 
         public delegate void regTrue(); // делегает для запуска события в mainwindows
-
         public event regTrue MyEvent; // Event на основе делегата regTrue для запуска события в mainwindows
+
         public Registration()
         {
             InitializeComponent();
@@ -41,39 +43,54 @@ namespace Clinic
 
         private void LogIn_Button(object sender, RoutedEventArgs e)
         {
-            //_login = Login.Text;
-            //_password = Password.Text;
-            //loginAccept= CheckLogin();
-            //passwordAccept = CheckPassword();
-            //AcceptReg();
+            _login = Login.Text;
+            _password = Password.Text;
+            loginCheck = CheckLogin();
+            passwordCheck = CheckPassword();
+            AcceptReg();
         }
 
-        //bool CheckLogin()
-        //{
-        //    using (var db = new ClinicContext())
-        //    {
-        //        return db.Doctors.Any(u => u.infoReg.Login == _login);
-        //    }
-        //}
-        //bool CheckPassword()
-        //{
-        //    using (var db = new ClinicContext())
-        //    {
-        //        return db.Doctors.Any(u => u.infoReg.Password == _password);
-        //    }
-        //}
+        bool CheckLogin()
+        {
+            using (var db = new ClinicContext())
+            {
+                var login = db.Workers.Any(u => u.infoReg.Login == _login);
+                if (login != null)
+                {
+                    work = db.Workers.FirstOrDefault(u => u.infoReg.Login == _login);
+                }
+                if (login == false)
+                {
+                    return db.Admins.Any(u => u.infoReg.Login == _login);
+                }
 
-        //void AcceptReg()
-        //{
-        //    if (loginAccept == true && passwordAccept == true)
-        //    {
-        //        MyEvent.Invoke();
-        //        this.Close();
-        //    }
-        //    else
-        //    {
-        //        Verification.Visibility = Visibility.Visible;
-        //    }
-        //}
+                return login;
+            }
+        }
+        bool CheckPassword()
+        {
+            using (var db = new ClinicContext())
+            {
+                var password = db.Workers.Any(u => u.infoReg.Password == _password);
+                if (password == false)
+                {
+                    return db.Admins.Any(u => u.infoReg.Password == _password);
+                }
+                return password;
+            }
+        }
+
+        void AcceptReg()
+        {
+            if (loginCheck == true && passwordCheck == true)
+            {
+                MyEvent.Invoke();
+                this.Close();
+            }
+            else
+            {
+                Verification.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

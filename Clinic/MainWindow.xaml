@@ -29,7 +29,8 @@
                      Margin="0,28,0,50"
                      Click="Reception_RadioButton">Привем</RadioButton>
         <RadioButton Grid.Row="1" 
-                     Margin="0,55,0,22">Регистрация</RadioButton>
+                     Margin="0,55,0,22"
+                     Click="RegistrationPage_Button">Регистрация</RadioButton>
         <RadioButton Grid.Row="1" 
                      Margin="0,78,0,2">Персонал</RadioButton>
         <Frame Grid.Row="1"
