@@ -21,16 +21,11 @@ namespace Clinic.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        private ClinicPerson worker;
-        public MainPage(ClinicPerson worker)
-        {
-            this.worker = worker;
-            InitializeComponent();
-            Change_tb();
-        }
+        private ClinicPerson worker = Database.Instance.Worker;
         public MainPage()
         {
             InitializeComponent();
+            Change_tb();
         }
         void Change_tb()
         {

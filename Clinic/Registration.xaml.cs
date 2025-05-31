@@ -61,7 +61,7 @@ namespace Clinic
                 }
                 if (login == false)
                 {
-                    return db.Admins.Any(u => u.infoReg.Login == _login);
+                    //return db.Admins.Any(u => u.infoReg.Login == _login);
                 }
 
                 return login;
@@ -74,7 +74,7 @@ namespace Clinic
                 var password = db.Workers.Any(u => u.infoReg.Password == _password);
                 if (password == false)
                 {
-                    return db.Admins.Any(u => u.infoReg.Password == _password);
+                    //return db.Admins.Any(u => u.infoReg.Password == _password);
                 }
                 return password;
             }
@@ -90,6 +90,22 @@ namespace Clinic
             else
             {
                 Verification.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void FucusOnPassword_Button(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Password.Focus();
+            }
+        }
+
+        private void FucusOnEntrance_Button(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Entrance.Focus();
             }
         }
     }

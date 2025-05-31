@@ -10,7 +10,8 @@ namespace Clinic.Doctor
     internal class ClinicContext : DbContext
     {
         public DbSet<Worker> Workers { get; set; }
-        public DbSet<Administrator> Admins { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

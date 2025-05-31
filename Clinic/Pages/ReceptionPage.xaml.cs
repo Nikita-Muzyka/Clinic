@@ -26,14 +26,6 @@ namespace Clinic.Pages
         {
             InitializeComponent();
             this.worker = work;
-            for (int i = 0; i < Database.Instance.Appos.Count;i++)
-            {
-                if (Database.Instance.Appos[i].Workers.Id == worker.Id)
-                {
-                    patientList.Add(Database.Instance.Appos[i].Patients);
-                }
-            }
-            ListB.ItemsSource = patientList;
         }
 
     }

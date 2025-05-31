@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="760" 
+      d:DesignWidth="1040"
       Title="MainPage"
-      Background="PaleVioletRed">
+      Background="White">
 
     <Grid Grid.Column="1"
           Grid.Row="1"
@@ -16,42 +17,44 @@
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="200"></RowDefinition>
         </Grid.RowDefinitions>
+
         <TextBlock
             Name="FirstNameWorker"
             FontSize="16"
             Height="30"
-            Width="90" Margin="10,10,700,0" 
-            VerticalAlignment="Top">Имя:</TextBlock>
+            Margin="93,10,0,60"
+            HorizontalAlignment="Left">Null</TextBlock>
         <TextBlock
             FontSize="16"
             Height="30"
-            Width="90" Margin="69,10,641,0" 
-            VerticalAlignment="Top">Null</TextBlock>
+            Margin="10,8,712,62">Имя :</TextBlock>
 
 
         <TextBlock
             Name="LastNameWorker"
-            FontSize="16" Margin="10,40,700,30"
+            FontSize="16" Margin="93,40,675,30"
             Height="30"
-            Width="90">Фамилия:</TextBlock>
+            HorizontalAlignment="Left">Null</TextBlock>
         <TextBlock
-            FontSize="16" Margin="86,40,624,30"
-            Height="30"
-            Width="90">Null</TextBlock>
+            FontSize="16" 
+            Margin="10,40,712,30"
+            Height="30">Фамилия :</TextBlock>
 
+        <TextBlock
+            FontSize="16" 
+            Margin="10,70,712,0"
+            Height="30">Возраст : </TextBlock>
         <TextBlock
             Name="AgeWorker"
-            FontSize="16" Margin="10,70,719,0"
-            Height="30">Возраст</TextBlock>
-        <TextBlock
             FontSize="16" 
-            Margin="88,68,641,2"
-            Height="30">Null</TextBlock>
+            Margin="93,70,675,0"
+            Height="30"
+            HorizontalAlignment="Left">Null</TextBlock>
 
-        <TextBlock
+        <!--<TextBlock
             FontSize="16" 
             Margin="181,68,478,2"
-            Height="30">Ваша фотография</TextBlock>
+            Height="30">Ваша фотография</TextBlock>-->
 
 
         <TextBlock 

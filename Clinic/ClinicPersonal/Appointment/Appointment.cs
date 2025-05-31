@@ -10,8 +10,8 @@ namespace Clinic
     public class Appointment
     {
         public int Id { get; set; }
-        public ClinicPerson Workers { get; set; }
-        public ClinicPerson Patients { get; set; }
+        public int Id_Workers { get; set; }
+        public int Id_Patients { get; set; }
         public DateTime Date { get; set; }
     }
 }

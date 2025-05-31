@@ -6,73 +6,54 @@
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
         Title="Registration" 
-        Height="400" 
+        Height="600" 
         Width="300"
         Background="Transparent"
         Opacity="0.9">
 
     <Border CornerRadius="20"
             Background="White">
-        <!--<Border.Background>
-            <ImageBrush ImageSource="/Resources/Registration/Registration.png"
-         Stretch="UniformToFill"/>
-        </Border.Background>-->
-        <!--<Border.Effect>
-            <BlurEffect Radius="8"/>
-        </Border.Effect>-->
+
         <Grid ShowGridLines="True">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
             <TextBlock HorizontalAlignment="Center"
-                       Margin ="10">HOSPITAL "Name"</TextBlock>
+                       Margin ="0,10,0,10">HOSPITAL "Name"</TextBlock>
 
-            <Border Background="Gray"
-                    Grid.Row="1"
-                    CornerRadius="30"
-                    Width="280">
-                <Grid ShowGridLines="True">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="200"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock HorizontalAlignment="Center"
+                <TextBlock HorizontalAlignment="Center"
                                Margin ="10">Registration</TextBlock>
 
-                    <TextBlock HorizontalAlignment="Left"
+                <TextBlock HorizontalAlignment="Left"
                                Grid.Row="1"
                                Height="20"
                                Margin="41,48,0,132">Login</TextBlock>
 
-                    <TextBlock HorizontalAlignment="Left"
+                <TextBlock HorizontalAlignment="Left"
                                Grid.Row="1"
                                Height="20"
                                Margin="21,80,0,100">Password</TextBlock>
 
-                    <TextBox Margin="75,44,47,132" 
+                <TextBox Margin="75,44,47,132" 
                              Grid.Row="1"
-                             Name="Login"></TextBox>
-                    <TextBox Margin="75,80,47,96" 
+                             Name="Login"
+                             KeyDown="FucusOnPassword_Button"></TextBox>
+                <TextBox Margin="75,80,47,96" 
                              Grid.Row="1"
-                             Name="Password"></TextBox>
+                             Name="Password"
+                             KeyDown="FucusOnEntrance_Button"></TextBox>
 
-                    <TextBlock HorizontalAlignment="Left"
+                <TextBlock HorizontalAlignment="Left"
                                Name="Verification"
                                Grid.Row="1"
                                Height="20"
                                Margin="56,157,0,23"
                                Visibility="Hidden">логин или пароль не верный</TextBlock>
 
-                    <Button Grid.Row="2"
-                            Name="LogIn_btn"
+                <Button Grid.Row="2"
+                            Name="Entrance"
                             Click="LogIn_Button">LogIn</Button>
-                </Grid>
-
-            </Border>
-        </Grid>
+            </Grid>
     </Border>
 </Window>

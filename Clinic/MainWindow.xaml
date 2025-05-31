@@ -17,7 +17,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="160"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -25,25 +25,39 @@
                    FontSize="18"
                    VerticalAlignment="Center">HOSPITAL "-"
         </TextBlock>
+        <Button 
+            Grid.Column="1"
+            Click="CLOSE">CLOSE
+        </Button>
 
+        <Border Grid.Column="0"
+                Grid.Row="1"
+                Background="Gray"></Border>
         <RadioButton Grid.Row="1" 
                      Margin="0,10,0,0"
                      Click="Main_RadioButton"
                      Style="{DynamicResource MainRadioButton}" 
-                     VerticalAlignment="Top" 
-                     Width="140">Главная</RadioButton>
+                     VerticalAlignment="Top">Главная</RadioButton>
         <RadioButton Grid.Row="1" 
-                     Margin="0,28,0,50"
+                     Margin="0,50,0,0"
                      Click="Reception_RadioButton"
-                     Style="{DynamicResource MainRadioButton}" >Привем</RadioButton>
+                     Style="{DynamicResource MainRadioButton}" 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Top">Приемная</RadioButton>
         <RadioButton Grid.Row="1" 
-                     Margin="0,55,0,22"
+                     Margin="0,90,0,0"
                      Click="RegistrationPage_Button"
-                     Style="{DynamicResource MainRadioButton}" >Регистрация</RadioButton>
+                     Style="{DynamicResource MainRadioButton}"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment ="Center"
+                     >Регистрация</RadioButton>
         <RadioButton Grid.Row="1" 
-                     Margin="0,78,0,2"
+                     Margin="0,130,0,2"
                      Click="ClinicPersonal_Button"
-                     Style="{DynamicResource MainRadioButton}" >Персонал</RadioButton>
+                     Style="{DynamicResource MainRadioButton}"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment ="Center"
+                     >Персонал</RadioButton>
 
         <Frame Grid.Row="1"
                Grid.Column="1"

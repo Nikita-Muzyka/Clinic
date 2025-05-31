@@ -25,10 +25,9 @@ namespace Clinic
         public MainWindow()
         {
             InitializeComponent();
-            //regWindow.MyEvent += ChangeReg;
-            //regWindow.ShowDialog();
-            //CheckReg();
-            //main = new MainPage(worker);
+            regWindow.MyEvent += ChangeReg;
+            regWindow.ShowDialog();
+            CheckReg();
             worker = new Worker
             {
                 Id = 1,
@@ -37,7 +36,7 @@ namespace Clinic
                 LastName = "tIMOFEEV",
                 Gender = "Male",
             };
-            Database.Instance.Workers.Add(worker);
+            Database.Instance.Worker = worker;
             Patient pat = new Patient
             {
                 Id = 1,
@@ -51,8 +50,8 @@ namespace Clinic
             Appointment ap = new Appointment
             {
                 Id = 1,
-                Workers = worker,
-                Patients = pat,
+                Id_Workers = 1,
+                Id_Patients = 1,
             };
             Database.Instance.Appos.Add(ap);
         }
@@ -90,6 +89,11 @@ namespace Clinic
         private void ClinicPersonal_Button(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ClinicPersonalPage());
+        }
+
+        private void CLOSE(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
