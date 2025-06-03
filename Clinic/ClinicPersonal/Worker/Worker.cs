@@ -18,7 +18,7 @@ namespace Clinic
         public override byte Age { get; set; }
         public override string Place { get; set; }
         public string Salary { get; set; }
-        public TitleWorker Title { get; set; }
+        public string Title { get; set; }
         public PeopleRegistration infoReg { get; set; }
     }
 }

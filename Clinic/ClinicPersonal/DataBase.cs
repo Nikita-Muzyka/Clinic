@@ -16,7 +16,6 @@ namespace Clinic
         public List<ClinicPerson> Patients { get; } = new List<ClinicPerson>();
         public List<ClinicPerson> Workers { get; } = new List<ClinicPerson>();
         public List<Appointment> Appos { get; } = new List<Appointment>();
-
         public ClinicPerson Worker { get; set; } = new Worker();
 
         // Приватный конструктор (чтобы нельзя было создать новый экземпляр)

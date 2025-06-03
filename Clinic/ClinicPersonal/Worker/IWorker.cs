@@ -9,7 +9,7 @@ namespace Clinic.ClinicPersonal.Worker
     public interface IWorker
     {
         public string Salary { get; set; }
-        public TitleWorker Title { get; set; }
+        public string Title { get; set; }
         public PeopleRegistration infoReg { get; set; }
     }
 }

@@ -23,11 +23,12 @@
 
         <TextBlock HorizontalAlignment="Center"
                    FontSize="18"
-                   VerticalAlignment="Center">HOSPITAL "-"
+                   VerticalAlignment="Center"
+                   FontFamily="/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium">HOSPITAL "-"
         </TextBlock>
         <Button 
             Grid.Column="1"
-            Click="CLOSE">CLOSE
+            Click="Close_Button">CLOSE
         </Button>
 
         <Border Grid.Column="0"

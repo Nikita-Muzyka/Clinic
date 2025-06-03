@@ -19,8 +19,8 @@ namespace Clinic
     /// Логика взаимодействия для Registration.xaml
     /// </summary>
     public partial class Registration : Window
-    { 
-        public Worker work;
+    {
+        private MainWindow mainWindow;
 
         private string _login;
         private string _password;
@@ -28,40 +28,48 @@ namespace Clinic
         private bool loginCheck;
         private bool passwordCheck;
 
-        public delegate void regTrue(); // делегает для запуска события в mainwindows
-        public event regTrue MyEvent; // Event на основе делегата regTrue для запуска события в mainwindows
 
         public Registration()
         {
             InitializeComponent();
         }
 
-        private void Close_Button(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void LogIn_Button(object sender, RoutedEventArgs e)
         {
             _login = Login.Text;
-            _password = Password.Text;
+            _password = PasswordBoxCheck();
             loginCheck = CheckLogin();
             passwordCheck = CheckPassword();
             AcceptReg();
         }
 
-        bool CheckLogin()
+        /// <summary>
+        /// Проверка откуда брать данные пароля
+        /// </summary>
+        /// <returns></returns>
+        string PasswordBoxCheck()
+        {
+            if (Password.Visibility == Visibility.Collapsed)
+            {
+                return Password_Box.Text;
+            }
+            else
+            {
+                return Password.Password;
+            }
+        }
+        bool CheckLogin() 
         {
             using (var db = new ClinicContext())
             {
                 var login = db.Workers.Any(u => u.infoReg.Login == _login);
                 if (login != null)
                 {
-                    work = db.Workers.FirstOrDefault(u => u.infoReg.Login == _login);
+                    Database.Instance.Worker = db.Workers.FirstOrDefault(u => u.infoReg.Login == _login);
                 }
                 if (login == false)
                 {
-                    //return db.Admins.Any(u => u.infoReg.Login == _login);
+                    Verification.Visibility = Visibility.Visible;
                 }
 
                 return login;
@@ -74,6 +82,7 @@ namespace Clinic
                 var password = db.Workers.Any(u => u.infoReg.Password == _password);
                 if (password == false)
                 {
+                    Verification.Visibility = Visibility.Visible;
                     //return db.Admins.Any(u => u.infoReg.Password == _password);
                 }
                 return password;
@@ -84,8 +93,9 @@ namespace Clinic
         {
             if (loginCheck == true && passwordCheck == true)
             {
-                MyEvent.Invoke();
+                mainWindow = new MainWindow();
                 this.Close();
+                mainWindow.ShowDialog();
             }
             else
             {
@@ -97,7 +107,14 @@ namespace Clinic
         {
             if (e.Key == Key.Enter)
             {
-                Password.Focus();
+                if (Password.Visibility == Visibility.Collapsed)
+                {
+                    Password_Box.Focus();
+                }
+                else
+                {
+                    Password.Focus();
+                }
             }
         }
 
@@ -106,7 +123,50 @@ namespace Clinic
             if (e.Key == Key.Enter)
             {
                 Entrance.Focus();
+                Entrance.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
+        }
+
+        private void Login_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text == "Login")
+            {
+                Login.Text = "";
+            }
+        }
+
+        private void Login_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text == "")
+            {
+                Login.Text = "Login";
+            }
+        }
+
+        private void Close_Button(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CheckBox_Button(object sender, RoutedEventArgs e)
+        {
+            if (checkBox.IsChecked == true)
+            {
+                Password_Box.Visibility = Visibility.Visible;
+                Password_Box.Text = Password.Password;
+                Password.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Password.Visibility = Visibility.Visible;
+                Password.Password = Password_Box.Text;
+                Password_Box.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MouseDragMove(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

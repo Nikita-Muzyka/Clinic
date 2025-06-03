@@ -17,26 +17,11 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool registration = false;
-
-        private Registration regWindow = new Registration();
         private ClinicPerson worker;
 
         public MainWindow()
         {
             InitializeComponent();
-            regWindow.MyEvent += ChangeReg;
-            regWindow.ShowDialog();
-            CheckReg();
-            worker = new Worker
-            {
-                Id = 1,
-                Age = 25,
-                FirstName = "Dima",
-                LastName = "tIMOFEEV",
-                Gender = "Male",
-            };
-            Database.Instance.Worker = worker;
             Patient pat = new Patient
             {
                 Id = 1,
@@ -55,21 +40,6 @@ namespace Clinic
             };
             Database.Instance.Appos.Add(ap);
         }
-
-        void CheckReg()
-        {
-            if (registration == false)
-            {
-                this.Close();
-            }
-        }
-
-        void ChangeReg()
-        {
-            registration = true;
-            worker = regWindow.work;
-        }
-
 
         private void Main_RadioButton(object sender, RoutedEventArgs e)
         {
@@ -91,7 +61,7 @@ namespace Clinic
             MainFrame.Navigate(new ClinicPersonalPage());
         }
 
-        private void CLOSE(object sender, RoutedEventArgs e)
+        private void Close_Button(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
