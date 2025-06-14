@@ -9,19 +9,16 @@
         Title="MainWindow" Height="800" Width="1200">
 
     <Grid ShowGridLines="False">
-        <Grid.RowDefinitions>
-            
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--Column 0-->
-        <Grid ShowGridLines="True"
+        <Grid ShowGridLines="False"
             Grid.Column="0"
-            Grid.Row="1">
+            Grid.Row="1"
+            Background="#1e2e3b">
             <Grid.RowDefinitions>
                 <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
@@ -37,8 +34,8 @@
                        FontFamily="/Resources/Font/Cascadia/CascadiaCode-ExtraLightItalic.ttf#Cascadia Code Extralight"/>-->
 
             <Image Grid.Row="0"
-                   Source="/Resources/Logo/Logo.jpg"
-                   Height="200"
+                   Source="/Resources/Logo/caduce.png"
+                   Height="150"
                    Width="200"></Image>
 
             <RadioButton Grid.Row="1" 
@@ -72,10 +69,14 @@
                     Margin="0,0,5,0"
                     Click="Close_Button"/>
 
+            <Border Grid.Row="1"
+                    Background="#e7e7e7"
+                    CornerRadius="15"></Border>
             <Frame Grid.Row="1" 
                    NavigationUIVisibility="Hidden"
-                   Name="MainFrame">
-
+                   Name="MainFrame"
+                   BorderBrush="Transparent"
+                   >
             </Frame>
         </Grid>
     </Grid>

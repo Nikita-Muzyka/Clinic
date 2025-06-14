@@ -27,8 +27,13 @@
     <None Remove="Resources\Font\Sansation\Sansation-Light.ttf" />
     <None Remove="Resources\Font\Sansation\Sansation-LightItalic.ttf" />
     <None Remove="Resources\Font\Sansation\Sansation-Regular.ttf" />
+    <None Remove="Resources\Logo\caduce.png" />
     <None Remove="Resources\Logo\Logo.jpg" />
     <None Remove="Resources\Registration\Registration_Button\Close.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Logo\caduce.png" />
   </ItemGroup>
 
   <ItemGroup>

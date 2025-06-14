@@ -5,36 +5,49 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegistrationPage"
-      Background="Aquamarine">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="RegistrationPage">
 
     <Grid ShowGridLines="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Button
-            Height="30" 
-            Margin="64,10,611,10"
-            Click ="CreatePatient_Button"
+        <!--Grid Column 0-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                Click ="CreatePatient_Button"
+                Margin="5"
+                Height="215" 
+                Width="250"
             >Создать пациента</Button>
 
-        <Button
-            Height="30" 
-            Margin="286,10,389,10"
-            Click="ListPatient_Button"
-        >Карточки пациентов</Button>
+            <Button Grid.Row="1"
+                    Click="ListPatient_Button"
+                    Margin="5"
+                    Height="215" 
+                    Width="250"
+            >Карточки пациентов</Button>
 
-        <Button
-            Height="30" 
-            Margin="474,10,201,10"
-            Click="AppointmentCreate_Button"
-        >Записать на прием </Button>
+            <Button Grid.Row="2"
+                    Click="AppointmentCreate_Button" 
+                    Margin="5"
+                    Height="215" 
+                    Width="250"
+            >Записать на прием</Button>
 
-        <Frame Grid.Row="1"
-               NavigationUIVisibility="Hidden"
-               Name="RegFrame"></Frame>
+        </Grid>
+
+
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden"
+               Name="RegFrame"
+               BorderBrush="Transparent"></Frame>
     </Grid>
 </Page>

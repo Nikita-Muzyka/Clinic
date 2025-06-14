@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Clinic.ClinicPersonal;
+using Clinic.Doctor;
+using Microsoft.VisualBasic;
 
 namespace Clinic.Pages
 {
@@ -20,6 +24,9 @@ namespace Clinic.Pages
     /// </summary>
     public partial class CreatePatient : Page
     {
+        PatientValidation patientValid = new PatientValidation();
+        private Dictionary<string, string> errors;
+
         public CreatePatient()
         {
             InitializeComponent();
@@ -27,27 +34,76 @@ namespace Clinic.Pages
 
         private void Create_Button(object sender, RoutedEventArgs e)
         {
-            createPatient();
+            Patient patient = createPatient();
+            ErrorsClear(errors);
+            errors = patientValid.Validation(patient);
+            ErrorsCheck(patient);
         }
 
-        void createPatient()
+        Patient createPatient()
         {
-            int count = Database.Instance.Patients.Count;
-            count++;
-            Patient patient = new Patient
+            return new Patient
             {
-                Id = count,
                 FirstName = firstNameBox.Text,
                 LastName = lastNameBox.Text,
                 Patronymic = PatronymicBox.Text,
                 Age = byte.Parse(AgeBox.Text),
-                Gender = GenderBox.Text,
+                Gender = BoxGender.Text,
                 Weight = WeightBox.Text,
                 Contact = ContactBox.Text,
-                Diagnosis = DiagnosisBox.Text
+                Diagnosis = DiagnosisBox.Text,
             };
-            Database.Instance.Patients.Add(patient);
-            MessageBox.Show("CREATE");
+        }
+
+        void ErrorsCheck(Patient patient)
+        {
+            if (errors.Count > 0)
+            {
+                ShowErrors(errors);
+                MessageBox.Show("Исправте ошибки");
+            }
+            else
+            {
+                SavePatient(patient);
+            }
+        }
+
+        void ShowErrors(Dictionary<string, string> errors)
+        {
+            foreach (var err in errors)
+            {
+                var control = this.FindName(err.Key) as Control;
+                if(control != null)
+                {
+                    control.BorderBrush = new SolidColorBrush(Colors.Red);
+                    control.ToolTip = err.Value;
+                }
+            }
+        }
+
+        void ErrorsClear(Dictionary<string, string> errors)
+        {
+            if (errors != null ||errors.Count > 0)
+            {
+                foreach (var err in errors)
+                {
+                    var control = this.FindName(err.Key) as Control;
+                    if (control != null)
+                    {
+                        firstNameBox.ClearValue(Control.BorderBrushProperty);
+                    }
+                }
+            }
+        }
+
+        void SavePatient(Patient patient)
+        {
+            //using (ClinicContext db = new ClinicContext())
+            //{
+            //    db.Add(patient);
+            //    db.SaveChanges();
+            //}
+            MessageBox.Show("Пациент создан");
         }
     }
 }

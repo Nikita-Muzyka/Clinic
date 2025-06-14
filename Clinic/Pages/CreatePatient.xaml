@@ -5,51 +5,146 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CreatePatient"
-      Background="Bisque">
+      d:DesignHeight="650" d:DesignWidth="750"
+      Title="CreatePatient">
 
+    <!--Main Grid-->
     <Grid>
-        <TextBlock Margin="10,0,751,429">Имя</TextBlock>
-        <TextBox Margin="36,0,623,429"
-                 Name="firstNameBox">-</TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TextBlock Margin="0,38,737,391">Фамилия</TextBlock>
-        <TextBox Margin="68,38,591,391"
-                 Name="lastNameBox">-</TextBox>
+        <!--Row 1-->
+        <Border Grid.Row="0"
+                CornerRadius="30"
+                Background="White"
+                Margin="0,5,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="170"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-        <TextBlock Margin="10,78,737,351">Отчество</TextBlock>
-        <TextBox Margin="68,78,591,351"
-                 Name="PatronymicBox">-</TextBox>
+                <TextBlock Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16">Имя :</TextBlock>
+                <TextBox  Grid.Row="1"
+           Grid.Column="2"
+           Name="firstNameBox"/>
 
-        <TextBlock Margin="10,119,737,310">Возраст</TextBlock>
-        <TextBox Margin="68,119,591,310"
-                 Name="AgeBox">-</TextBox>
+                <TextBlock  Grid.Row="2"
+             Grid.Column="1"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             FontSize="16">Фамилия :</TextBlock>
+                <TextBox  Grid.Row="2"
+           Grid.Column="2"
+           Name="lastNameBox"/>
 
-        <TextBlock Margin="10,157,737,272">Пол</TextBlock>
-        <TextBox Margin="68,157,591,272"
-                 Name="GenderBox">-</TextBox>
+                <TextBlock  Grid.Row="3"
+             Grid.Column="1"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             FontSize="16">Отчество :</TextBlock>
+                <TextBox  Grid.Row="3"
+           Grid.Column="2"
+           Name="PatronymicBox"/>
 
-        <TextBlock Margin="10,191,737,238" >Вес</TextBlock>
-        <TextBox Margin="68,194,591,236"
-                 Name="WeightBox">-</TextBox>
+                <TextBlock  Grid.Row="4"
+             Grid.Column="1"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             FontSize="16">Возраст :</TextBlock>
+                <TextBox Grid.Row="4"
+          Grid.Column="2"
+          Name="AgeBox"/>
 
-        <TextBlock Margin="10,217,737,212">Контакты</TextBlock>
-        <TextBox Margin="68,225,591,205"
-                 Name="ContactBox">-</TextBox>
+                <TextBlock Grid.Row="5"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16">Пол :</TextBlock>
+                <!--<TextBox  Grid.Row="5"
+           Grid.Column="2"
+           Name="GenderBox"/>-->
+                <ComboBox Grid.Row="5"
+                          Grid.Column="2"
+                          Name="BoxGender">
+                    <TextBlock>Мужской</TextBlock>
+                    <TextBlock>Женский</TextBlock>
+                </ComboBox>
 
-        <TextBlock Margin="10,259,737,170">Место проживания</TextBlock>
-        <TextBox Margin="81,260,578,170"
-                 Name="PlaceBox">-</TextBox>
+                <TextBlock Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16">Вес :</TextBlock>
+                <TextBox Grid.Row="6"
+          Grid.Column="2"
+          Name="WeightBox"/>
 
-        <TextBlock Margin="10,292,737,137">Дигноз</TextBlock>
-        <TextBox Margin="81,293,578,137" 
-                 Text="-"
-                 Name="DiagnosisBox"/>
+                <TextBlock  Grid.Row="7"
+             Grid.Column="1"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             FontSize="16">Контакты :</TextBlock>
+                <TextBox  Grid.Row="7"
+           Grid.Column="2"
+           Name="ContactBox"/>
 
+                <TextBlock Grid.Row="8"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16">Место проживания :</TextBlock>
+                <TextBox Grid.Row="8"
+          Grid.Column="2"
+          Name="PlaceBox"/>
 
-        <Button Margin="68,328,510,63"
-                Click="Create_Button">Создать</Button>
+                <TextBlock Grid.Row="9"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16">Дигноз :</TextBlock>
+                <TextBox Grid.Row="9"
+          Grid.Column="2" 
+          Name="DiagnosisBox"/>
+            </Grid>
+        </Border>
+
+        <!--Row 1-->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="30"
+                Margin="0,5,0,0"></Border>
+        <Button
+            Grid.Row="1"
+            Click="Create_Button" 
+            Height="60" 
+            Width="202" 
+            Margin="0,40,0,0" 
+            VerticalAlignment="Top">Создать</Button>
 
     </Grid>
 </Page>
