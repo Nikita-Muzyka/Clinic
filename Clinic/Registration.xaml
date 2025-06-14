@@ -27,7 +27,9 @@
             <!--Row 0-->
             <Button Grid.Row="0"
                     Click="Close_Button"
-                    Style="{StaticResource RegButtonCloseTheme}">
+                    Style="{StaticResource RegButtonCloseTheme}"
+                    HorizontalAlignment="Right"
+                    Margin="0,5,15,0">
             </Button>
 
 

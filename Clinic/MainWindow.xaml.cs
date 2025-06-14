@@ -39,6 +39,12 @@ namespace Clinic
                 Id_Patients = 1,
             };
             Database.Instance.Appos.Add(ap);
+
+            Worker wr1 = new Worker()
+            {
+                Id = 2
+            };
+
         }
 
         private void Main_RadioButton(object sender, RoutedEventArgs e)

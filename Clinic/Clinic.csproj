@@ -21,23 +21,23 @@
     <None Remove="Resources\Font\Cascadia\CascadiaCode-Regular.ttf" />
     <None Remove="Resources\Font\Cascadia\CascadiaCode-SemiBold.ttf" />
     <None Remove="Resources\Font\Cascadia\CascadiaCode-SemiBoldItalic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Black.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-BlackItalic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Bold.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-BoldItalic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-ExtraBold.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-ExtraBoldItalic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Italic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Medium.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-MediumItalic.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Regular.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-SemiBold.ttf" />
-    <None Remove="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-SemiBoldItalic.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-Bold.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-BoldItalic.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-Italic.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-Light.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-LightItalic.ttf" />
+    <None Remove="Resources\Font\Sansation\Sansation-Regular.ttf" />
     <None Remove="Resources\Logo\Logo.jpg" />
     <None Remove="Resources\Registration\Registration_Button\Close.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Font\Sansation\Sansation-Bold.ttf" />
+    <Resource Include="Resources\Font\Sansation\Sansation-BoldItalic.ttf" />
+    <Resource Include="Resources\Font\Sansation\Sansation-Italic.ttf" />
+    <Resource Include="Resources\Font\Sansation\Sansation-Light.ttf" />
+    <Resource Include="Resources\Font\Sansation\Sansation-LightItalic.ttf" />
+    <Resource Include="Resources\Font\Sansation\Sansation-Regular.ttf" />
     <Resource Include="Resources\Logo\Logo.jpg" />
     <Resource Include="Resources\Registration\Registration_Button\Close.png" />
   </ItemGroup>
@@ -64,18 +64,6 @@
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-Regular.ttf" />
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-SemiBold.ttf" />
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-SemiBoldItalic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Black.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-BlackItalic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Bold.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-BoldItalic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-ExtraBold.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-ExtraBoldItalic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Italic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Medium.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-MediumItalic.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-Regular.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-SemiBold.ttf" />
-    <Resource Include="Resources\Font\SchibstedGrotesk\SchibstedGrotesk-SemiBoldItalic.ttf" />
   </ItemGroup>
 
 </Project>
