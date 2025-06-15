@@ -20,12 +20,9 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ReceptionPage : Page
     {
-        private List<ClinicPerson> patientList = new List<ClinicPerson>();
-        private ClinicPerson worker;
-        public ReceptionPage(ClinicPerson work)
+        public ReceptionPage()
         {
             InitializeComponent();
-            this.worker = work;
         }
 
     }

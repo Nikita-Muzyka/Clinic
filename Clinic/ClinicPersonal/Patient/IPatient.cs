@@ -9,8 +9,7 @@ namespace Clinic
 {
     public interface IPatient
     {
-        public string Diagnosis { get; set; } // диагнозы
-        public string Weight { get; set; } // вес
-        public string YearsCreate { get; set; } // год создания
+        public string? Diagnosis { get; set; } // диагнозы
+        public int? Weight { get; set; } // вес
     }
 }

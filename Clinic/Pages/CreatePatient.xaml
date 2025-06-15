@@ -3,154 +3,159 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Clinic.Pages"
+      xmlns:local="clr-namespace:Clinic.Pages" 
+      xmlns:System="clr-namespace:System;assembly=System.Runtime"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="750"
-      Title="CreatePatient">
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="Создание пациента"
+      Background="#F0F0F0">
 
-    <!--Main Grid-->
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--Row 1-->
-        <Viewbox Grid.Row="0">
-            <Border Grid.Row="0"
-        CornerRadius="30"
-        Background="White"
-        Margin="0,5,0,0">
+        <!-- Основная форма -->
+        <Border Grid.Row="0"
+                CornerRadius="20"
+                Background="White"
+                Padding="15">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="170"></ColumnDefinition>
-                        <ColumnDefinition Width="200"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="1"
-    Grid.Column="1"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    FontSize="16">Имя :</TextBlock>
-                    <TextBox  Grid.Row="1"
-   Grid.Column="2"
-   Name="firstNameBox"/>
+                    <!-- Имя -->
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                               Text="Имя:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"
+                             Margin="5"
+                             Name="firstNameBox"/>
 
-                    <TextBlock  Grid.Row="2"
-     Grid.Column="1"
-     HorizontalAlignment="Center"
-     VerticalAlignment="Center"
-     FontSize="16">Фамилия :</TextBlock>
-                    <TextBox  Grid.Row="2"
-   Grid.Column="2"
-   Name="lastNameBox"/>
+                    <!-- Фамилия -->
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               Text="Фамилия:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="1" Grid.Column="1"
+                             Margin="5"
+                             Name="lastNameBox"/>
 
-                    <TextBlock  Grid.Row="3"
-     Grid.Column="1"
-     HorizontalAlignment="Center"
-     VerticalAlignment="Center"
-     FontSize="16">Отчество :</TextBlock>
-                    <TextBox  Grid.Row="3"
-   Grid.Column="2"
-   Name="patronymicBox"/>
+                    <!-- Отчество -->
+                    <TextBlock Grid.Row="2" Grid.Column="0"
+                               Text="Отчество:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="2" Grid.Column="1"
+                             Margin="5"
+                             Name="patronymicBox"/>
 
-                    <TextBlock  Grid.Row="4"
-     Grid.Column="1"
-     HorizontalAlignment="Center"
-     VerticalAlignment="Center"
-     FontSize="16">Возраст :</TextBlock>
-                    <TextBox Grid.Row="4"
-  Grid.Column="2"
-  Name="datebrithBox"/>
+                    <!-- Дата рождения -->
+                    <TextBlock Grid.Row="3" Grid.Column="0"
+                               Text="Дата рождения:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <DatePicker Grid.Row="3"
+                                Grid.Column="1"
+                                Name="datebirthBox"
+                                SelectedDateFormat="Short"
+                                Text="Выберите дату роджения"
+                                ToolTip="Выберите дату рождения"
+                                Style="{StaticResource DatePickerCreatePatient}">
+                    </DatePicker>
 
-                    <TextBlock Grid.Row="5"
-    Grid.Column="1"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    FontSize="16">Пол :</TextBlock>
-
-                    <ComboBox Grid.Row="5"
-                  Grid.Column="2"
-                  Name="boxGender">
-                        <TextBlock>Мужской</TextBlock>
-                        <TextBlock>Женский</TextBlock>
+                    <!-- Пол -->
+                    <TextBlock Grid.Row="4" Grid.Column="0"
+                               Text="Пол:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <ComboBox Grid.Row="4" Grid.Column="1"
+                              Margin="5"
+                              Name="genderBox">
+                        <ComboBoxItem>Мужской</ComboBoxItem>
+                        <ComboBoxItem>Женский</ComboBoxItem>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="6"
-    Grid.Column="1"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    FontSize="16">Вес :</TextBlock>
-                    <TextBox Grid.Row="6"
-  Grid.Column="2"
-  Name="weightBox"/>
+                    <!-- Вес -->
+                    <TextBlock Grid.Row="5" Grid.Column="0"
+                               Text="Вес:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="5" Grid.Column="1"
+                             Margin="5"
+                             Name="weightBox"/>
 
-                    <TextBlock  Grid.Row="7"
-     Grid.Column="1"
-     HorizontalAlignment="Center"
-     VerticalAlignment="Center"
-     FontSize="16">Контакты :</TextBlock>
-                    <TextBox  Grid.Row="7"
-   Grid.Column="2"
-   Name="contactBox">
+                    <!-- Контакты -->
+                    <TextBlock Grid.Row="6" Grid.Column="0"
+                               Text="Контакты:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="6" Grid.Column="1"
+                             Margin="5"
+                             Name="contactBox">
                         <TextBox.ToolTip>
-                            <StackPanel>
-                                <TextBlock>Номер должен начинатся с +7 или 8</TextBlock>
-                            </StackPanel>
+                            <ToolTip  ToolTipService.InitialShowDelay="0">
+                                <TextBlock>Номер должен начинаться с +7 или 8</TextBlock>
+                            </ToolTip>
                         </TextBox.ToolTip>
                     </TextBox>
 
-                    <TextBlock Grid.Row="8"
-    Grid.Column="1"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    FontSize="16">Место проживания :</TextBlock>
-                    <TextBox Grid.Row="8"
-  Grid.Column="2"
-  Name="placeBox"/>
+                    <!-- Место проживания -->
+                    <TextBlock Grid.Row="7" Grid.Column="0"
+                               Text="Место проживания:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="7" Grid.Column="1"
+                             Margin="5"
+                             Name="placeBox"/>
 
-                    <TextBlock Grid.Row="9"
-    Grid.Column="1"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    FontSize="16">Дигноз :</TextBlock>
-                    <TextBox Grid.Row="9"
-  Grid.Column="2" 
-  Name="diagnosisBox"/>
+                    <!-- Диагноз -->
+                    <TextBlock Grid.Row="8" Grid.Column="0"
+                               Text="Диагноз:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="8" Grid.Column="1"
+                             Margin="5"
+                             Name="diagnosisBox"/>
+
+                   
                 </Grid>
-            </Border>
-        </Viewbox>
+            </ScrollViewer>
+        </Border>
 
-        <!--Row 1-->
-        <Border Grid.Row="1"
-                Background="White"
-                CornerRadius="30"
-                Margin="0,5,0,0"></Border>
-        <Button
-            Grid.Row="1"
-            Click="Create_Button" 
-            Height="60" 
-            Width="202" 
-            Margin="0,40,0,0" 
-            VerticalAlignment="Top">Создать</Button>
-
+        <!-- Кнопка создания -->
+        <Button Grid.Row="1"
+                Content="Создать"
+                HorizontalAlignment="Center"
+                Margin="0,15,0,0"
+                Padding="30,0"
+                FontSize="16"
+                Click="Create_Button"/>
     </Grid>
 </Page>

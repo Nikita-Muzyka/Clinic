@@ -17,34 +17,10 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ClinicPerson worker;
 
         public MainWindow()
         {
             InitializeComponent();
-            Patient pat = new Patient
-            {
-                Id = 1,
-                FirstName = "Nikita",
-                LastName = "Vasiliv",
-                DateBrith = 12,
-                Diagnosis = "Kardiologia"
-            };
-            Database.Instance.Patients.Add(pat);
-
-            Appointment ap = new Appointment
-            {
-                Id = 1,
-                Id_Workers = 1,
-                Id_Patients = 1,
-            };
-            Database.Instance.Appos.Add(ap);
-
-            Worker wr1 = new Worker()
-            {
-                Id = 2
-            };
-
         }
 
         private void Main_RadioButton(object sender, RoutedEventArgs e)
@@ -54,7 +30,7 @@ namespace Clinic
 
         private void Reception_RadioButton(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ReceptionPage(worker));
+            MainFrame.Navigate(new ReceptionPage());
         }
 
         private void RegistrationPage_Button(object sender, RoutedEventArgs e)

@@ -34,28 +34,12 @@ namespace Clinic.Pages
 
         private void Create_Button(object sender, RoutedEventArgs e)
         {
-            Patient patient = createPatient();
             ErrorsClear(errors);
-            errors = patientValid.Validation(patient);
-            ErrorsCheck(patient);
+            errors = patientValid.Validation(firstNameBox.Text,lastNameBox.Text,patronymicBox.Text,contactBox.Text,weightBox.Text,genderBox.Text,datebirthBox.Text);
+            ErrorsCheck();
         }
 
-        Patient createPatient()
-        {
-            return new Patient
-            {
-                FirstName = firstNameBox.Text,
-                LastName = lastNameBox.Text,
-                Patronymic = patronymicBox.Text,
-                DateBrith = byte.Parse(datebrithBox.Text),
-                Gender = boxGender.Text,
-                Weight = weightBox.Text,
-                Contact = contactBox.Text,
-                Diagnosis = diagnosisBox.Text,
-            };
-        }
-
-        void ErrorsCheck(Patient patient)
+        void ErrorsCheck()
         {
             if (errors.Count > 0)
             {
@@ -64,7 +48,7 @@ namespace Clinic.Pages
             }
             else
             {
-                SavePatient(patient);
+                SavePatient();
             }
         }
 
@@ -83,7 +67,11 @@ namespace Clinic.Pages
 
         void ErrorsClear(Dictionary<string, string> errors)
         {
-            if (errors != null ||errors.Count > 0)
+            if (errors == null)
+            {
+
+            }
+            else
             {
                 foreach (var err in errors)
                 {
@@ -91,13 +79,32 @@ namespace Clinic.Pages
                     if (control != null)
                     {
                         firstNameBox.ClearValue(Control.BorderBrushProperty);
+                        lastNameBox.ClearValue(Control.BorderBrushProperty);
+                        contactBox.ClearValue(Control.BorderBrushProperty);
+                        weightBox.ClearValue(Control.BorderBrushProperty);
+                        datebirthBox.ClearValue(Control.BorderBrushProperty);
+                        genderBox.ClearValue(Control.BorderBrushProperty);
                     }
                 }
             }
         }
 
-        void SavePatient(Patient patient)
+        void SavePatient()
         {
+            string DateFormatNow = DateTime.Now.ToShortDateString();
+            ClinicPerson patient = new Patient
+            {
+                FirstName = firstNameBox.Text,
+                LastName = lastNameBox.Text,
+                Patronymic = patronymicBox.Text,
+                DateBrith = datebirthBox.Text,
+                Gender = genderBox.Text,
+                Weight = int.Parse(weightBox.Text),
+                Contact = contactBox.Text,
+                Diagnosis = diagnosisBox.Text,
+                YearsCreate = DateFormatNow
+            };
+
             //using (ClinicContext db = new ClinicContext())
             //{
             //    db.Add(patient);
