@@ -27,7 +27,7 @@ namespace Clinic
                 Id = 1,
                 FirstName = "Nikita",
                 LastName = "Vasiliv",
-                Age = 12,
+                DateBrith = 12,
                 Diagnosis = "Kardiologia"
             };
             Database.Instance.Patients.Add(pat);

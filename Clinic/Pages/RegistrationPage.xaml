@@ -5,49 +5,48 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1000"
+      d:DesignHeight="730" d:DesignWidth="1000"
       Title="RegistrationPage">
 
-    <Grid ShowGridLines="True">
+        <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--Grid Column 0-->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+        <Viewbox Stretch="Uniform">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0"
-                Click ="CreatePatient_Button"
-                Margin="5"
-                Height="215" 
-                Width="250"
-            >Создать пациента</Button>
+                <RadioButton Grid.Row="0"
+                             Click ="CreatePatient_Button"
+                             Style="{StaticResource RadioButtonRegPage}"
+                >Создать пациента</RadioButton>
 
-            <Button Grid.Row="1"
-                    Click="ListPatient_Button"
-                    Margin="5"
-                    Height="215" 
-                    Width="250"
-            >Карточки пациентов</Button>
+                <RadioButton Grid.Row="1"
+                             Click="ListPatient_Button"
+                             Style="{StaticResource RadioButtonRegPage}"
+                >Карточки пациентов</RadioButton>
 
-            <Button Grid.Row="2"
-                    Click="AppointmentCreate_Button" 
-                    Margin="5"
-                    Height="215" 
-                    Width="250"
-            >Записать на прием</Button>
+                <RadioButton Grid.Row="2"
+                             Click="AppointmentCreate_Button" 
+                             Style="{StaticResource RadioButtonRegPage}"
+                >Записать на прием</RadioButton>
 
+            </Grid>
+    </Viewbox>
+        <Grid Grid.Column="1">
+            <Frame NavigationUIVisibility="Hidden"
+                   Name="RegFrame"
+                   BorderBrush="Transparent"></Frame>
         </Grid>
-
-
-        <Frame Grid.Column="1" NavigationUIVisibility="Hidden"
-               Name="RegFrame"
-               BorderBrush="Transparent"></Frame>
     </Grid>
 </Page>

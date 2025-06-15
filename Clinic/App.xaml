@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="/Theme/Registration/RegButtonClose.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Theme/MainWindowTheme/RadioButtonMainTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RegistrationPage/RadioButtonRegPage.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

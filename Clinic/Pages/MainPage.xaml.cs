@@ -25,14 +25,8 @@ namespace Clinic.Pages
         public MainPage()
         {
             InitializeComponent();
-            Change_tb();
         }
-        void Change_tb()
-        {
-            FirstNameWorker.Text = worker.FirstName;
-            LastNameWorker.Text = worker.LastName;
-            AgeWorker.Text = worker.Age.ToString();
-        }
+     
     }
 }
 

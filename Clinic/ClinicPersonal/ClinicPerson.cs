@@ -11,10 +11,11 @@ namespace Clinic
         public abstract int Id { get; set; }
         public abstract string FirstName { get; set; } // имя
         public abstract string LastName { get; set; } // фамилия
-        public abstract string Patronymic { get; set; } // Отчество
+        public abstract string? Patronymic { get; set; } // Отчество
         public abstract string Gender { get; set; } // пол
         public abstract string Contact { get; set; } // телефон
-        public abstract byte Age { get; set; } // возраст
+        public abstract byte DateBrith { get; set; } // возраст
         public abstract string Place { get; set; } // место проживание 
+
     } 
 }

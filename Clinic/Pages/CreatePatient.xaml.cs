@@ -46,12 +46,12 @@ namespace Clinic.Pages
             {
                 FirstName = firstNameBox.Text,
                 LastName = lastNameBox.Text,
-                Patronymic = PatronymicBox.Text,
-                Age = byte.Parse(AgeBox.Text),
-                Gender = BoxGender.Text,
-                Weight = WeightBox.Text,
-                Contact = ContactBox.Text,
-                Diagnosis = DiagnosisBox.Text,
+                Patronymic = patronymicBox.Text,
+                DateBrith = byte.Parse(datebrithBox.Text),
+                Gender = boxGender.Text,
+                Weight = weightBox.Text,
+                Contact = contactBox.Text,
+                Diagnosis = diagnosisBox.Text,
             };
         }
 
