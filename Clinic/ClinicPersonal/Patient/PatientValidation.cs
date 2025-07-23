@@ -21,7 +21,7 @@ namespace Clinic.ClinicPersonal
             var errors = new Dictionary<string, string>();
 
             //FirstName
-            if (string.IsNullOrWhiteSpace(FirstName) || FirstName.Any(char.IsNumber) == true)
+            if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)
             {
                 errors.Add("firstNameBox","Пустая строка или есть цифры");
             }
@@ -31,7 +31,7 @@ namespace Clinic.ClinicPersonal
             }
 
             //LastName
-            if (string.IsNullOrWhiteSpace(LastName) || LastName.Any(char.IsNumber) == true)
+            if (string.IsNullOrWhiteSpace(LastName) == true || LastName.Any(char.IsNumber) == true)
             {
                 errors.Add("lastNameBox", "Пустая строка или есть цифры");
             }
@@ -47,7 +47,7 @@ namespace Clinic.ClinicPersonal
             //}
 
             //Contact
-            if (string.IsNullOrWhiteSpace(Contact) || Contact.Any(char.IsNumber) == false)
+            if (string.IsNullOrWhiteSpace(Contact) == true || Contact.Any(char.IsNumber) == true)
             {
                 errors.Add("contactBox", "Контакты обязательны для заполнения или должны содежрать только цифры");
             }
@@ -57,28 +57,34 @@ namespace Clinic.ClinicPersonal
             }
 
             //Weight
-            if (string.IsNullOrWhiteSpace(Weight) || Weight.Any(char.IsNumber) == false)
+            if (string.IsNullOrWhiteSpace(Weight) == true
+                || Weight.Any(char.IsLetter) == true
+                || Weight.Any(char.IsPunctuation) == true
+                || Weight.Any(char.IsSymbol) == true)
             {
                 errors.Add("weightBox", "Строка должна быть заполнена или Номер должен содержать только цифры");
             }
-            else
-            {
-                int Weight32 = int.Parse(Weight);
-                if (Weight32 < 0 || Weight32 > 400)
-                {
-                    errors.Add("weightBox", "Вес должен быть от 1 до 400");
-                }
-            }
+         
 
             //Gender
-            if (string.IsNullOrWhiteSpace(Gender))
+            if (string.IsNullOrWhiteSpace(Gender) == true)
             {
                 errors.Add("genderBox", "Пустая строка");
             }
 
-            if (string.IsNullOrWhiteSpace(DateBirth))
+            //DateBirth
+            if(string.IsNullOrWhiteSpace(DateBirth) == false)
             {
-                errors.Add("datebirthBox", "Пустая строка");
+                DateTime? time;
+                time = DateTime.Parse(DateBirth);
+                if (time > DateTime.Now)
+                {
+                    errors.Add("datebirthBox", "Нельзя вводить будущее время");
+                }
+            }
+            else
+            {
+                errors.Add("datebirthBox", "Поле обязательно для заполнения");
             }
 
             return errors;

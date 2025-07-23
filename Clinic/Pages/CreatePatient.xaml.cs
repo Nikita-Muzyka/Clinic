@@ -35,7 +35,13 @@ namespace Clinic.Pages
         private void Create_Button(object sender, RoutedEventArgs e)
         {
             ErrorsClear(errors);
-            errors = patientValid.Validation(firstNameBox.Text,lastNameBox.Text,patronymicBox.Text,contactBox.Text,weightBox.Text,genderBox.Text,datebirthBox.Text);
+            errors = patientValid.Validation(firstNameBox.Text,
+                lastNameBox.Text,
+                patronymicBox.Text,
+                contactBox.Text,
+                weightBox.Text,
+                genderBox.Text,
+                datebirthBox.Text);
             ErrorsCheck();
         }
 
@@ -78,12 +84,8 @@ namespace Clinic.Pages
                     var control = this.FindName(err.Key) as Control;
                     if (control != null)
                     {
-                        firstNameBox.ClearValue(Control.BorderBrushProperty);
-                        lastNameBox.ClearValue(Control.BorderBrushProperty);
-                        contactBox.ClearValue(Control.BorderBrushProperty);
-                        weightBox.ClearValue(Control.BorderBrushProperty);
-                        datebirthBox.ClearValue(Control.BorderBrushProperty);
-                        genderBox.ClearValue(Control.BorderBrushProperty);
+                        control.BorderBrush = new SolidColorBrush(Colors.Green);
+                        control.ToolTip = "";
                     }
                 }
             }
