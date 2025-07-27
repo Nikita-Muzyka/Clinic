@@ -3,10 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="800" Width="1200">
 
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Column 0-->
+        <Grid ShowGridLines="False"
+            Grid.Column="0"
+            Grid.Row="1"
+            Background="#1e2e3b">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--<TextBlock HorizontalAlignment="Center"
+                       FontSize="18"
+                       VerticalAlignment="Center"
+                       Text ="Medium Hospital"
+                       FontFamily="/Resources/Font/Cascadia/CascadiaCode-ExtraLightItalic.ttf#Cascadia Code Extralight"/>-->
+
+            <Image Grid.Row="0"
+                   Source="/Resources/Logo/caduce.png"
+                   Height="150"
+                   Width="200"></Image>
+
+            <RadioButton Grid.Row="1" 
+                         Click="Main_RadioButton"
+                         Style="{DynamicResource MainRadioButton}" 
+                         >Главная</RadioButton>
+            <RadioButton Grid.Row="2" 
+                         Click="Reception_RadioButton"
+                         Style="{DynamicResource MainRadioButton}" 
+                        >Приемная</RadioButton>
+            <RadioButton Grid.Row="3" 
+                         Click="RegistrationPage_Button"
+                         Style="{DynamicResource MainRadioButton}"
+                         >Регистрация</RadioButton>
+            <RadioButton Grid.Row="4" 
+                         Click="ClinicPersonal_Button"
+                         Style="{DynamicResource MainRadioButton}"
+                         >Персонал</RadioButton>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                    Style ="{StaticResource RegButtonCloseTheme}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,0,5,0"
+                    Click="Close_Button"/>
+
+            <Border Grid.Row="1"
+                    Background="#e7e7e7"
+                    CornerRadius="15"></Border>
+            <Frame Grid.Row="1" 
+                   NavigationUIVisibility="Hidden"
+                   Name="MainFrame"
+                   BorderBrush="Transparent"
+                   >
+            </Frame>
+        </Grid>
     </Grid>
 </Window>

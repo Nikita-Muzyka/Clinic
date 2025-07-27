@@ -6,73 +6,125 @@
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
         Title="Registration" 
-        Height="400" 
+        Height="600" 
         Width="300"
         Background="Transparent"
-        Opacity="0.9">
+        Opacity="0.95"
+        WindowStyle="None"
+        AllowsTransparency="True">
 
     <Border CornerRadius="20"
-            Background="White">
-        <!--<Border.Background>
-            <ImageBrush ImageSource="/Resources/Registration/Registration.png"
-         Stretch="UniformToFill"/>
-        </Border.Background>-->
-        <!--<Border.Effect>
-            <BlurEffect Radius="8"/>
-        </Border.Effect>-->
-        <Grid ShowGridLines="True">
+            Background="White"
+            MouseDown="MouseDragMove">
+
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="250"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <TextBlock HorizontalAlignment="Center"
-                       Margin ="10">HOSPITAL "Name"</TextBlock>
 
-            <Border Background="Gray"
-                    Grid.Row="1"
-                    CornerRadius="30"
-                    Width="280">
-                <Grid ShowGridLines="True">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="200"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+            <!--Row 0-->
+            <Button Grid.Row="0"
+                    Click="Close_Button"
+                    Style="{StaticResource RegButtonCloseTheme}"
+                    HorizontalAlignment="Right"
+                    Margin="0,5,15,0">
+            </Button>
 
-                    <TextBlock HorizontalAlignment="Center"
-                               Margin ="10">Registration</TextBlock>
 
-                    <TextBlock HorizontalAlignment="Left"
-                               Grid.Row="1"
-                               Height="20"
-                               Margin="41,48,0,132">Login</TextBlock>
+            <!--Row 1-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-                    <TextBlock HorizontalAlignment="Left"
-                               Grid.Row="1"
-                               Height="20"
-                               Margin="21,80,0,100">Password</TextBlock>
+                <TextBlock Grid.Row="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="5"
+                           FontSize="16"
+                           Text="Medium Hospital"
+                           FontFamily="/Resources/Font/Cascadia/CascadiaCode-ExtraLightItalic.ttf#Cascadia Code Extralight"/>
 
-                    <TextBox Margin="75,44,47,132" 
-                             Grid.Row="1"
-                             Name="Login"></TextBox>
-                    <TextBox Margin="75,80,47,96" 
-                             Grid.Row="1"
-                             Name="Password"></TextBox>
+                <Image Grid.Row="1"
+                       Source="/Resources/Logo/Logo.jpg"
+                       Height="250"
+                       Width="300"></Image>
 
-                    <TextBlock HorizontalAlignment="Left"
-                               Name="Verification"
-                               Grid.Row="1"
-                               Height="20"
-                               Margin="56,157,0,23"
-                               Visibility="Hidden">логин или пароль не верный</TextBlock>
+            </Grid>
 
-                    <Button Grid.Row="2"
-                            Name="LogIn_btn"
-                            Click="LogIn_Button">LogIn</Button>
-                </Grid>
+            <!--Row 2-->
+            <Grid Grid.Row="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox
+                          Name="Login"
+                          Height="30"
+                          Width="200"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Text="Login"
+                          Foreground="Gray"
+                          KeyDown="FucusOnPassword_Button"
+                          GotFocus ="Login_OnGotFocus"
+                          LostFocus="Login_OnLostFocus"
+                          FontFamily="pack://application:,,,/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium"/>
 
-            </Border>
+                <PasswordBox 
+                              Grid.Row="1"
+                              Name="Password"
+                              Height="30"
+                              Width="200"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              KeyDown="FucusOnEntrance_Button"
+                              FontFamily="pack://application:,,,/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium"/>
+
+                <!--Дублер passwordBox для показа пароля-->
+                <TextBox  Grid.Row="1"
+                           Name="Password_Box"
+                           Height="30"
+                           Width="200"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"
+                           FontFamily="/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium"/>
+
+                <CheckBox Grid.Row="2"
+                          Name="checkBox"
+                           Content="Показать пароль"
+                           Height="20" 
+                           Margin="50,5,110,5"
+                           FontFamily="/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium"
+                           Click="CheckBox_Button"/>
+
+                <Button Grid.Row="3"
+                         Name="Entrance"
+                         Height="30"
+                         Width="200"
+                         Click="LogIn_Button" 
+                         Margin="50,27,50,0"
+                         Style="{DynamicResource ButtonPrimary}"
+                         VerticalAlignment="Top"
+                         FontFamily="pack://application:,,,/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium">Log In</Button>
+
+                <TextBlock Name="Verification"
+                           Grid.Row="4"
+                           Height="20"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Visibility="Hidden" 
+                           Style="{DynamicResource TextBlockDefaultAccent}"
+                           Margin="50,47,0,0"
+                           FontFamily="pack://application:,,,/Resources/Font/Cascadia/CascadiaCode-Medium.ttf#Cascadia Code Medium">Логин или Пароль не верный</TextBlock>
+            </Grid>
         </Grid>
     </Border>
 </Window>

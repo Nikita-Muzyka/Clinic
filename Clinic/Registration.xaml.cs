@@ -20,33 +20,127 @@ namespace Clinic
     /// </summary>
     public partial class Registration : Window
     {
+        private MainWindow mainWindow;
+
         private string _login;
         private string _password;
 
-        private bool loginAccept;
-        private bool passwordAccept;
+        private bool loginCheck;
+        private bool passwordCheck;
 
-        public delegate void regTrue(); // делегает для запуска события в mainwindows
 
-        public event regTrue MyEvent; // Event на основе делегата regTrue для запуска события в mainwindows
         public Registration()
         {
             InitializeComponent();
-            //DoctorsPassword pass1 = new DoctorsPassword
-            //{
-            //    Id = 1,
-            //    Login = "11",
-            //    Password = "22"
-            //};
-            //Doctors doc1 = new Doctors
-            //{
-            //    Id = 1,
-            //    FirstName = "Foo",
-            //    LastName = "Bar",
-            //    Salary = "20000",
-            //    Title = "Title",
-            //    infoReg = pass1
-            //};
+        }
+
+        private void LogIn_Button(object sender, RoutedEventArgs e)
+        {
+            _login = Login.Text;
+            _password = PasswordBoxCheck();
+            loginCheck = CheckLogin();
+            passwordCheck = CheckPassword();
+            AcceptReg();
+        }
+
+        /// <summary>
+        /// Проверка откуда брать данные пароля
+        /// </summary>
+        /// <returns></returns>
+        string PasswordBoxCheck()
+        {
+            if (Password.Visibility == Visibility.Collapsed)
+            {
+                return Password_Box.Text;
+            }
+            else
+            {
+                return Password.Password;
+            }
+        }
+        bool CheckLogin() 
+        {
+            using (var db = new ClinicContext())
+            {
+                var login = db.Workers.Any(u => u.infoReg.Login == _login);
+                if (login != null)
+                {
+                    Database.Instance.Worker = db.Workers.FirstOrDefault(u => u.infoReg.Login == _login);
+                }
+                if (login == false)
+                {
+                    Verification.Visibility = Visibility.Visible;
+                }
+
+                return login;
+            }
+        }
+        bool CheckPassword()
+        {
+            using (var db = new ClinicContext())
+            {
+                var password = db.Workers.Any(u => u.infoReg.Password == _password);
+                if (password == false)
+                {
+                    Verification.Visibility = Visibility.Visible;
+                    //return db.Admins.Any(u => u.infoReg.Password == _password);
+                }
+                return password;
+            }
+        }
+
+        void AcceptReg()
+        {
+            if (loginCheck == true && passwordCheck == true)
+            {
+                mainWindow = new MainWindow();
+                this.Close();
+                mainWindow.ShowDialog();
+            }
+            else
+            {
+                Verification.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void FucusOnPassword_Button(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Password.Visibility == Visibility.Collapsed)
+                {
+                    Password_Box.Focus();
+                }
+                else
+                {
+                    Password.Focus();
+                }
+            }
+        }
+
+        private void FucusOnEntrance_Button(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Entrance.Focus();
+                Entrance.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+        }
+
+        private void Login_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text == "Login")
+            {
+                Login.Text = "";
+            }
+        }
+
+        private void Login_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text == "")
+            {
+                Login.Text = "Login";
+            }
         }
 
         private void Close_Button(object sender, RoutedEventArgs e)
@@ -54,41 +148,25 @@ namespace Clinic
             this.Close();
         }
 
-        private void LogIn_Button(object sender, RoutedEventArgs e)
+        private void CheckBox_Button(object sender, RoutedEventArgs e)
         {
-            _login = Login.Text;
-            _password = Password.Text;
-            loginAccept= CheckLogin();
-            passwordAccept = CheckPassword();
-            AcceptReg();
-        }
-
-        bool CheckLogin()
-        {
-            using (var db = new DoctorsContext())
+            if (checkBox.IsChecked == true)
             {
-                return db.Doctors.Any(u => u.infoReg.Login == _login);
-            }
-        }
-        bool CheckPassword()
-        {
-            using (var db = new DoctorsContext())
-            {
-                return db.Doctors.Any(u => u.infoReg.Password == _password);
-            }
-        }
-
-        void AcceptReg()
-        {
-            if (loginAccept == true && passwordAccept == true)
-            {
-                MyEvent.Invoke();
-                this.Close();
+                Password_Box.Visibility = Visibility.Visible;
+                Password_Box.Text = Password.Password;
+                Password.Visibility = Visibility.Collapsed;
             }
             else
             {
-                Verification.Visibility = Visibility.Visible;
+                Password.Visibility = Visibility.Visible;
+                Password.Password = Password_Box.Text;
+                Password_Box.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void MouseDragMove(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

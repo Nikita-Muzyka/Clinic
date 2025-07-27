@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Clinic.Doctor
 {
-    internal class DoctorsContext : DbContext
+    internal class ClinicContext : DbContext
     {
-        public DbSet<Doctors> Doctors { get; set; }
+        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

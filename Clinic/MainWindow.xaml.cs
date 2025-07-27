@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Clinic.Pages;
 
 namespace Clinic
 {
@@ -16,27 +17,35 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool registration = false;
-        Registration regWindow = new Registration();
+
         public MainWindow()
         {
             InitializeComponent();
-            regWindow.MyEvent += ChangeReg;
-            regWindow.ShowDialog();
-            CheckReg();
         }
 
-        void CheckReg()
+        private void Main_RadioButton(object sender, RoutedEventArgs e)
         {
-            if (registration == false)
-            {
-                this.Close();
-            }
+            MainFrame.Navigate(new MainPage());
         }
 
-        void ChangeReg()
+        private void Reception_RadioButton(object sender, RoutedEventArgs e)
         {
-            registration = true;
+            MainFrame.Navigate(new ReceptionPage());
+        }
+
+        private void RegistrationPage_Button(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RegistrationPage());
+        }
+
+        private void ClinicPersonal_Button(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClinicPersonalPage());
+        }
+
+        private void Close_Button(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
