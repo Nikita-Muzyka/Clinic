@@ -107,21 +107,13 @@ namespace Clinic.Pages
                 YearsCreate = DateFormatNow
             };
 
-            //using (ClinicContext db = new ClinicContext())
-            //{
-            //    db.Add(patient);
-            //    db.SaveChanges();
-            //}
+            using (ClinicContext db = new ClinicContext())
+            {
+                db.Add(patient);
+                db.SaveChanges();
+            }
             MessageBox.Show("Пациент создан");
         }
 
-        //private void CreateEnterKey(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Enter)
-        //    {
-        //        CreateBtn.Focus();
-        //        CreateBtn.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-        //    }
-        //}
     }
 }

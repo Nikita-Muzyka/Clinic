@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Doctor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,47 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ListPatientPage : Page
     {
-        List<ClinicPerson> patientList = new List<ClinicPerson>();
+        ClinicPerson personChange;
+        
         public ListPatientPage()
         {
             InitializeComponent();
-            int countPatient = Database.Instance.Patients.Count;
-            patientList = Database.Instance.Patients;
-            PatientListBox.ItemsSource = patientList;
+            LoadPatient();
+        }
+
+        void LoadPatient()
+        {
+            using (var db = new ClinicContext())
+            {
+                var Patients = db.Patients.ToList();
+                patientListBox.ItemsSource = Patients;
+            }
+        }
+
+        private void SavePatientChange_btn(object sender, RoutedEventArgs e)
+        {
+            personChange = patientListBox.SelectedItem as ClinicPerson;
+            using (var db = new ClinicContext())
+            {
+                var dbPatient = db.Patients.Find(personChange.Id);
+
+                dbPatient.FirstName = firstNameBox.Text;
+                dbPatient.LastName = lastNameBox.Text;
+                dbPatient.Patronymic = patronymicBox.Text;
+                dbPatient.Gender = genderBox.Text;
+                dbPatient.Contact = contactBox.Text;
+                dbPatient.DateBrith = dateBrithBox.Text;
+                dbPatient.Place = placeBox.Text;
+                dbPatient.Diagnosis = diagnosisBox.Text;
+
+                db.SaveChanges();
+            }
+            LoadPatient();
+        }
+
+        private void patientListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            infoPatient.Visibility = Visibility.Visible;
         }
     }
 }
