@@ -114,5 +114,14 @@ namespace Clinic.Pages
             //}
             MessageBox.Show("Пациент создан");
         }
+
+        //private void CreateEnterKey(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter)
+        //    {
+        //        CreateBtn.Focus();
+        //        CreateBtn.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+        //    }
+        //}
     }
 }

@@ -23,11 +23,33 @@ namespace Clinic.ClinicPersonal
             //FirstName
             if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)
             {
-                errors.Add("firstNameBox","Пустая строка или есть цифры");
+                errors.Add("firstNameBox", "Пустая строка или есть цифры в имени");
             }
-            else if (FirstName.Length < 2)
+            else if(FirstName.Length < 2)
             {
-                errors.Add("firstNameBox", "Имя содержит меньше 2 символов");
+                errors.Add("firstNameBox","Имя содержит меньше 2 символов");
+            }
+            else
+            {
+                bool result = false;
+                for (int i = 1; i < FirstName.Length; i++)
+                {
+                    result = char.IsUpper(FirstName[i]);
+                    if(result == true)
+                    {
+                        errors.Add("firstNameBox", "Имя содержит заглавные буквы");
+                        break;
+                    }
+                }
+                if(result == false)
+                for (int i = 0; i < 1; i++)
+                {
+                    result = char.IsLower(FirstName[i]);
+                    if(result == true)
+                    {
+                        errors.Add("firstNameBox", "Имя должно начинаться с заглавной буквы");
+                    }
+                }
             }
 
             //LastName
@@ -39,15 +61,56 @@ namespace Clinic.ClinicPersonal
             {
                 errors.Add("lastNameBox", "Фамилия содержит меньше 2 символов");
             }
+            else
+            {
+                bool result = false;
+                for (int i = 1; i < LastName.Length; i++)
+                {
+                    result = char.IsUpper(LastName[i]);
+                    if (result == true)
+                    {
+                        errors.Add("lastNameBox", "Фамилия содержит заглавные буквы");
+                        break;
+                    }
+                }
+                if (result == false)
+                    for (int i = 0; i < 1; i++)
+                    {
+                        result = char.IsLower(LastName[i]);
+                        if (result == true)
+                        {
+                            errors.Add("lastNameBox", "Фамилия должна начинаться с заглавной буквы");
+                        }
+                    }
+            }
 
-            ////Patronymic
-            //if (Patronymic.All(char.IsWhiteSpace))
-            //{
-            //    errors.Add("patronymicBox", "Пустые строки");
-            //}
+            //Patronymic
+            if(string.IsNullOrWhiteSpace(LastName) == false || Patronymic.Length > 2) 
+            {
+                bool result = false;
+                for (int i = 1; i < Patronymic.Length; i++)
+                {
+                    result = char.IsUpper(Patronymic[i]);
+                    if (result == true)
+                    {
+                        errors.Add("patronymicBox", "Отчество содержит заглавные буквы");
+                        break;
+                    }
+                }
+                if (result == false)
+                    for (int i = 0; i < 1; i++)
+                    {
+                        result = char.IsLower(FirstName[i]);
+                        if (result == true)
+                        {
+                            errors.Add("patronymicBox", "Отчество должно начинаться с заглавной буквы");
+                        }
+                    }
+            }
+
 
             //Contact
-            if (string.IsNullOrWhiteSpace(Contact) == true || Contact.Any(char.IsNumber) == true)
+            if (string.IsNullOrWhiteSpace(Contact) == true || Contact.Any(char.IsNumber) == false)
             {
                 errors.Add("contactBox", "Контакты обязательны для заполнения или должны содежрать только цифры");
             }
