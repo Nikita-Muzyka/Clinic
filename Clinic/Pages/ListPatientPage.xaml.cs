@@ -63,5 +63,26 @@ namespace Clinic.Pages
         {
             infoPatient.Visibility = Visibility.Visible;
         }
+
+        private void DeletePatient_btn(object sender, RoutedEventArgs e)
+        {
+            personChange = patientListBox.SelectedItem as ClinicPerson;
+
+            var result = MessageBox.Show($"Удалить пациента {personChange.LastName}?",
+                                      "Подтверждение",
+                                      MessageBoxButton.YesNo,
+                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var db = new ClinicContext())
+                {
+                    var dbPatient = db.Patients.Find(personChange.Id);
+                    db.Patients.Remove(dbPatient);
+                    db.SaveChanges();
+                }
+                LoadPatient();
+            }
+
+        }
     }
 }

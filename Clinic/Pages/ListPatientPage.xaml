@@ -73,6 +73,8 @@
                      Text="{Binding Diagnosis}"/>
             <Button Content="Сохранить изменения"
                     Click ="SavePatientChange_btn"/>
+            <Button Content="Удалить пациента"
+         Click ="DeletePatient_btn"/>
 
         </StackPanel>
     </Grid>
