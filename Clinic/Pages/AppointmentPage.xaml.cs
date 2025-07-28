@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Doctor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,23 +25,18 @@ namespace Clinic.Pages
         public AppointmentPage()
         {
             InitializeComponent();
+            LoadPeople();
         }
 
-        private void CreateAppointment_Button(object sender, RoutedEventArgs e)
+        private void LoadPeople()
         {
-            int countApp = Database.Instance.Appos.Count;
-            countApp++;
-            Appointment app = new Appointment
+            using (var db = new ClinicContext())
             {
-                Id = countApp,
-                // добавление класса воркер в апп
-                // пациент добавление
-                Date = DateTime.Parse(dateApp.Text)
-            };
-            Database.Instance.Appos.Add(app);
-            MessageBox.Show("++");
-            string custom3 = app.Date.ToString(" dd MM yyyy HH:mm"); 
-            MessageBox.Show(custom3);
+                var patients = db.Patients.ToList();
+                patientList.ItemsSource = patients;
+                var workers = db.Workers.ToList();
+                workerList.ItemsSource = workers;
+            }
         }
     }
 }

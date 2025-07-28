@@ -5,23 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="AppointmentPage">
 
     <Grid>
-        <TextBlock Margin="10,0,751,429">id patient</TextBlock>
-        <TextBox Margin="36,0,623,429"
-                 Name="patientId">-</TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-        <TextBlock Margin="0,38,737,391">id worker</TextBlock>
-        <TextBox Margin="68,38,591,391"
-                 Name="WorkerId">-</TextBox>
+        <!--Пациенты-->
+        <TextBlock Text="Пациенты"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <ListBox x:Name="patientList"
+                 Grid.Row="1"
+                 SelectionMode="Extended">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding FirstName}"/>
+                        <TextBlock Text="{Binding LastName}"/>
+                        <TextBlock Text="{Binding Patronymic}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-        <TextBlock Margin="10,78,737,351">data</TextBlock>
-        <TextBox Margin="68,78,591,351"
-                 Name="dateApp">-</TextBox>
-
-        <Button Margin="119,243,430,79"
-                Click ="CreateAppointment_Button">записать</Button>
+        <!--Врачи-->
+        <TextBlock Text="Врачи"
+                   Grid.Column="1"
+                   Grid.Row="0"
+             FontSize="20"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"/>
+        <ListBox Grid.Column="1"
+                 Grid.Row="1"
+                 Name="workerList">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding FirstName}"/>
+                        <TextBlock Text="{Binding LastName}"/>
+                        <TextBlock Text="{Binding Patronymic}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>
