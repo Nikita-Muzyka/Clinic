@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,5 +20,5 @@ namespace Clinic
         public abstract string? Place { get; set; } // место проживание 
         public abstract string? YearsCreate { get; set; } // год создания
 
-    } 
+    }
 }

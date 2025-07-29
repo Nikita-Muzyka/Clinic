@@ -21,7 +21,7 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ListPatientPage : Page
     {
-        ClinicPerson personChange;
+        Patient personChange;
         
         public ListPatientPage()
         {
@@ -40,7 +40,7 @@ namespace Clinic.Pages
 
         private void SavePatientChange_btn(object sender, RoutedEventArgs e)
         {
-            personChange = patientListBox.SelectedItem as ClinicPerson;
+            personChange = patientListBox.SelectedItem as Patient;
             using (var db = new ClinicContext())
             {
                 var dbPatient = db.Patients.Find(personChange.Id);
@@ -56,7 +56,6 @@ namespace Clinic.Pages
 
                 db.SaveChanges();
             }
-            LoadPatient();
         }
 
         private void patientListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,7 +65,7 @@ namespace Clinic.Pages
 
         private void DeletePatient_btn(object sender, RoutedEventArgs e)
         {
-            personChange = patientListBox.SelectedItem as ClinicPerson;
+            personChange = patientListBox.SelectedItem as Patient;
 
             var result = MessageBox.Show($"Удалить пациента {personChange.LastName}?",
                                       "Подтверждение",

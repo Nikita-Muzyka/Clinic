@@ -22,6 +22,10 @@ namespace Clinic.Pages
     /// </summary>
     public partial class AppointmentPage : Page
     {
+        Patient patient;
+        Worker worker;
+        AppointmentValidation validation;
+        DateTime DateBrith;
         public AppointmentPage()
         {
             InitializeComponent();
@@ -37,6 +41,22 @@ namespace Clinic.Pages
                 var workers = db.Workers.ToList();
                 workerList.ItemsSource = workers;
             }
+        }
+
+        private void patientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            patient = patientList.SelectedItem as Patient;
+        }
+
+        private void workerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            worker = workerList.SelectedItem as Worker;
+        }
+
+        private void CreateApp(object sender, RoutedEventArgs e)
+        {
+            validation = new AppointmentValidation();
+            validation.ValidationApp(patient, worker,datebirthBox.Text);
         }
     }
 }

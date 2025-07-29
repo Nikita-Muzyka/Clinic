@@ -27,7 +27,8 @@
                    VerticalAlignment="Center"/>
         <ListBox x:Name="patientList"
                  Grid.Row="1"
-                 SelectionMode="Extended">
+                 Focusable="False"
+                 SelectionChanged="patientList_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -48,7 +49,9 @@
              VerticalAlignment="Center"/>
         <ListBox Grid.Column="1"
                  Grid.Row="1"
-                 Name="workerList">
+                 Name="workerList"
+                 SelectionChanged="workerList_SelectionChanged"
+                 Focusable="False">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -59,5 +62,21 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!--Date-->
+        <DatePicker Grid.Row="1"
+              Grid.Column="2"
+              Name="datebirthBox"
+              SelectedDateFormat="Short"
+              Text="Выберите дату роджения"
+              ToolTip="Выберите дату рождения"
+              Style="{StaticResource DatePickerCreatePatient}">
+        </DatePicker>
+        
+        <!--Button Create-->
+        <Button Content="Create"
+                Click="CreateApp"
+                Grid.Column="1"
+                Grid.Row="2"/>
     </Grid>
 </Page>
