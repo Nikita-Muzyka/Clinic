@@ -15,64 +15,62 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <!--Пациенты-->
-        <TextBlock Text="Пациенты"
-                   FontSize="20"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <ListBox x:Name="patientList"
-                 Grid.Row="1"
-                 Focusable="False"
-                 SelectionChanged="patientList_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding FirstName}"/>
-                        <TextBlock Text="{Binding LastName}"/>
-                        <TextBlock Text="{Binding Patronymic}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <GroupBox Grid.Row="0"
+                  Header="Пациент">
+             <ListBox x:Name="patientList"
+          Grid.Row="1"
+          Focusable="False"
+          SelectionChanged="patientList_SelectionChanged">
+     <ListBox.ItemTemplate>
+         <DataTemplate>
+             <StackPanel>
+                 <TextBlock Text="{Binding FirstName}"/>
+                 <TextBlock Text="{Binding LastName}"/>
+                 <TextBlock Text="{Binding Patronymic}"/>
+             </StackPanel>
+         </DataTemplate>
+     </ListBox.ItemTemplate>
+ </ListBox>
+        </GroupBox>
 
         <!--Врачи-->
-        <TextBlock Text="Врачи"
-                   Grid.Column="1"
-                   Grid.Row="0"
-             FontSize="20"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center"/>
-        <ListBox Grid.Column="1"
-                 Grid.Row="1"
-                 Name="workerList"
-                 SelectionChanged="workerList_SelectionChanged"
-                 Focusable="False">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding FirstName}"/>
-                        <TextBlock Text="{Binding LastName}"/>
-                        <TextBlock Text="{Binding Patronymic}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <GroupBox Grid.Row="0"
+                  Grid.Column="1"
+           Header="Врачи">
+            <ListBox Grid.Column="1"
+           Grid.Row="1"
+           Name="workerList"
+           SelectionChanged="workerList_SelectionChanged"
+           Focusable="False">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding FirstName}"/>
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text="{Binding Patronymic}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
 
         <!--Date-->
-        <DatePicker Grid.Row="1"
-              Grid.Column="2"
-              Name="datebirthBox"
-              SelectedDateFormat="Short"
-              Text="Выберите дату роджения"
-              ToolTip="Выберите дату рождения"
-              Style="{StaticResource DatePickerCreatePatient}">
-        </DatePicker>
-        
+        <GroupBox Grid.Row="0"
+                  Grid.Column="2"
+                  Header="Дата приема">
+            <DatePicker Name="datebirthBox"
+                        SelectedDateFormat="Short"
+                        Text="Выберите дату роджения"
+                        ToolTip="Выберите дату рождения"
+                        Style="{StaticResource DatePickerCreatePatient}">
+            </DatePicker>
+        </GroupBox>
+
         <!--Button Create-->
         <Button Content="Create"
                 Click="CreateApp"

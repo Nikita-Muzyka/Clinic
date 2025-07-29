@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    [Migration("20250615103238_zero")]
-    partial class zero
+    [Migration("20250729222128_dda")]
+    partial class dda
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,10 +36,10 @@ namespace Clinic.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Patients")
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Workers")
+                    b.Property<int>("WorkerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -59,8 +59,9 @@ namespace Clinic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("DateBrith")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("DateBrith")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Diagnosis")
                         .IsRequired()
@@ -79,15 +80,15 @@ namespace Clinic.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Weight")
+                        .HasColumnType("int");
 
                     b.Property<string>("YearsCreate")
                         .IsRequired()
@@ -128,8 +129,9 @@ namespace Clinic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("DateBrith")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("DateBrith")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -156,6 +158,9 @@ namespace Clinic.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YearsCreate")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte>("infoRegId")

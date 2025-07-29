@@ -17,27 +17,34 @@ namespace Clinic
             if (string.IsNullOrWhiteSpace(date) == false)
             {
                 DateTime dateBrith = DateTime.Parse(date);
-                using (var db = new ClinicContext())
+                if (dateBrith > DateTime.Now)
                 {
-                   var App = db.Appointments
-                        .Where(p=> patient.Id == p.Id_Patients & worker.Id == p.Id_Workers & dateBrith == p.Date)
-                        .ToList();
-                    if (App.Count == 0)
+                    using (var db = new ClinicContext())
                     {
-                        Appointment = new Appointment
+                        var App = db.Appointments
+                             .Where(p => patient.Id == p.PatientId & worker.Id == p.WorkerId & dateBrith == p.Date)
+                             .ToList();
+                        if (App.Count == 0)
                         {
-                            Id_Patients = patient.Id,
-                            Id_Workers = worker.Id,
-                            Date = dateBrith
-                        };
-                        db.Appointments.Add(Appointment);
-                        db.SaveChanges();
-                        MessageBox.Show("Прием назначен");
+                            Appointment = new Appointment
+                            {
+                                PatientId = patient.Id,
+                                WorkerId = worker.Id,
+                                Date = dateBrith
+                            };
+                            db.Appointments.Add(Appointment);
+                            db.SaveChanges();
+                            MessageBox.Show("Прием назначен");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Такой прием уже существует");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Такой прием уже существует");
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Дата не может быть в прошлом");
                 }
             }
         }

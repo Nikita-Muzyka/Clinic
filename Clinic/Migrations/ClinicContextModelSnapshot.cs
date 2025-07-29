@@ -33,10 +33,10 @@ namespace Clinic.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Patients")
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Workers")
+                    b.Property<int>("WorkerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

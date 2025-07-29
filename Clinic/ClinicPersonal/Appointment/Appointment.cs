@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.InteropServices.JavaScript;
 using System.Text;
@@ -10,8 +11,9 @@ namespace Clinic
     public class Appointment
     {
         public int Id { get; set; }
-        public int Id_Workers { get; set; }
-        public int Id_Patients { get; set; }
+        public int WorkerId { get; set; }
+        public int PatientId { get; set; }
+
         public DateTime Date { get; set; }
     }
 }
