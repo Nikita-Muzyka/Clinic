@@ -1,6 +1,8 @@
-﻿using Clinic.Doctor;
+﻿using Clinic.ClinicPersonal.Appointment;
+using Clinic.Doctor;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Clinic.Pages.AppointmentPage;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Clinic.Pages
@@ -25,11 +28,15 @@ namespace Clinic.Pages
         Patient patient;
         Worker worker;
         AppointmentValidation validation;
+        ObservableCollection<TimeSlot> timeSlotsCollection = new ObservableCollection<TimeSlot>();
         DateTime DateBrith;
+        delegate void LoadDateDel();
+        LoadDateDel loadDt;
         public AppointmentPage()
         {
             InitializeComponent();
             LoadPeople();
+            
         }
 
         private void LoadPeople()
@@ -41,22 +48,55 @@ namespace Clinic.Pages
                 var workers = db.Workers.ToList();
                 workerList.ItemsSource = workers;
             }
+            loadDt += LoadDate;
         }
 
         private void patientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             patient = patientList.SelectedItem as Patient;
+            loadDt();
         }
 
         private void workerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             worker = workerList.SelectedItem as Worker;
+            loadDt();
+
+        }
+
+        private void GenerateTime()
+        {
+            TimeSpan Start = new TimeSpan(8,0,0);
+            TimeSpan End = new TimeSpan(20,0,0);
+            TimeSpan Interval = TimeSpan.FromMinutes(30);
+            for(TimeSpan time = Start;time <= End;time = time.Add(Interval))
+            {
+                timeSlotsCollection.Add(new TimeSlot
+                {
+                    Time = time.ToString(@"hh\:mm")
+                });
+            }
+            timeListBox.ItemsSource = timeSlotsCollection;
+        }
+
+        void LoadDate()
+        {
+            if (patient != null && worker != null)
+            {
+                gridDate.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void CreateApp(object sender, RoutedEventArgs e)
         {
             validation = new AppointmentValidation();
             validation.ValidationApp(patient, worker,datebirthBox.Text);
+        }
+
+        private void datebirthBox_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GenerateTime();
         }
     }
 }

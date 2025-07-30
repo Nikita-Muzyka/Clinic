@@ -60,16 +60,33 @@
         </GroupBox>
 
         <!--Date-->
-        <GroupBox Grid.Row="0"
-                  Grid.Column="2"
-                  Header="Дата приема">
-            <DatePicker Name="datebirthBox"
-                        SelectedDateFormat="Short"
-                        Text="Выберите дату роджения"
-                        ToolTip="Выберите дату рождения"
-                        Style="{StaticResource DatePickerCreatePatient}">
-            </DatePicker>
-        </GroupBox>
+        <Grid Grid.Column="2"
+              Name="gridDate"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0"
+                      Grid.Column="2"
+                      Header="Дата приема">
+                <DatePicker Name="datebirthBox"
+                            SelectedDateFormat="Short"
+                            Style="{StaticResource DatePickerCreatePatient}"
+                            SelectedDateChanged="datebirthBox_SelectedDateChanged">
+                </DatePicker>
+            </GroupBox>
+            <ListBox Grid.Row="1"
+                     Name="timeListBox">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Time}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
 
         <!--Button Create-->
         <Button Content="Create"

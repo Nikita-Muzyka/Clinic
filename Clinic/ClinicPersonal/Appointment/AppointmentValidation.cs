@@ -47,6 +47,10 @@ namespace Clinic
                     MessageBox.Show("Дата не может быть в прошлом");
                 }
             }
+            else
+            {
+                MessageBox.Show("Выберите дату");
+            }
         }
     }
 }
