@@ -56,7 +56,7 @@ namespace Clinic.Pages
         private void CreateApp(object sender, RoutedEventArgs e)
         {
             validation = new AppointmentValidation();
-            //validation.ValidationApp(patient, worker,datebirthBox.Text);
+            validation.ValidationApp(patient, worker,datebirthBox.Text);
         }
     }
 }

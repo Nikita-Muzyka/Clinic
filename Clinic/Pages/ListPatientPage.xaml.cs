@@ -1,6 +1,7 @@
 ﻿using Clinic.Doctor;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Clinic.Pages
     public partial class ListPatientPage : Page
     {
         Patient personChange;
+        ObservableCollection<Patient> patients;
         
         public ListPatientPage()
         {
@@ -33,8 +35,9 @@ namespace Clinic.Pages
         {
             using (var db = new ClinicContext())
             {
-                var Patients = db.Patients.ToList();
-                patientListBox.ItemsSource = Patients;
+                var dbPatients = db.Patients.ToList();
+                patients = new ObservableCollection<Patient>(dbPatients);
+                patientListBox.ItemsSource = patients;
             }
         }
 
@@ -79,7 +82,7 @@ namespace Clinic.Pages
                     db.Patients.Remove(dbPatient);
                     db.SaveChanges();
                 }
-                LoadPatient();
+                patients.Remove(personChange);
             }
 
         }
