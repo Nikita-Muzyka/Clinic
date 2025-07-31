@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Clinic.Doctor;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +22,69 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ListPatientPage : Page
     {
-        List<ClinicPerson> patientList = new List<ClinicPerson>();
+        Patient personChange;
+        ObservableCollection<Patient> patients;
+        
         public ListPatientPage()
         {
             InitializeComponent();
-            int countPatient = Database.Instance.Patients.Count;
-            patientList = Database.Instance.Patients;
-            PatientListBox.ItemsSource = patientList;
+            LoadPatient();
+        }
+
+        void LoadPatient()
+        {
+            using (var db = new ClinicContext())
+            {
+                var dbPatients = db.Patients.ToList();
+                patients = new ObservableCollection<Patient>(dbPatients);
+                patientListBox.ItemsSource = patients;
+            }
+        }
+
+        private void SavePatientChange_btn(object sender, RoutedEventArgs e)
+        {
+            personChange = patientListBox.SelectedItem as Patient;
+            using (var db = new ClinicContext())
+            {
+                var dbPatient = db.Patients.Find(personChange.Id);
+
+                dbPatient.FirstName = firstNameBox.Text;
+                dbPatient.LastName = lastNameBox.Text;
+                dbPatient.Patronymic = patronymicBox.Text;
+                dbPatient.Gender = genderBox.Text;
+                dbPatient.Contact = contactBox.Text;
+                dbPatient.DateBrith = dateBrithBox.Text;
+                dbPatient.Place = placeBox.Text;
+                dbPatient.Diagnosis = diagnosisBox.Text;
+
+                db.SaveChanges();
+            }
+        }
+
+        private void patientListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            infoPatient.Visibility = Visibility.Visible;
+        }
+
+        private void DeletePatient_btn(object sender, RoutedEventArgs e)
+        {
+            personChange = patientListBox.SelectedItem as Patient;
+
+            var result = MessageBox.Show($"Удалить пациента {personChange.LastName}?",
+                                      "Подтверждение",
+                                      MessageBoxButton.YesNo,
+                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var db = new ClinicContext())
+                {
+                    var dbPatient = db.Patients.Find(personChange.Id);
+                    db.Patients.Remove(dbPatient);
+                    db.SaveChanges();
+                }
+                patients.Remove(personChange);
+            }
+
         }
     }
 }

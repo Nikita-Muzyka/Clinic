@@ -5,23 +5,94 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clinic.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="AppointmentPage">
 
     <Grid>
-        <TextBlock Margin="10,0,751,429">id patient</TextBlock>
-        <TextBox Margin="36,0,623,429"
-                 Name="patientId">-</TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-        <TextBlock Margin="0,38,737,391">id worker</TextBlock>
-        <TextBox Margin="68,38,591,391"
-                 Name="WorkerId">-</TextBox>
+        <!--Пациенты-->
+        <GroupBox Grid.Row="0"
+                  Header="Пациент">
+             <ListBox x:Name="patientList"
+          Grid.Row="1"
+          Focusable="False"
+          SelectionChanged="patientList_SelectionChanged">
+     <ListBox.ItemTemplate>
+         <DataTemplate>
+             <StackPanel>
+                 <TextBlock Text="{Binding FirstName}"/>
+                 <TextBlock Text="{Binding LastName}"/>
+                 <TextBlock Text="{Binding Patronymic}"/>
+             </StackPanel>
+         </DataTemplate>
+     </ListBox.ItemTemplate>
+ </ListBox>
+        </GroupBox>
 
-        <TextBlock Margin="10,78,737,351">data</TextBlock>
-        <TextBox Margin="68,78,591,351"
-                 Name="dateApp">-</TextBox>
+        <!--Врачи-->
+        <GroupBox Grid.Row="0"
+                  Grid.Column="1"
+           Header="Врачи">
+            <ListBox Grid.Column="1"
+           Grid.Row="1"
+           Name="workerList"
+           SelectionChanged="workerList_SelectionChanged"
+           Focusable="False">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding FirstName}"/>
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text="{Binding Patronymic}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
 
-        <Button Margin="119,243,430,79"
-                Click ="CreateAppointment_Button">записать</Button>
+        <!--Date-->
+        <Grid Grid.Column="2"
+              Name="gridDate"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0"
+                      Grid.Column="2"
+                      Header="Дата приема">
+                <DatePicker Name="datebirthBox"
+                            SelectedDateFormat="Short"
+                            Style="{StaticResource DatePickerCreatePatient}"
+                            SelectedDateChanged="datebirthBox_SelectedDateChanged">
+                </DatePicker>
+            </GroupBox>
+            <ListBox Grid.Row="1"
+                     Name="timeListBox"
+                     SelectionChanged="timeListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Time}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <!--Button Create-->
+        <Button Content="Create"
+                Click="CreateApp"
+                Grid.Column="1"
+                Grid.Row="2"/>
     </Grid>
 </Page>

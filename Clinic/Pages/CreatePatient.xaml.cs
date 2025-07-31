@@ -94,7 +94,7 @@ namespace Clinic.Pages
         void SavePatient()
         {
             string DateFormatNow = DateTime.Now.ToShortDateString();
-            ClinicPerson patient = new Patient
+            Patient patient = new Patient
             {
                 FirstName = firstNameBox.Text,
                 LastName = lastNameBox.Text,
@@ -104,24 +104,17 @@ namespace Clinic.Pages
                 Weight = int.Parse(weightBox.Text),
                 Contact = contactBox.Text,
                 Diagnosis = diagnosisBox.Text,
-                YearsCreate = DateFormatNow
+                YearsCreate = DateFormatNow,
+                Place = placeBox.Text,
             };
 
-            //using (ClinicContext db = new ClinicContext())
-            //{
-            //    db.Add(patient);
-            //    db.SaveChanges();
-            //}
+            using (ClinicContext db = new ClinicContext())
+            {
+                db.Add(patient);
+                db.SaveChanges();
+            }
             MessageBox.Show("Пациент создан");
         }
 
-        //private void CreateEnterKey(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Enter)
-        //    {
-        //        CreateBtn.Focus();
-        //        CreateBtn.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-        //    }
-        //}
     }
 }
