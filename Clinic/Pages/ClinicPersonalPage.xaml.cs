@@ -23,7 +23,11 @@ namespace Clinic.Pages
         public ClinicPersonalPage()
         {
             InitializeComponent();
-           // List.ItemsSource = Database.Instance.Workers;
+        }
+
+        private void CreateWorker_btn(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

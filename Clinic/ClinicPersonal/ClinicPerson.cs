@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public abstract class ClinicPerson
+    internal abstract class ClinicPerson
     {
         public abstract int Id { get; set; }
         public abstract string? FirstName { get; set; } // имя

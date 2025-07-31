@@ -30,7 +30,7 @@ namespace Clinic
 
         private void Reception_RadioButton(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ReceptionPage());
+            MainFrame.Navigate(new AppointmentsListPage());
         }
 
         private void RegistrationPage_Button(object sender, RoutedEventArgs e)

@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace Clinic.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ReceptionPage.xaml
+    /// Логика взаимодействия для AppointmentsListPage.xaml
     /// </summary>
-    public partial class ReceptionPage : Page
+    public partial class AppointmentsListPage : Page
     {
-        public ReceptionPage()
+        public AppointmentsListPage()
         {
             InitializeComponent();
         }
-
     }
-
 }
