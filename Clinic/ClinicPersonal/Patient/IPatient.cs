@@ -10,6 +10,6 @@ namespace Clinic
     public interface IPatient
     {
         public string? Diagnosis { get; set; } // диагнозы
-        public int? Weight { get; set; } // вес
+        public int Weight { get; set; } // вес
     }
 }

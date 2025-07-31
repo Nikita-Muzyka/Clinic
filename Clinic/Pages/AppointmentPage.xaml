@@ -77,7 +77,8 @@
                 </DatePicker>
             </GroupBox>
             <ListBox Grid.Row="1"
-                     Name="timeListBox">
+                     Name="timeListBox"
+                     SelectionChanged="timeListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

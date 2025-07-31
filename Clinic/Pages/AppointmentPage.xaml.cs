@@ -29,6 +29,7 @@ namespace Clinic.Pages
         Worker worker;
         AppointmentValidation validation;
         ObservableCollection<TimeSlot> timeSlotsCollection = new ObservableCollection<TimeSlot>();
+        string CheckTime;
         DateTime DateBrith;
         delegate void LoadDateDel();
         LoadDateDel loadDt;
@@ -36,7 +37,6 @@ namespace Clinic.Pages
         {
             InitializeComponent();
             LoadPeople();
-            
         }
 
         private void LoadPeople()
@@ -49,6 +49,31 @@ namespace Clinic.Pages
                 workerList.ItemsSource = workers;
             }
             loadDt += LoadDate;
+
+            //Worker worker = new Worker
+            //{
+            //    FirstName = "Dima",
+            //    LastName = "Burov",
+            //    Contact = "2232323",
+            //    DateBrith = "11.11.11",
+            //    Gender = "Myj",
+            //    Place = "dadada",
+            //    Title = "adadad",
+            //    YearsCreate = "awdawd",
+            //    Salary = "dwad",
+            //    infoReg = new PeopleRegistration
+            //    {
+            //        Login = "11",
+            //        Password = "11"
+            //    }
+
+            //};
+            //using (var db = new ClinicContext())
+            //{
+            //    db.Add(worker);
+            //    db.SaveChanges();
+            //}
+
         }
 
         private void patientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,12 +116,18 @@ namespace Clinic.Pages
         private void CreateApp(object sender, RoutedEventArgs e)
         {
             validation = new AppointmentValidation();
-            validation.ValidationApp(patient, worker,datebirthBox.Text);
+            validation.ValidationApp(patient, worker,datebirthBox.Text,CheckTime);
         }
 
         private void datebirthBox_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             GenerateTime();
+        }
+
+        private void timeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var timeSlot = timeListBox.SelectedItem as TimeSlot;
+            CheckTime = timeSlot.Time;
         }
     }
 }

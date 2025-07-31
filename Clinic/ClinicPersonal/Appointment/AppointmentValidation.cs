@@ -12,17 +12,18 @@ namespace Clinic
     {
         Appointment Appointment;
         bool result = false;
-        public void ValidationApp(Patient patient, Worker worker, string date)
+        public void ValidationApp(Patient patient, Worker worker, string date,string CheckTime)
         {
-            if (string.IsNullOrWhiteSpace(date) == false)
+            if (string.IsNullOrWhiteSpace(date) == false || string.IsNullOrWhiteSpace(CheckTime) == false)
             {
                 DateTime dateBrith = DateTime.Parse(date);
+                TimeSpan timeSpan = TimeSpan.Parse(CheckTime);
                 if (dateBrith > DateTime.Now)
                 {
                     using (var db = new ClinicContext())
                     {
                         var App = db.Appointments
-                             .Where(p => patient.Id == p.PatientId & worker.Id == p.WorkerId & dateBrith == p.Date)
+                             .Where(p => patient.Id == p.PatientId & worker.Id == p.WorkerId & dateBrith == p.Date && timeSpan == p.Time)
                              .ToList();
                         if (App.Count == 0)
                         {
@@ -30,7 +31,8 @@ namespace Clinic
                             {
                                 PatientId = patient.Id,
                                 WorkerId = worker.Id,
-                                Date = dateBrith
+                                Date = dateBrith,
+                                Time = timeSpan
                             };
                             db.Appointments.Add(Appointment);
                             db.SaveChanges();
@@ -49,7 +51,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Выберите дату");
+                MessageBox.Show("Выберите дату или время");
             }
         }
     }

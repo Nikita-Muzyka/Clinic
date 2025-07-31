@@ -8,14 +8,14 @@ namespace Clinic
         private int _id;
         private string _firstName;
         private string _lastName;
-        private string _patronymic;
+        private string? _patronymic;
         private string _gender;
         private string _contact;
         private string _dateBrith;
         private string? _place;
         private string _yearsCreate;
         private string? _diagnosis;
-        private int? _weight;
+        private int _weight;
 
         public override int Id
         {
@@ -35,7 +35,7 @@ namespace Clinic
             set => SetField(ref _lastName, value);
         }
 
-        public override string Patronymic
+        public override string? Patronymic
         {
             get => _patronymic;
             set => SetField(ref _patronymic, value);
@@ -59,7 +59,7 @@ namespace Clinic
             set => SetField(ref _dateBrith, value);
         }
 
-        public override string Place
+        public override string? Place
         {
             get => _place;
             set => SetField(ref _place, value);
@@ -77,7 +77,7 @@ namespace Clinic
             set => SetField(ref _diagnosis, value);
         }
 
-        public int? Weight
+        public int Weight
         {
             get => _weight;
             set => SetField(ref _weight, value);
