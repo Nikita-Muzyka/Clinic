@@ -108,39 +108,45 @@
                              Margin="5"
                              Name="weightBox"/>
 
-                    <!-- Контакты -->
+                    <!-- Phone -->
                     <TextBlock Grid.Row="6" Grid.Column="0"
-                               Text="Контакты:"
+                               Text="Телефон:"
                                Margin="5"
                                VerticalAlignment="Center"
                                FontSize="16"/>
-                    <TextBox Grid.Row="6" Grid.Column="1"
+                    <TextBox Grid.Row="6" 
+                             Grid.Column="1"
                              Margin="5"
-                             Name="contactBox">
-                        <TextBox.ToolTip>
-                            <ToolTip  ToolTipService.InitialShowDelay="0">
-                                <TextBlock>Номер должен начинаться с +7 или 8</TextBlock>
-                            </ToolTip>
-                        </TextBox.ToolTip>
-                    </TextBox>
+                             Text="+7"
+                             Name="phoneBox"/>
 
-                    <!-- Место проживания -->
+                    <!-- Email -->
                     <TextBlock Grid.Row="7" Grid.Column="0"
-                               Text="Место проживания:"
+                               Text="Email:"
                                Margin="5"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                     <TextBox Grid.Row="7" Grid.Column="1"
                              Margin="5"
-                             Name="placeBox"/>
+                             Name="emailBox"/>
 
-                    <!-- Диагноз -->
+                    <!-- Место проживания -->
                     <TextBlock Grid.Row="8" Grid.Column="0"
-                               Text="Диагноз:"
+                               Text="Место проживания:"
                                Margin="5"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                     <TextBox Grid.Row="8" Grid.Column="1"
+                             Margin="5"
+                             Name="placeBox"/>
+
+                    <!-- Диагноз -->
+                    <TextBlock Grid.Row="9" Grid.Column="0"
+                               Text="Диагноз:"
+                               Margin="5"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <TextBox Grid.Row="9" Grid.Column="1"
                              Margin="5"
                              Name="diagnosisBox"/>
 

@@ -27,17 +27,23 @@ namespace Clinic.Pages
 
         private void CreatePatient_Button(object sender, RoutedEventArgs e)
         {
-            RegFrame.Navigate(new CreatePatient());
+            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.Register)
+                RegFrame.Navigate(new CreatePatient());
+            else MessageBox.Show("Доступ запрещен");
         }
 
         private void ListPatient_Button(object sender, RoutedEventArgs e)
         {
-            RegFrame.Navigate(new ListPatientPage());
+            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.Register)
+                RegFrame.Navigate(new ListPatientPage());
+            else MessageBox.Show("Доступ запрещен");
         }
 
         private void AppointmentCreate_Button(object sender, RoutedEventArgs e)
         {
-            RegFrame.Navigate(new AppointmentPage());
+            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.Register)
+                RegFrame.Navigate(new AppointmentPage());
+              else MessageBox.Show("Доступ запрещен");
         }
     }
 }

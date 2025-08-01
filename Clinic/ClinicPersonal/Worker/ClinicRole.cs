@@ -10,16 +10,16 @@ namespace Clinic
     {
         Admin = 6,
 
-        ГлавВрач = 5,
+        HDoctor = 5,
 
-        ЗамГлавВрача = 4,
+        MDoctor = 4,
 
-        ЗавОтделения = 3,
+        LDoctor = 3,
 
-        Доктор = 2,
+        Doctor = 2,
 
-        МедСестра = 1,
+        Register = 1,
 
-        Регистрация = 0
+        Nurse = 0,
     }
 }

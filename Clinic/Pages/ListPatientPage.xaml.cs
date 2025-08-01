@@ -52,7 +52,8 @@ namespace Clinic.Pages
                 dbPatient.LastName = lastNameBox.Text;
                 dbPatient.Patronymic = patronymicBox.Text;
                 dbPatient.Gender = genderBox.Text;
-                dbPatient.Contact = contactBox.Text;
+                dbPatient.Phone = phoneBox.Text;
+                dbPatient.Email = emailBox.Text;
                 dbPatient.DateBrith = dateBrithBox.Text;
                 dbPatient.Place = placeBox.Text;
                 dbPatient.Diagnosis = diagnosisBox.Text;

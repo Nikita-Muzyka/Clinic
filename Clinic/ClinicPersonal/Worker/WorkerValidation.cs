@@ -1,32 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO.Packaging;
+using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
-namespace Clinic.ClinicPersonal
+namespace Clinic
 {
-    public class PatientValidation
+    internal class WorkerValidation
     {
-        public Dictionary<string, string> Validation(
+        public ClinicRole RoleConver(string Role)
+        {
+            ClinicRole RoleChange = ClinicRole.Nurse;
+            switch (Role)
+            {
+                case "Глав.Врач":
+                    RoleChange = ClinicRole.HDoctor;
+                    break;
+                case "Зам.Глав.Врача":
+                    RoleChange = ClinicRole.MDoctor;
+                    break;
+                case "Зав.Отделения":
+                    RoleChange = ClinicRole.LDoctor;
+                    break;
+                case "Доктор":
+                    RoleChange = ClinicRole.Doctor;
+                    break;
+                case "Регистратура":
+                    RoleChange = ClinicRole.Register;
+                    break;
+                case "Мед.Сестра":
+                    RoleChange = ClinicRole.Nurse;
+                    break;
+            }
+            return RoleChange;
+        }
+
+        public Dictionary<string,string> Validation(
             string? FirstName,
             string? LastName,
             string? Patronymic,
+            string? DateBirth,
+            string? Gender,
             string? Phone,
             string? Email,
-            string? Weight,
-            string? Gender,
-            string? DateBirth)
+            string? Place,
+            string? Role,
+            string? Login,
+            string? Password) 
         {
             var errors = new Dictionary<string, string>();
+            ClinicRole RoleChange = ClinicRole.Nurse;
 
             //FirstName
-            if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)            
+            if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)
                 errors.Add("firstNameBox", "Пустая строка или есть цифры в имени");
-            
-            else if(FirstName.Length < 2)            
-                errors.Add("firstNameBox","Имя содержит меньше 2 символов");
+
+            else if (FirstName.Length < 2)
+                errors.Add("firstNameBox", "Имя содержит меньше 2 символов");
 
             else
             {
@@ -34,21 +68,21 @@ namespace Clinic.ClinicPersonal
                 for (int i = 1; i < FirstName.Length; i++)
                 {
                     result = char.IsUpper(FirstName[i]);
-                    if(result == true)
+                    if (result == true)
                     {
                         errors.Add("firstNameBox", "Имя содержит заглавные буквы");
                         break;
                     }
                 }
-                if(result == false)
-                for (int i = 0; i < 1; i++)
-                {
-                    result = char.IsLower(FirstName[i]);
-                    if(result == true)
+                if (result == false)
+                    for (int i = 0; i < 1; i++)
                     {
-                        errors.Add("firstNameBox", "Имя должно начинаться с заглавной буквы");
+                        result = char.IsLower(FirstName[i]);
+                        if (result == true)
+                        {
+                            errors.Add("firstNameBox", "Имя должно начинаться с заглавной буквы");
+                        }
                     }
-                }
             }
 
             //LastName
@@ -80,7 +114,7 @@ namespace Clinic.ClinicPersonal
             }
 
             //Patronymic
-            if(string.IsNullOrWhiteSpace(LastName) == false || Patronymic.Length > 2) 
+            if (string.IsNullOrWhiteSpace(LastName) == false || Patronymic.Length > 2)
             {
                 bool result = false;
                 for (int i = 1; i < Patronymic.Length; i++)
@@ -111,22 +145,17 @@ namespace Clinic.ClinicPersonal
             else if (Phone.Length < 11)
                 errors.Add("phoneBox", "Минимально 5 символов номера");
 
-            //Weight
-            if (string.IsNullOrWhiteSpace(Weight) == true
-                || Weight.Any(char.IsLetter) == true
-                || Weight.Any(char.IsPunctuation) == true
-                || Weight.Any(char.IsSymbol) == true)
-            {
-                errors.Add("weightBox", "Строка должна быть заполнена или Номер должен содержать только цифры");
-            }
-         
+            //Email
+            if (string.IsNullOrWhiteSpace(Phone) == true)
+                errors.Add("emailBox", "Email обязателен для заполнения");
+
 
             //Gender
             if (string.IsNullOrWhiteSpace(Gender) == true)
                 errors.Add("genderBox", "Пустая строка");
 
             //DateBirth
-            if(string.IsNullOrWhiteSpace(DateBirth) == false)
+            if (string.IsNullOrWhiteSpace(DateBirth) == false)
             {
                 DateTime? time;
                 time = DateTime.Parse(DateBirth);
@@ -140,7 +169,30 @@ namespace Clinic.ClinicPersonal
                 errors.Add("datebirthBox", "Поле обязательно для заполнения");
             }
 
-            return errors;
+            //Role
+            if (!string.IsNullOrWhiteSpace(Role))
+            {
+                RoleChange = RoleConver(Role);
+                if (Database.Instance.Worker.CheckedRole() > RoleChange);
+                else errors.Add("roleBox", "Ваша должность ниже или равна выбранной");
+            }
+            else errors.Add("roleBox", "Выберите должность");
+
+            //Login
+
+             if (Login.Length < 5)
+                errors.Add("logBox", "Логин не может быть короче 5 символов");
+            else if (!string.IsNullOrWhiteSpace(Login) == true)
+                errors.Add("logBox", "Логин не может быть пустым");
+            //Password
+            if (Login.Length < 5)
+                errors.Add("passBox", "Логин не может быть короче 5 символов");
+            else if (!string.IsNullOrWhiteSpace(Password) == true)
+                errors.Add("passBox", "Пароль не может быть пустым");
+            else if (Password.Any(char.IsUpper) == false || Password.Any(char.IsSymbol) == false || Password.Any(char.IsNumber) == false)
+                errors.Add("passBox", "Пароль должен содержать хотя-бы одну заглавнуюб букву,один символ (+, &, © и т. д.), и хотя-бы одну цифру");
+
+             return errors;
         }
     }
 }

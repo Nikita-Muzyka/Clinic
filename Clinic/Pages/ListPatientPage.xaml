@@ -39,38 +39,62 @@
                        FontWeight="Bold"/>
             <TextBox Name="firstNameBox"
                      Text="{Binding FirstName}"/>
+            
+            
             <TextBlock Text="Фамилия"
            FontWeight="Bold"/>
             <TextBox Name="lastNameBox"
                      Text="{Binding LastName}"/>
+            
+            
             <TextBlock Text="Отчество"
            FontWeight="Bold"/>
             <TextBox Name="patronymicBox"
                      Text="{Binding Patronymic}"/>
+            
+            
             <TextBlock Text="Пол"
            FontWeight="Bold"/>
             <TextBox Name="genderBox"
                      Text="{Binding Gender}"/>
-            <TextBlock Text="Контакты"
+            
+            
+            <TextBlock Text="Телефон"
            FontWeight="Bold"/>
-            <TextBox Name="contactBox"
-                     Text="{Binding Contact}"/>
+            <TextBox Name="phoneBox"
+                     Text="{Binding Phone}"/>
+            
+            
+            <TextBlock Text="Email"
+                       FontWeight="Bold"/>
+            <TextBox Name="emailBox"
+                     Text="{Binding Email}"/>
+            
+            
             <TextBlock Text="Дата Рождения"
            FontWeight="Bold"/>
             <TextBox Name="dateBrithBox"
                      Text="{Binding DateBrith}"/>
+            
+            
             <TextBlock Text="Вес"
            FontWeight="Bold"/>
             <TextBox Name="weightBox"
                      Text="{Binding Weight}"/>
+            
+            
             <TextBlock Text="Место проживания"
            FontWeight="Bold"/>
             <TextBox Name="placeBox"
                      Text="{Binding Place}"/>
+            
+            
             <TextBlock Text="Дианоз"
            FontWeight="Bold"/>
             <TextBox Name="diagnosisBox"
                      Text="{Binding Diagnosis}"/>
+            
+            
             <Button Content="Сохранить изменения"
                     Click ="SavePatientChange_btn"/>
             <Button Content="Удалить пациента"

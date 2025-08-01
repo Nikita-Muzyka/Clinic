@@ -21,6 +21,13 @@ namespace Clinic
         public MainWindow()
         {
             InitializeComponent();
+
+            Worker work = new Worker
+            {   
+                FirstName = "Admin",
+                Role = ClinicRole.Admin
+            };
+            Database.Instance.Worker = work;
         }
 
         private void Main_RadioButton(object sender, RoutedEventArgs e)
