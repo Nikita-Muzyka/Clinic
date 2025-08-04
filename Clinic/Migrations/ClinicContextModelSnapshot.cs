@@ -44,7 +44,7 @@ namespace Clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("Clinic.Patient", b =>
@@ -98,13 +98,16 @@ namespace Clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("Clinic.PeopleRegistration", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -116,7 +119,7 @@ namespace Clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PeopleRegistration");
+                    b.ToTable("PeopleRegistration", (string)null);
                 });
 
             modelBuilder.Entity("Clinic.Worker", b =>
@@ -155,7 +158,6 @@ namespace Clinic.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Role")
@@ -169,14 +171,14 @@ namespace Clinic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("infoRegId")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("infoRegId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("infoRegId");
 
-                    b.ToTable("Workers");
+                    b.ToTable("Workers", (string)null);
                 });
 
             modelBuilder.Entity("Clinic.Worker", b =>

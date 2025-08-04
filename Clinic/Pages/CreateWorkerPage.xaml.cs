@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Doctor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,6 @@ namespace Clinic.Pages
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            string name = roleBox.SelectedValue as string;
             ErrorsClear();
             Errors = workerValid.Validation(
                 firstNameBox.Text,
@@ -40,9 +40,11 @@ namespace Clinic.Pages
                 phoneBox.Text,
                 emailBox.Text,
                 placeBox.Text,
-                roleBox.SelectionBoxItem as string,
+                salaryBox.Text,
+                roleBox.SelectedValue as string,
                 logBox.Text,
                 passBox.Text);
+
             CheckErrors();
 
         }
@@ -60,6 +62,7 @@ namespace Clinic.Pages
                     }
                 }
             }
+            else SaveWorker();
         }
         private void ErrorsClear()
         {
@@ -75,6 +78,36 @@ namespace Clinic.Pages
                     }
                 }
             }
+        }
+        private void SaveWorker()
+        {
+            ClinicRole role = workerValid.RoleConver(roleBox.SelectedValue.ToString());
+            Worker worker = new Worker()
+            {
+                FirstName = firstNameBox.Text,
+                LastName = lastNameBox.Text,
+                Patronymic = patronymicBox.Text,
+                DateBrith = datebirthBox.Text,
+                Gender = genderBox.Text,
+                Phone = phoneBox.Text,
+                Email = emailBox.Text,
+                Place = placeBox.Text,
+                Salary = salaryBox.Text,
+                YearsCreate = DateTime.Now.ToString(),
+                Role = role,
+                infoReg = new PeopleRegistration
+                {
+                    Login = logBox.Text,
+                    Password = passBox.Text,
+                }
+            };
+
+            using(var db = new ClinicContext())
+            {
+                db.Workers.Add(worker);
+                db.SaveChanges();
+            }
+            MessageBox.Show("Пациент создан");
         }
     }
 }

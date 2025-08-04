@@ -17,5 +17,6 @@ namespace Clinic.Doctor
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Clinic;Trusted_Connection=true;");
         }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -17,10 +18,11 @@ namespace Clinic
         private string _phone;
         private string _email;
         private string _datebrith;
-        private string _place;
+        private string? _place;
         private string _yearsCreate;
         private string _salary;
         private ClinicRole _role;
+
         public override int Id { get; set; }
         public override string FirstName
         {
@@ -57,7 +59,7 @@ namespace Clinic
             get => _datebrith;
             set => SetField(ref _datebrith, value);
         }
-        public override string Place
+        public override string? Place
         {
             get => _place;
             set => SetField(ref _place, value);

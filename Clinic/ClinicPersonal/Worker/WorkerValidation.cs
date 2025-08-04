@@ -48,6 +48,7 @@ namespace Clinic
             string? Phone,
             string? Email,
             string? Place,
+            string? Salary,
             string? Role,
             string? Login,
             string? Password) 
@@ -146,7 +147,7 @@ namespace Clinic
                 errors.Add("phoneBox", "Минимально 5 символов номера");
 
             //Email
-            if (string.IsNullOrWhiteSpace(Phone) == true)
+            if (string.IsNullOrWhiteSpace(Email) == true)
                 errors.Add("emailBox", "Email обязателен для заполнения");
 
 
@@ -169,8 +170,13 @@ namespace Clinic
                 errors.Add("datebirthBox", "Поле обязательно для заполнения");
             }
 
+            //Salary
+            if(string.IsNullOrWhiteSpace(Salary) == true || Salary.Any(char.IsNumber) == false)
+                errors.Add("salaryBox", "Зарплата не может быть пустой или должна содержать только цифры");
+            
+
             //Role
-            if (!string.IsNullOrWhiteSpace(Role))
+            if (string.IsNullOrWhiteSpace(Role) == false)
             {
                 RoleChange = RoleConver(Role);
                 if (Database.Instance.Worker.CheckedRole() > RoleChange);
@@ -182,12 +188,12 @@ namespace Clinic
 
              if (Login.Length < 5)
                 errors.Add("logBox", "Логин не может быть короче 5 символов");
-            else if (!string.IsNullOrWhiteSpace(Login) == true)
+            else if (string.IsNullOrWhiteSpace(Login) == true)
                 errors.Add("logBox", "Логин не может быть пустым");
             //Password
-            if (Login.Length < 5)
+            if (Password.Length < 5)
                 errors.Add("passBox", "Логин не может быть короче 5 символов");
-            else if (!string.IsNullOrWhiteSpace(Password) == true)
+            else if (string.IsNullOrWhiteSpace(Password) == true)
                 errors.Add("passBox", "Пароль не может быть пустым");
             else if (Password.Any(char.IsUpper) == false || Password.Any(char.IsSymbol) == false || Password.Any(char.IsNumber) == false)
                 errors.Add("passBox", "Пароль должен содержать хотя-бы одну заглавнуюб букву,один символ (+, &, © и т. д.), и хотя-бы одну цифру");

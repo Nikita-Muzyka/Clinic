@@ -110,7 +110,8 @@
                              FontSize="16"/>
                     <TextBox Grid.Row="5" Grid.Column="1"
                            Margin="2"
-                           Name="phoneBox"/>
+                           Name="phoneBox"
+                             Text="+7"/>
 
                     <!-- email -->
                     <TextBlock Grid.Row="6" Grid.Column="0"
@@ -154,7 +155,7 @@
                     <ComboBox Grid.Column="1"
                               Grid.Row="9"
                               Name="roleBox"
-                              SelectedValue="{Binding ClinicRole}">
+                              SelectedValuePath="Text">
                         <TextBlock Text="Глав.Врач"/>
                         <TextBlock Text="Зам.Глав.Врача"/>
                         <TextBlock Text="Зав.Отделения"/>
