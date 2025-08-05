@@ -13,7 +13,8 @@ namespace Clinic.ClinicPersonal
             string? FirstName,
             string? LastName,
             string? Patronymic,
-            string? Contact,
+            string? Phone,
+            string? Email,
             string? Weight,
             string? Gender,
             string? DateBirth)
@@ -21,14 +22,12 @@ namespace Clinic.ClinicPersonal
             var errors = new Dictionary<string, string>();
 
             //FirstName
-            if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)
-            {
+            if (string.IsNullOrWhiteSpace(FirstName) == true || FirstName.Any(char.IsNumber) == true)            
                 errors.Add("firstNameBox", "Пустая строка или есть цифры в имени");
-            }
-            else if(FirstName.Length < 2)
-            {
+            
+            else if(FirstName.Length < 2)            
                 errors.Add("firstNameBox","Имя содержит меньше 2 символов");
-            }
+
             else
             {
                 bool result = false;
@@ -54,13 +53,9 @@ namespace Clinic.ClinicPersonal
 
             //LastName
             if (string.IsNullOrWhiteSpace(LastName) == true || LastName.Any(char.IsNumber) == true)
-            {
                 errors.Add("lastNameBox", "Пустая строка или есть цифры");
-            }
             else if (LastName.Length < 2)
-            {
                 errors.Add("lastNameBox", "Фамилия содержит меньше 2 символов");
-            }
             else
             {
                 bool result = false;
@@ -109,15 +104,12 @@ namespace Clinic.ClinicPersonal
             }
 
 
-            //Contact
-            if (string.IsNullOrWhiteSpace(Contact) == true || Contact.Any(char.IsNumber) == false)
-            {
-                errors.Add("contactBox", "Контакты обязательны для заполнения или должны содежрать только цифры");
-            }
-            else if (Contact.Length < 5)
-            {
-                errors.Add("contactBox", "Минимально 5 символов номера");
-            }
+            //Phone
+            if (string.IsNullOrWhiteSpace(Phone) == true || Phone.Any(char.IsNumber) == false)
+                errors.Add("phoneBox", "Контакты обязательны для заполнения или должны содежрать только цифры");
+
+            else if (Phone.Length < 11)
+                errors.Add("phoneBox", "Минимально 5 символов номера");
 
             //Weight
             if (string.IsNullOrWhiteSpace(Weight) == true
@@ -131,9 +123,7 @@ namespace Clinic.ClinicPersonal
 
             //Gender
             if (string.IsNullOrWhiteSpace(Gender) == true)
-            {
                 errors.Add("genderBox", "Пустая строка");
-            }
 
             //DateBirth
             if(string.IsNullOrWhiteSpace(DateBirth) == false)

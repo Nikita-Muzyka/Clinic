@@ -3,25 +3,21 @@ using System.Runtime.CompilerServices;
 
 namespace Clinic
 {
-    public class Patient : ClinicPerson, IPatient, INotifyPropertyChanged
+    internal class Patient : ClinicPerson, IPatient, INotifyPropertyChanged
     {
-        private int _id;
         private string _firstName;
         private string _lastName;
         private string? _patronymic;
         private string _gender;
-        private string _contact;
+        private string _phone;
+        private string _email;
         private string _dateBrith;
         private string? _place;
         private string _yearsCreate;
         private string? _diagnosis;
         private int _weight;
 
-        public override int Id
-        {
-            get => _id;
-            set => SetField(ref _id, value);
-        }
+        public override int Id { get; set; }
 
         public override string FirstName
         {
@@ -47,10 +43,15 @@ namespace Clinic
             set => SetField(ref _gender, value);
         }
 
-        public override string Contact
+        public override string Phone
         {
-            get => _contact;
-            set => SetField(ref _contact, value);
+            get => _phone;
+            set => SetField(ref _phone, value);
+        }
+        public override string Email
+        {
+            get => _email;
+            set => SetField(ref _email, value);
         }
 
         public override string DateBrith

@@ -20,10 +20,16 @@ namespace Clinic.Pages
     /// </summary>
     public partial class ClinicPersonalPage : Page
     {
+        CreateWorkerPage createWorker = new CreateWorkerPage();
         public ClinicPersonalPage()
         {
             InitializeComponent();
-           // List.ItemsSource = Database.Instance.Workers;
+        }
+
+        private void CreateWorker_btn(object sender, RoutedEventArgs e)
+        {
+            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.MDoctor) PersonFrame.Navigate(createWorker);
+            else MessageBox.Show("Недостаточный уровень доступа");
         }
     }
 }

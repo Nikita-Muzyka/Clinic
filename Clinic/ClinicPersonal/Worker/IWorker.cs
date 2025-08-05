@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clinic.ClinicPersonal.Worker
+namespace Clinic
 {
-    public interface IWorker
+    internal interface IWorker
     {
         public string Salary { get; set; }
-        public string Title { get; set; }
-        public PeopleRegistration infoReg { get; set; }
+        public ClinicRole Role { get; }
+        public PeopleRegistration infoReg { get; }
     }
 }

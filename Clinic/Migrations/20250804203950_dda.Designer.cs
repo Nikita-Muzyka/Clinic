@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    [Migration("20250730213338_2")]
-    partial class _2
+    [Migration("20250804203950_dda")]
+    partial class dda
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,15 +58,15 @@ namespace Clinic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contact")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DateBrith")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Diagnosis")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -83,6 +83,10 @@ namespace Clinic.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronymic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
@@ -102,8 +106,11 @@ namespace Clinic.Migrations
 
             modelBuilder.Entity("Clinic.PeopleRegistration", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -126,11 +133,11 @@ namespace Clinic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contact")
+                    b.Property<string>("DateBrith")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DateBrith")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -149,14 +156,17 @@ namespace Clinic.Migrations
                     b.Property<string>("Patronymic")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Place")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Salary")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Place")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Salary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -164,8 +174,8 @@ namespace Clinic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("infoRegId")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("infoRegId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
