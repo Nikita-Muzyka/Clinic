@@ -9,7 +9,7 @@ namespace Clinic
     internal interface IWorker
     {
         public string Salary { get; set; }
-        public ClinicRole Role { get; }
+        public ClinicRole Role { get; set; }
         public PeopleRegistration infoReg { get; }
     }
 }
