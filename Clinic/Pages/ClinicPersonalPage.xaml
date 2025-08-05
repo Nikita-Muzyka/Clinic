@@ -30,7 +30,7 @@
                           Style="{StaticResource RadioButtonRegPage}"
                           Margin="0,10"/>
 
-                <RadioButton Content="Карточки пациентов"
+                <RadioButton Content="Работники"
                           Style="{StaticResource RadioButtonRegPage}"
                           Margin="0,10"/>
 
