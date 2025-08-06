@@ -33,7 +33,7 @@
                    Background="White"
                    Margin ="5"
                    DataContext="{Binding SelectedItem, ElementName=workersListBox}"
-                   Visibility="Collapsed">
+                   Visibility="Visible">
 
             <TextBlock Text="Имя"
                       FontWeight="Bold"/>
@@ -86,8 +86,9 @@
 
             <TextBlock Text="Должность"
           FontWeight="Bold"/>
-            <TextBox Name="roleBox"
-                    Text="{Binding Role}"/>
+            <ComboBox Name="roleBox">
+                
+            </ComboBox>
 
             <TextBlock Text="Зарплата"
           FontWeight="Bold"/>
