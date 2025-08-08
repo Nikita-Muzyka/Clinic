@@ -42,5 +42,13 @@ namespace Clinic
         {
             MainFrame.Navigate(new ClinicPersonalPage());
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

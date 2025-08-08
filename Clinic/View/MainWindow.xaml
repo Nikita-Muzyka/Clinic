@@ -7,6 +7,9 @@
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
         Title="MainWindow" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
         Height="800" 
         Width="1200"
         Background="{StaticResource BackgroundBrush}">
@@ -58,30 +61,56 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <!--Column 1 | Линии огорождения-->
+                <!-- | Линии огорождения-->
                 <Border Grid.Row="1"
                         Grid.Column="1"
-                        Background="#232236">
+                        Background="{DynamicResource BackgroundMainLine}">
                 </Border>
                 <Border Grid.Row="2"
                         Grid.Column="0"
-                        Background="#232236">
+                        Background="{DynamicResource BackgroundMainLine}">
                 </Border>
 
-                <!--Column 1 | Кнопки управления приложением-->
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                 Style ="{StaticResource RegButtonCloseTheme}"
-                 Command="{Binding Close}"
-                 HorizontalAlignment="Right"
-                 VerticalAlignment="Center"
-                 Margin="0,0,5,0"/>
+                <!--| Кнопки управления приложением-->
+                <Grid Grid.Column="1"
+                      Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border MouseLeftButtonDown="Border_MouseLeftButtonDown"
+                            Grid.Column="0"
+                            Background="Transparent">
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Column="1">
+
+                        <Button Grid.Row="0"
+           Grid.Column="1"
+           Style ="{StaticResource RegButtonCloseTheme}"
+           Command="{Binding Hide}"
+           VerticalAlignment="Center"/>
+                        
+                        <Button Grid.Row="0"
+                                Grid.Column="1"
+                                Style ="{StaticResource RegButtonCloseTheme}"
+                                Command="{Binding Reveal}"
+                                VerticalAlignment="Center"/>
 
 
+                        <Button Grid.Row="0"
+         Grid.Column="1"
+         Style ="{StaticResource RegButtonCloseTheme}"
+         Command="{Binding Close}"
+         VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Страницы -->
                 <Border Grid.Row="2"
                         Grid.Column="1"
                         Background="{DynamicResource BackgroundMainFrame}">
-                    
                 </Border>
                 <Frame Grid.Row="2" 
                        Grid.Column="1"

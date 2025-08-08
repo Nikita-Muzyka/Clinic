@@ -5,9 +5,11 @@
     <Color x:Key="ForegroundColor">#FFFFFFFF</Color>
     <Color x:Key="ForegrounRadioButtonColor">#21aaff</Color>
     <Color x:Key="BackgroundMainFrameColor">#25263c</Color>
+    <Color x:Key="BackgroundMainLineColor">#232236</Color>
 
     <SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource BackgroundColor}"/>
     <SolidColorBrush x:Key="ForegroundBrush" Color="{DynamicResource ForegroundColor}"/>
     <SolidColorBrush x:Key="ForegroundRadioButton" Color="{DynamicResource ForegrounRadioButtonColor}"/>
     <SolidColorBrush x:Key="BackgroundMainFrame" Color="{DynamicResource BackgroundMainFrameColor}"/>
+    <SolidColorBrush x:Key="BackgroundMainLine" Color="{DynamicResource BackgroundMainLineColor}"/>
 </ResourceDictionary>
