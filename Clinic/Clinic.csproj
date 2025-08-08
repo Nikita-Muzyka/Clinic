@@ -71,4 +71,8 @@
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-SemiBoldItalic.ttf" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Theme\Registration\" />
+  </ItemGroup>
+
 </Project>

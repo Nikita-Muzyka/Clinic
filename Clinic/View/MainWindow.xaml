@@ -8,74 +8,88 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="800" 
-        Width="1200">
+        Width="1200"
+        Background="{StaticResource BackgroundBrush}">
+
+    <!--Main-->
+    <Border CornerRadius="20">
+        <Grid ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Column 0 | Боковая панель -->
+            <Grid ShowGridLines="False"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  Background="{DynamicResource BackgroundBrush}"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
 
 
-    <Grid ShowGridLines="False">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+                <RadioButton Grid.Row="0" 
+                      Command="{Binding StatisticsCommand}"
+                      Style="{DynamicResource MainRadioButton}" 
+                      >Статистика</RadioButton>
+                <RadioButton Grid.Row="1" 
+                      Click="RegistrationPage_Button"
+                      Style="{DynamicResource MainRadioButton}"
+                      >Регистрация</RadioButton>
+                <RadioButton Grid.Row="2" 
+                      Click="ClinicPersonal_Button"
+                      Style="{DynamicResource MainRadioButton}"
+                      >Персонал</RadioButton>
+            </Grid>
 
-        <!--Column 0-->
-        <Grid ShowGridLines="False"
-            Grid.Column="0"
-            Grid.Row="1"
-            Background="#1e2e3b">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-            </Grid.RowDefinitions>
+            <!--Column 1 | Страницы--> 
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="2"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Image Grid.Row="0"
-                   Source="/Resources/Logo/caduce.png"
-                   Height="150"
-                   Width="200"></Image>
+                <!--Column 1 | Линии огорождения-->
+                <Border Grid.Row="1"
+                        Grid.Column="1"
+                        Background="#232236">
+                </Border>
+                <Border Grid.Row="2"
+                        Grid.Column="0"
+                        Background="#232236">
+                </Border>
 
-            <RadioButton Grid.Row="1" 
-                         Command="{Binding StatisticsCommand}"
-                         Style="{DynamicResource MainRadioButton}" 
-                         >Статистика</RadioButton>
-            <RadioButton Grid.Row="2" 
-                         Command="{Binding StatisticsCommand}"
-                         Style="{DynamicResource MainRadioButton}" Margin="-10,0,10,0" 
-              >Статистика</RadioButton>
-            <RadioButton Grid.Row="3" 
-                         Click="RegistrationPage_Button"
-                         Style="{DynamicResource MainRadioButton}"
-                         >Регистрация</RadioButton>
-            <RadioButton Grid.Row="4" 
-                         Click="ClinicPersonal_Button"
-                         Style="{DynamicResource MainRadioButton}"
-                         >Персонал</RadioButton>
+                <!--Column 1 | Кнопки управления приложением-->
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                 Style ="{StaticResource RegButtonCloseTheme}"
+                 Command="{Binding Close}"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"
+                 Margin="0,0,5,0"/>
+
+
+                <Border Grid.Row="2"
+                        Grid.Column="1"
+                        Background="{DynamicResource BackgroundMainFrame}">
+                    
+                </Border>
+                <Frame Grid.Row="2" 
+                       Grid.Column="1"
+                NavigationUIVisibility="Hidden"
+                Name="MainFrame"
+                BorderBrush="Transparent">
+                </Frame>
+            </Grid>
         </Grid>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0"
-                    Style ="{StaticResource RegButtonCloseTheme}"
-                    Command="{Binding Close}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Margin="0,0,5,0"/>
-
-
-            <Border Grid.Row="1"
-                    Background="#e7e7e7"
-                    CornerRadius="15"></Border>
-            <Frame Grid.Row="1" 
-                   NavigationUIVisibility="Hidden"
-                   Name="MainFrame"
-                   BorderBrush="Transparent"
-                   >
-            </Frame>
-        </Grid>
-    </Grid>
+    </Border>
 </Window>

@@ -5,13 +5,13 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Width" Value="30"/>
-        <Setter Property="Opacity" Value="0.6"></Setter>
+        <Setter Property="Opacity" Value="0.8"></Setter>
             <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                   <Border Background="{TemplateBinding Background}">
                         <Path Data="M 5,5 L 25,25 M 25,5 L 5,25" 
-                              Stroke="#3064dd" 
+                              Stroke="Red" 
                               StrokeThickness="2">
                         </Path>
                     </Border>
