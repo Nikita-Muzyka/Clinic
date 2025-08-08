@@ -6,7 +6,9 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200">
+        Title="MainWindow" 
+        Height="800" 
+        Width="1200">
 
 
     <Grid ShowGridLines="False">
@@ -28,12 +30,6 @@
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <!--<TextBlock HorizontalAlignment="Center"
-                       FontSize="18"
-                       VerticalAlignment="Center"
-                       Text ="Medium Hospital"
-                       FontFamily="/Resources/Font/Cascadia/CascadiaCode-ExtraLightItalic.ttf#Cascadia Code Extralight"/>-->
-
             <Image Grid.Row="0"
                    Source="/Resources/Logo/caduce.png"
                    Height="150"
@@ -42,7 +38,11 @@
             <RadioButton Grid.Row="1" 
                          Command="{Binding StatisticsCommand}"
                          Style="{DynamicResource MainRadioButton}" 
-                         >Главная</RadioButton>
+                         >Статистика</RadioButton>
+            <RadioButton Grid.Row="2" 
+                         Command="{Binding StatisticsCommand}"
+                         Style="{DynamicResource MainRadioButton}" Margin="-10,0,10,0" 
+              >Статистика</RadioButton>
             <RadioButton Grid.Row="3" 
                          Click="RegistrationPage_Button"
                          Style="{DynamicResource MainRadioButton}"
@@ -61,17 +61,11 @@
 
             <Button Grid.Row="0"
                     Style ="{StaticResource RegButtonCloseTheme}"
+                    Command="{Binding Close}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Margin="0,0,5,0"
-                    Click="Close_btn"/>
+                    Margin="0,0,5,0"/>
 
-            <Button Grid.Row="0"
-          Style ="{StaticResource RegButtonCloseTheme}"
-          HorizontalAlignment="Right"
-          VerticalAlignment="Center"
-          Margin="0,0,50,0"
-          Click ="Unwrap_btn"/>
 
             <Border Grid.Row="1"
                     Background="#e7e7e7"

@@ -42,15 +42,5 @@ namespace Clinic
         {
             MainFrame.Navigate(new ClinicPersonalPage());
         }
-
-        private void Close_btn(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Unwrap_btn(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
