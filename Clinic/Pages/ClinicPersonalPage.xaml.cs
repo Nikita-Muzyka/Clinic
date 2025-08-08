@@ -21,6 +21,7 @@ namespace Clinic.Pages
     public partial class ClinicPersonalPage : Page
     {
         CreateWorkerPage createWorker = new CreateWorkerPage();
+        WorkersListPage listWorkers = new WorkersListPage();
         public ClinicPersonalPage()
         {
             InitializeComponent();
@@ -29,6 +30,12 @@ namespace Clinic.Pages
         private void CreateWorker_btn(object sender, RoutedEventArgs e)
         {
             if (Database.Instance.Worker.CheckedRole() >= ClinicRole.MDoctor) PersonFrame.Navigate(createWorker);
+            else MessageBox.Show("Недостаточный уровень доступа");
+        }
+
+        private void ListWorkers_btn(object sender, RoutedEventArgs e)
+        {
+            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.Nurse) PersonFrame.Navigate(listWorkers);
             else MessageBox.Show("Недостаточный уровень доступа");
         }
     }
