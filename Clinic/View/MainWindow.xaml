@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
 
+
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -39,13 +40,9 @@
                    Width="200"></Image>
 
             <RadioButton Grid.Row="1" 
-                         Click="Main_RadioButton"
+                         Command="{Binding StatisticsCommand}"
                          Style="{DynamicResource MainRadioButton}" 
                          >Главная</RadioButton>
-            <RadioButton Grid.Row="2" 
-                         Click="Reception_RadioButton"
-                         Style="{DynamicResource MainRadioButton}" 
-                        >Приемная</RadioButton>
             <RadioButton Grid.Row="3" 
                          Click="RegistrationPage_Button"
                          Style="{DynamicResource MainRadioButton}"
@@ -67,7 +64,14 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Margin="0,0,5,0"
-                    Click="Close_Button"/>
+                    Click="Close_btn"/>
+
+            <Button Grid.Row="0"
+          Style ="{StaticResource RegButtonCloseTheme}"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Center"
+          Margin="0,0,50,0"
+          Click ="Unwrap_btn"/>
 
             <Border Grid.Row="1"
                     Background="#e7e7e7"

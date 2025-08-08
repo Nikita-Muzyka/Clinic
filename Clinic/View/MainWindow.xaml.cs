@@ -28,17 +28,10 @@ namespace Clinic
                 Role = ClinicRole.Admin
             };
             Database.Instance.Worker = work;
+
+            DataContext = new MainWindow_VM(MainFrame);
         }
 
-        private void Main_RadioButton(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new MainPage());
-        }
-
-        private void Reception_RadioButton(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new AppointmentsListPage());
-        }
 
         private void RegistrationPage_Button(object sender, RoutedEventArgs e)
         {
@@ -50,9 +43,14 @@ namespace Clinic
             MainFrame.Navigate(new ClinicPersonalPage());
         }
 
-        private void Close_Button(object sender, RoutedEventArgs e)
+        private void Close_btn(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Unwrap_btn(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
