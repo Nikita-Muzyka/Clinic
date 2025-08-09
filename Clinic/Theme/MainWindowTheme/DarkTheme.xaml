@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="BackgroundColor">#29283f</Color>
+    <Color x:Key="ForegroundColor">#FFFFFFFF</Color>
+
+    <Color x:Key="ForegroundRadioButtonPickColor">#6386d9</Color>
+    <Color x:Key="ForegroundRadioButtonColor">#67658d</Color>
+    
+    <Color x:Key="BackgroundMainFrameColor">#25263c</Color>
+    <Color x:Key="BackgroundMainLineColor">#232236</Color>
+
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{DynamicResource ForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="ForegroundRadioButtonPick" Color="{DynamicResource ForegroundRadioButtonPickColor}"/>
+    <SolidColorBrush x:Key="ForegroundRadioButton" Color="{DynamicResource ForegroundRadioButtonColor}"/>
+    
+    <SolidColorBrush x:Key="BackgroundMainFrame" Color="{DynamicResource BackgroundMainFrameColor}"/>
+    <SolidColorBrush x:Key="BackgroundMainLine" Color="{DynamicResource BackgroundMainLineColor}"/>
+</ResourceDictionary>

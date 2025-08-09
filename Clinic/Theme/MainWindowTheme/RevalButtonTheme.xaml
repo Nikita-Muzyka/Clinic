@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ToggleButton" x:Key="RevalButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}">
+                        <Path Data="M5,5 L5,20 M5,5 L20,5    M20,5 L20,20 M5,20 L20,20" 
+                              Stroke="{DynamicResource ForegroundRadioButton}"
+                              StrokeThickness="1"
+                              Name="KVR">
+                        </Path>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="KVR" Property="Stroke" Value="{DynamicResource ForegroundRadioButtonPick}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="KVR" Property="Data" Value="M5,5 L5,20 M5,5 L20,5    M20,5 L20,20 M5,20 L20,20   M7,2 L7,5 M7,2 L23,2  M23,2 L23,17 M23,17 L20,17 "/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

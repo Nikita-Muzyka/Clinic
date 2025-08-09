@@ -1,0 +1,152 @@
+﻿<Window x:Class="Clinic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:Clinic"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Height="800" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}">
+
+    <!--Main-->
+    <Border CornerRadius="20"
+            Background="Transparent">
+        <Grid ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Column 0 | Боковая панель -->
+            <Grid ShowGridLines="False"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  Background="{DynamicResource BackgroundBrush}"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <RadioButton Grid.Row="0" 
+                             Command="{Binding StatisticsCommand}"
+                             Style="{DynamicResource MainRadioButton}" 
+                             >Статистика</RadioButton>
+                <RadioButton Grid.Row="1" 
+                      Click="RegistrationPage_Button"
+                      Style="{DynamicResource MainRadioButton}"
+                      >Регистрация</RadioButton>
+                <RadioButton Grid.Row="2" 
+                      Click="ClinicPersonal_Button"
+                      Style="{DynamicResource MainRadioButton}"
+                      >Персонал</RadioButton>
+                <RadioButton Grid.Row="3" 
+                             Style="{DynamicResource MainRadioButton}"
+                             >Анализы</RadioButton>
+                <RadioButton Grid.Row="4" 
+                             Style="{DynamicResource MainRadioButton}"
+                             >Отдел</RadioButton>
+            </Grid>
+
+            <!--Column 1 | Страницы--> 
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="2"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- | Линии огорождения-->
+                <Border Grid.Row="1"
+                        Grid.Column="1"
+                        Background="{DynamicResource BackgroundMainLine}">
+                </Border>
+                <Border Grid.Row="2"
+                        Grid.Column="0"
+                        Background="{DynamicResource BackgroundMainLine}">
+                </Border>
+
+                <!--| Кнопки управления приложением-->
+                <Grid Grid.Column="1"
+                      Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border MouseLeftButtonDown="Border_MouseLeftButtonDown"
+                            Grid.Column="0"
+                            Background="Transparent">
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Column="1">
+
+                        <Button Grid.Row="0"
+                                Grid.Column="1"
+                                Style ="{StaticResource HideButton}"
+                                Command="{Binding Hide}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
+                        
+                        <ToggleButton Grid.Row="0"
+                                Grid.Column="1"
+                                Style ="{StaticResource RevalButton}"
+                                Command="{Binding Reveal}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
+
+
+                        <Button Grid.Row="0"
+                                Grid.Column="1"
+                                Style ="{StaticResource RegButtonCloseTheme}"
+                                Command="{Binding Close}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Страницы -->
+                <Grid Grid.Row="2"
+                        Grid.Column="1"
+                        Background="{DynamicResource BackgroundMainFrame}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="WELCOME"
+                               Style="{DynamicResource WelcomeTextBlockMain}"
+                               FontSize="100"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding WelcomeNameText}"
+                               Grid.Row="1"
+                               Style="{DynamicResource WelcomeTextBlockMain}"
+                               FontSize="70"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"/>
+                </Grid>
+                <Frame Grid.Row="2" 
+                       Grid.Column="1"
+                NavigationUIVisibility="Hidden"
+                Name="MainFrame"
+                BorderBrush="Transparent">
+                </Frame>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

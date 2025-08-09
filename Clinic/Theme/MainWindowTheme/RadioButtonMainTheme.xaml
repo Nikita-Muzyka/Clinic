@@ -4,22 +4,23 @@
                     xmlns:controls="https://handyorg.github.io/handycontrol">
 
     <Style TargetType="RadioButton" x:Key="MainRadioButton">
-        <Setter Property="Background" Value="#1e2e3b"></Setter>
-        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButton}"></Setter>
         <Setter Property="FontSize" Value="14"></Setter>
-        <Setter Property="FontFamily" Value="/Resources/Font/Sansation/Sansation-Regular.ttf#Sansation"></Setter>
+        <Setter Property="FontFamily" Value="/Resources/Font/Cascadia/CascadiaCode-Bold.ttf#Cascadia Code"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="{DynamicResource BackgroundBrush}"
                             CornerRadius="0">
                         <Grid>
-                            <Ellipse Fill="{TemplateBinding Background}"
-                                     Height="10"
-                                     Width="10"
-                                     HorizontalAlignment="Left"
-                                     Margin="10"
-                                     Name="elRadio"></Ellipse>
+                            <Rectangle Fill="{DynamicResource BackgroundBrush}"
+                                       Name="elRadio"
+                                       Width="2"
+                                       Height="25"
+                                       Margin="5"
+                                       HorizontalAlignment="Left">
+
+                            </Rectangle>
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center">
 
@@ -28,9 +29,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="#46a7b2"/>
-                            <Setter Property="Foreground" Value="White"></Setter>
-                            <Setter TargetName="elRadio" Property="Fill" Value="#46a7b2"></Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButtonPick}"></Setter>
+                            <Setter TargetName="elRadio" Property="Fill" Value="{DynamicResource ForegroundRadioButtonPick}"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
