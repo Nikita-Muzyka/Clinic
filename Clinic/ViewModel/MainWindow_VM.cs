@@ -2,7 +2,9 @@
 using Clinic.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,8 +13,18 @@ using System.Windows.Input;
 
 namespace Clinic
 {
-    internal class MainWindow_VM
+    internal class MainWindow_VM : INotifyPropertyChanged
     {
+        string _welcomeNameText;
+        public string WelcomeNameText
+        {
+            get => _welcomeNameText;
+            set
+            {
+                _welcomeNameText = value;
+                OnPropertyChanged();
+            }
+        }
         FrameServise _frameServise;
         public ICommand StatisticsCommand { get; }
         public ICommand Close {  get; }
@@ -25,6 +37,7 @@ namespace Clinic
             Close = new RelayCommand(CloseApp);
             Reveal = new RelayCommand(RevealApp);
             Hide = new RelayCommand(HideApp);
+            WelcomeNameText = Database.Instance.Worker.FirstName;
         }
         
         private void StatisticsNavigateTo() => _frameServise.NavigateTo<StatisticsPage>();
@@ -33,5 +46,10 @@ namespace Clinic
             Application.Current.MainWindow.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         private void HideApp() => Application.Current.MainWindow.WindowState = WindowState.Minimized;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

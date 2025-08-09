@@ -9,7 +9,7 @@
                 <!-- Подключаем стили HandyControl -->
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-                <!-- Темы для приложэения -->
+                <!-- Темы для приложения -->
                 <ResourceDictionary Source="/Theme/MainWindowTheme/DarkTheme.xaml"/>
                 <!-- Кнопки управление окном -->
                 <ResourceDictionary Source="/Theme/MainWindowTheme/RegButtonClose.xaml"></ResourceDictionary>
@@ -17,9 +17,10 @@
                 <ResourceDictionary Source="/Theme/MainWindowTheme/HideButtonTheme.xaml"/>
                 <!-- Кнопки управления боковым окном в главном экране -->
                 <ResourceDictionary Source="/Theme/MainWindowTheme/RadioButtonMainTheme.xaml"/>
-                
-                
-                
+                <!-- Text -->
+                <ResourceDictionary Source="/Theme/MainWindowTheme/WelcomeTheme.xaml"/>
+
+
                 <ResourceDictionary Source="/Theme/RegistrationPage/RadioButtonRegPage.xaml"/>
 
                 <ResourceDictionary Source="/Theme/CreatePatient/DatePickerCreatePatient.xaml"/>

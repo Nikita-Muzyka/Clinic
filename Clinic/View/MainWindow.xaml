@@ -113,10 +113,25 @@
                 </Grid>
 
                 <!-- Страницы -->
-                <Border Grid.Row="2"
+                <Grid Grid.Row="2"
                         Grid.Column="1"
                         Background="{DynamicResource BackgroundMainFrame}">
-                </Border>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="WELCOME"
+                               Style="{DynamicResource WelcomeTextBlockMain}"
+                               FontSize="100"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding WelcomeNameText}"
+                               Grid.Row="1"
+                               Style="{DynamicResource WelcomeTextBlockMain}"
+                               FontSize="70"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"/>
+                </Grid>
                 <Frame Grid.Row="2" 
                        Grid.Column="1"
                 NavigationUIVisibility="Hidden"
