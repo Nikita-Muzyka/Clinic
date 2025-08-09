@@ -34,13 +34,15 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
 
 
                 <RadioButton Grid.Row="0" 
-                      Command="{Binding StatisticsCommand}"
-                      Style="{DynamicResource MainRadioButton}" 
-                      >Статистика</RadioButton>
+                             Command="{Binding StatisticsCommand}"
+                             Style="{DynamicResource MainRadioButton}" 
+                             >Статистика</RadioButton>
                 <RadioButton Grid.Row="1" 
                       Click="RegistrationPage_Button"
                       Style="{DynamicResource MainRadioButton}"
@@ -49,6 +51,12 @@
                       Click="ClinicPersonal_Button"
                       Style="{DynamicResource MainRadioButton}"
                       >Персонал</RadioButton>
+                <RadioButton Grid.Row="3" 
+                             Style="{DynamicResource MainRadioButton}"
+                             >Анализы</RadioButton>
+                <RadioButton Grid.Row="4" 
+                             Style="{DynamicResource MainRadioButton}"
+                             >Отдел</RadioButton>
             </Grid>
 
             <!--Column 1 | Страницы--> 
