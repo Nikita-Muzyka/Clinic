@@ -3,30 +3,26 @@
                     xmlns:hc="http://handyorg.com/winfx/xaml/controls"
                     xmlns:controls="https://handyorg.github.io/handycontrol">
 
-    <Style TargetType="RadioButton" x:Key="RadioButtonRegPage">
-        <Setter Property="Background" Value="White"></Setter>
-        <Setter Property="Foreground" Value="Black"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
-        <Setter Property="FontFamily" Value="/Resources/Font/Sansation/Sansation-Regular.ttf#Sansation"></Setter>
-        <Setter Property="Height" Value="240"></Setter>
-        <Setter Property="Width" Value="240"></Setter>
-        <Setter Property="Margin" Value="5"></Setter>
+    <Style TargetType="RadioButton" x:Key="RadioButtonRegistrationPage">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButton}"></Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontFamily" Value="/Resources/Font/Cascadia/CascadiaCode-Bold.ttf#Cascadia Code"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="20">
+                    <Border Background="Transparent"
+                         CornerRadius="0">
                         <Grid>
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center">
+                                           VerticalAlignment="Center">
 
                             </ContentPresenter>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="#46a7b2"/>
-                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButtonPick}"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

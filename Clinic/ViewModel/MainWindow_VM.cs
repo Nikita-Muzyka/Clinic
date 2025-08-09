@@ -1,4 +1,5 @@
 ﻿using Clinic.Model.FrameServise;
+using Clinic.Pages;
 using Clinic.View;
 using System;
 using System.Collections.Generic;
@@ -27,20 +28,33 @@ namespace Clinic
         }
         FrameServise _frameServise;
         public ICommand StatisticsCommand { get; }
+        public ICommand RegistrationPatientCommand { get; }
         public ICommand Close {  get; }
         public ICommand Reveal { get; }
         public ICommand Hide { get; }
         public MainWindow_VM(Frame Frame)
         {
+            Worker work = new Worker
+            {
+                FirstName = "Admin",
+                Role = ClinicRole.Admin
+            };
+            Database.Instance.Worker = work;
+
             _frameServise = new FrameServise(Frame);
             StatisticsCommand = new RelayCommand(StatisticsNavigateTo);
+            RegistrationPatientCommand = new RelayCommand(RegistrationPatientTo);
+
             Close = new RelayCommand(CloseApp);
             Reveal = new RelayCommand(RevealApp);
             Hide = new RelayCommand(HideApp);
+
             WelcomeNameText = Database.Instance.Worker.FirstName;
+
         }
         
         private void StatisticsNavigateTo() => _frameServise.NavigateTo<StatisticsPage>();
+        private void RegistrationPatientTo() => _frameServise.NavigateTo<RegistrationPage>();
         private void CloseApp() => Application.Current.MainWindow.Close();
         private void RevealApp() => Application.Current.MainWindow.WindowState = 
             Application.Current.MainWindow.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;

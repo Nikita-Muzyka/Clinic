@@ -43,12 +43,11 @@
                              Command="{Binding StatisticsCommand}"
                              Style="{DynamicResource MainRadioButton}" 
                              >Статистика</RadioButton>
-                <RadioButton Grid.Row="1" 
-                      Click="RegistrationPage_Button"
-                      Style="{DynamicResource MainRadioButton}"
-                      >Регистрация</RadioButton>
+                <RadioButton Grid.Row="1"
+                             Command="{Binding RegistrationPatientCommand}"
+                             Style="{DynamicResource MainRadioButton}"
+                             >Регистрация</RadioButton>
                 <RadioButton Grid.Row="2" 
-                      Click="ClinicPersonal_Button"
                       Style="{DynamicResource MainRadioButton}"
                       >Персонал</RadioButton>
                 <RadioButton Grid.Row="3" 

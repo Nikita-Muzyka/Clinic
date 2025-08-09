@@ -23,6 +23,7 @@ namespace Clinic.Pages
         public RegistrationPage()
         {
             InitializeComponent();
+            DataContext = new RegistrationPage_VM(RegFrame);
         }
 
         private void CreatePatient_Button(object sender, RoutedEventArgs e)

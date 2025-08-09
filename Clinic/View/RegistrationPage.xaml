@@ -10,45 +10,40 @@
 
     <Grid>
         <!-- Используем пропорциональное распределение пространства -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="200"/>
-            <!-- Для меню -->
-            <ColumnDefinition Width="5"/>
-            <!-- Разделитель -->
-            <ColumnDefinition Width="*"/>
-            <!-- Основное содержимое -->
-        </Grid.ColumnDefinitions>
-
-        <!-- Левая панель - меню -->
-        <Border Grid.Column="0"
-                Padding="15">
-            <StackPanel VerticalAlignment="Center">
-                <RadioButton Content="Создать пациента"
-                             Click="CreatePatient_Button"
-                             Style="{StaticResource RadioButtonRegPage}"
-                             Margin="0,10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Панель меню -->
+        <Border Grid.Row="0">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                
+                <RadioButton Content="Создать карточку"
+                             Command="{Binding CreatePatientCommand}"
+                             Style="{StaticResource RadioButtonRegistrationPage}"
+                             Margin="5,5,10,5"/>
 
                 <RadioButton Content="Карточки пациентов"
-                             Click="ListPatient_Button"
-                             Style="{StaticResource RadioButtonRegPage}"
-                             Margin="0,10"/>
+                             Style="{StaticResource RadioButtonRegistrationPage}"
+                              Margin="5,5,10,5"/>
 
-                <RadioButton Content="Записать на прием"
-                             Click="AppointmentCreate_Button"
-                             Style="{StaticResource RadioButtonRegPage}"
-                             Margin="0,10"/>
+                <RadioButton Content="Запись на прием"
+                             Style="{StaticResource RadioButtonRegistrationPage}"
+                              Margin="5,5,10,5"/>
                 
             </StackPanel>
         </Border>
 
         <!-- Вертикальный разделитель -->
-        <GridSplitter Grid.Column="1"
-                      Width="5"
-                      HorizontalAlignment="Stretch"
-                      Background="LightGray"
-                      ResizeBehavior="PreviousAndNext"/>
-
-        <Grid Grid.Column="2">
+        <Border Grid.Row="1"
+         Grid.Column="1"
+         Background="{DynamicResource BackgroundMainLine}">
+        </Border>
+        
+        <Grid Grid.Row="2">
             <Frame NavigationUIVisibility="Hidden"
                    Name="RegFrame"
                    BorderBrush="Transparent"></Frame>
