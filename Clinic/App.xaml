@@ -9,11 +9,20 @@
                 <!-- Подключаем стили HandyControl -->
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-                <ResourceDictionary Source="/Theme/MainWindowTheme/RegButtonClose.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Theme/MainWindowTheme/RadioButtonMainTheme.xaml"/>
-                <ResourceDictionary Source="/Theme/RegistrationPage/RadioButtonRegPage.xaml"/>
-                <ResourceDictionary Source="/Theme/CreatePatient/DatePickerCreatePatient.xaml"/>
+                <!-- Темы для приложэения -->
                 <ResourceDictionary Source="/Theme/MainWindowTheme/DarkTheme.xaml"/>
+                <!-- Кнопки управление окном -->
+                <ResourceDictionary Source="/Theme/MainWindowTheme/RegButtonClose.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Theme/MainWindowTheme/RevalButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MainWindowTheme/HideButtonTheme.xaml"/>
+                <!-- Кнопки управления боковым окном в главном экране -->
+                <ResourceDictionary Source="/Theme/MainWindowTheme/RadioButtonMainTheme.xaml"/>
+                
+                
+                
+                <ResourceDictionary Source="/Theme/RegistrationPage/RadioButtonRegPage.xaml"/>
+
+                <ResourceDictionary Source="/Theme/CreatePatient/DatePickerCreatePatient.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -12,10 +12,12 @@
         AllowsTransparency="False"
         Height="800" 
         Width="1200"
+        WindowStartupLocation="CenterScreen"
         Background="{StaticResource BackgroundBrush}">
 
     <!--Main-->
-    <Border CornerRadius="20">
+    <Border CornerRadius="20"
+            Background="Transparent">
         <Grid ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"></ColumnDefinition>
@@ -87,23 +89,26 @@
                                 Grid.Column="1">
 
                         <Button Grid.Row="0"
-           Grid.Column="1"
-           Style ="{StaticResource RegButtonCloseTheme}"
-           Command="{Binding Hide}"
-           VerticalAlignment="Center"/>
+                                Grid.Column="1"
+                                Style ="{StaticResource HideButton}"
+                                Command="{Binding Hide}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
                         
+                        <ToggleButton Grid.Row="0"
+                                Grid.Column="1"
+                                Style ="{StaticResource RevalButton}"
+                                Command="{Binding Reveal}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
+
+
                         <Button Grid.Row="0"
                                 Grid.Column="1"
                                 Style ="{StaticResource RegButtonCloseTheme}"
-                                Command="{Binding Reveal}"
-                                VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Row="0"
-         Grid.Column="1"
-         Style ="{StaticResource RegButtonCloseTheme}"
-         Command="{Binding Close}"
-         VerticalAlignment="Center"/>
+                                Command="{Binding Close}"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
                     </StackPanel>
                 </Grid>
 

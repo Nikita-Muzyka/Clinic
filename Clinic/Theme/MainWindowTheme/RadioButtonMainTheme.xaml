@@ -4,8 +4,7 @@
                     xmlns:controls="https://handyorg.github.io/handycontrol">
 
     <Style TargetType="RadioButton" x:Key="MainRadioButton">
-        <Setter Property="Background" Value="#1e2e3b"></Setter>
-        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButton}"></Setter>
         <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="FontFamily" Value="/Resources/Font/Cascadia/CascadiaCode-Bold.ttf#Cascadia Code"></Setter>
         <Setter Property="Template">
@@ -30,8 +29,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButton}"></Setter>
-                            <Setter TargetName="elRadio" Property="Fill" Value="{DynamicResource ForegroundRadioButton}"></Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButtonPick}"></Setter>
+                            <Setter TargetName="elRadio" Property="Fill" Value="{DynamicResource ForegroundRadioButtonPick}"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
