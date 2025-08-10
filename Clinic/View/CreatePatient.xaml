@@ -46,9 +46,10 @@
                                Margin="5"
                                VerticalAlignment="Center"
                                FontSize="16"/>
-                    <TextBox Grid.Row="0" Grid.Column="1"
+                    <TextBox Grid.Row="0" 
+                             Grid.Column="1"
                              Margin="5"
-                             Name="firstNameBox"/>
+                             Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}"/>
 
                     <!-- Фамилия -->
                     <TextBlock Grid.Row="1" Grid.Column="0"
@@ -157,12 +158,11 @@
 
         <!-- Кнопка создания -->
         <Button Grid.Row="1"
-                Name="CreateBtn"
                 Content="Создать"
                 HorizontalAlignment="Center"
                 Margin="0,15,0,0"
                 Padding="30,0"
                 FontSize="16"
-                Click="Create_Button"/>
+                Command="{Binding command}"/>
     </Grid>
 </Page>

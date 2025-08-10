@@ -27,6 +27,7 @@
                              Margin="5,5,10,5"/>
 
                 <RadioButton Content="Карточки пациентов"
+                             Command="{Binding ListPatientCommand}"
                              Style="{StaticResource RadioButtonRegistrationPage}"
                               Margin="5,5,10,5"/>
 

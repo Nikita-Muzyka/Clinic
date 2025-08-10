@@ -30,6 +30,7 @@ namespace Clinic.Pages
         public CreatePatient()
         {
             InitializeComponent();
+            DataContext = new CreatePatient_VM();
         }
 
         private void Create_Button(object sender, RoutedEventArgs e)
