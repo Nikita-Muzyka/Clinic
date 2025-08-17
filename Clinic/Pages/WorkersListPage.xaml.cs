@@ -70,16 +70,16 @@ namespace Clinic.Pages
                 var dbworkers = db.Workers.Find(workerChoose.Id);
                 if(dbworkers != null)
                 {
-                    dbworkers.FirstName = firstNameBox.Text;
-                    dbworkers.LastName = lastNameBox.Text;
-                    dbworkers.Patronymic = patronymicBox.Text;
-                    dbworkers.Gender = genderBox.Text;
-                    dbworkers.DateBrith = dateBrithBox.Text;
-                    dbworkers.Phone = phoneBox.Text;
-                    dbworkers.Email = emailBox.Text;
-                    dbworkers.Place = placeBox.Text;
-                    dbworkers.Salary = salaryBox.Text;
-                    dbworkers.Role = role;
+                    //dbworkers.FirstName = firstNameBox.Text;
+                    //dbworkers.LastName = lastNameBox.Text;
+                    //dbworkers.Patronymic = patronymicBox.Text;
+                    //dbworkers.Gender = genderBox.Text;
+                    //dbworkers.DateBrith = dateBrithBox.Text;
+                    //dbworkers.Phone = phoneBox.Text;
+                    //dbworkers.Email = emailBox.Text;
+                    //dbworkers.Place = placeBox.Text;
+                    //dbworkers.Salary = salaryBox.Text;
+                    //dbworkers.Role = role;
                 };
                 db.SaveChanges();
             }

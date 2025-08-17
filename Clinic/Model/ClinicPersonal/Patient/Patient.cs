@@ -8,12 +8,12 @@ namespace Clinic
         private string _firstName;
         private string _lastName;
         private string? _patronymic;
+        private DateTime _date;
         private string _gender;
         private string _phone;
         private string _email;
-        private string _dateBrith;
         private string? _place;
-        private string _yearsCreate;
+        private DateTime _yearsCreate;
         private string? _diagnosis;
         private int _weight;
 
@@ -49,6 +49,16 @@ namespace Clinic
             }
         }
 
+        public override DateTime Date
+        {
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
+        }
+
         public override string Gender
         {
             get => _gender;
@@ -78,16 +88,6 @@ namespace Clinic
             }
         }
 
-        public override string DateBrith
-        {
-            get => _dateBrith;
-            set
-            {
-                _dateBrith = value;
-                OnPropertyChanged();
-            }
-        }
-
         public override string? Place
         {
             get => _place;
@@ -98,7 +98,7 @@ namespace Clinic
             }
         }
 
-        public override string YearsCreate
+        public override DateTime YearsCreate
         {
             get => _yearsCreate;
             set
@@ -134,8 +134,8 @@ namespace Clinic
         }
         public Patient(
             string firstName, string lastName, 
-            string? patronymic, string dateBrith,
-            string gender, string weight,
+            string? patronymic, DateTime date,
+            string gender, int weight,
             string phone, string email,  
             string? place, string? diagnosis
             )
@@ -146,12 +146,11 @@ namespace Clinic
             Gender = gender;
             Phone = phone;
             Email = email;
-            DateBrith = dateBrith;
+            Date = date;
             Place = place;
-            YearsCreate = DateTime.Now.ToString();
+            YearsCreate = DateTime.Now;
             Diagnosis = diagnosis;
-            int Iweight = int.Parse(weight);
-            Weight = Iweight;
+            Weight = weight;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

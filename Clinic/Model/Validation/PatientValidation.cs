@@ -16,8 +16,17 @@ namespace Clinic
     {
         ObservableCollection<Brush> BrushCollection;
         ObservableCollection<string> ToolTipCollection;
-        bool CheckValidation = false;
+        Patient _patient;
+
         byte Errors = 0;
+        DateTime _date;
+        int WeightConvert;
+
+        DateTime Date
+        {
+            get => _date;
+            set => _date = value.Date;
+        }
 
         public PatientValidation(ObservableCollection<Brush> _brushCollection, ObservableCollection<string> _toolTipCollection) 
         {
@@ -25,7 +34,6 @@ namespace Clinic
             ToolTipCollection = _toolTipCollection;
             BrushCollectionPull();
         }
-
         void BrushCollectionPull()
         {
             for (int i = 0; i < 10; i++)
@@ -58,12 +66,11 @@ namespace Clinic
                 }
             }
         }
-
-        public bool Validation(
+         internal Patient Validation(
             string? FirstName,
             string? LastName,
             string? Patronymic,
-             string? DateBirth,
+            string? date,
             string? Gender,
             string? Weight,
             string? Phone,
@@ -179,20 +186,19 @@ namespace Clinic
             }
 
             //DateBirth
-            if (string.IsNullOrWhiteSpace(DateBirth) == false)
-            {
-                DateTime? time;
-                time = DateTime.Parse(DateBirth);
-                if (time > DateTime.Now)
+                if (string.IsNullOrWhiteSpace(date) == true)
                 {
                     BrushCollection[3] = Brushes.Red;
-                    ToolTipCollection[3] = "Нельзя вводить будущее время";
+                    ToolTipCollection[3] = "Выберите дату";
                 }
-            }
             else
             {
-                BrushCollection[3] = Brushes.Red;
-                ToolTipCollection[3] = "Поле обязательно для заполнения";
+                Date = DateTime.Parse(date);
+                if(Date > DateTime.Now)
+                {
+                    BrushCollection[3] = Brushes.Red;
+                    ToolTipCollection[3] = "Дата рождения не может быть в будущем";
+                }
             }
 
             //Gender
@@ -210,6 +216,10 @@ namespace Clinic
             {
                 BrushCollection[5] = Brushes.Red;
                 ToolTipCollection[5] = "Контакты обязательны для заполнения или должны содежрать только цифры";
+            }
+            else
+            {
+                WeightConvert = int.Parse(Weight);
             }
 
             //Phone
@@ -234,8 +244,8 @@ namespace Clinic
             }
 
             ChangeColorBrush();
-            if (Errors is 0) CheckValidation = true;
-            return CheckValidation;
+            if (Errors is 0) _patient = new Patient(FirstName, LastName, Patronymic, Date, Gender, WeightConvert, Phone, Email, Place, Diagnosis);
+            return _patient;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

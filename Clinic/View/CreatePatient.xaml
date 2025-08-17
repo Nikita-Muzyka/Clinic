@@ -82,11 +82,8 @@
                                Style="{DynamicResource TextBlockTheme}"/>
                     <DatePicker Grid.Row="3"
                                 Grid.Column="2"
-                                SelectedDateFormat="Short"
-                                SelectedDate="{Binding DateBrith}"
-                                Style="{StaticResource DatePickerCreatePatient}"
-                                BorderBrush="{Binding BrushCollection[3]}"
-                                ToolTip="{Binding ToolTipCollection[3]}">
+                                SelectedDate="{Binding DateFree}"
+                                Style="{StaticResource DatePickerCreatePatient}">
                     </DatePicker>
 
                     <!-- Пол -->

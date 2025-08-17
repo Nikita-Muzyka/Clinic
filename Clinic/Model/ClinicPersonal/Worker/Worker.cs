@@ -17,9 +17,9 @@ namespace Clinic
         private string _gender;
         private string _phone;
         private string _email;
-        private string _datebrith;
+        private DateTime _date;
         private string? _place;
-        private string _yearsCreate;
+        private DateTime _yearsCreate;
         private string _salary;
         private ClinicRole _role;
 
@@ -27,53 +27,101 @@ namespace Clinic
         public override string FirstName
         {
             get => _firstname;
-            set => SetField(ref _firstname, value);
+            set
+            {
+                _firstname = value;
+                OnPropertyChanged();
+            }
         }
         public override string LastName
         {
             get => _lastname;
-            set => SetField(ref _lastname, value);
+            set
+            {
+                _lastname = value;
+                OnPropertyChanged();
+            }
         }
         public override string? Patronymic
         {
             get => _patronymic;
-            set => SetField(ref _patronymic, value);
+            set
+            {
+                _patronymic = value;
+                OnPropertyChanged();
+            }
         }
         public override string Gender
         {
             get => _gender;
-            set => SetField(ref _gender, value);
+            set
+            {
+                _gender = value;
+                OnPropertyChanged();
+            }
         }
         public override string Phone
         {
             get => _phone;
-            set => SetField(ref _phone, value);
+            set
+            {
+                _phone = value;
+                OnPropertyChanged();
+            }
         }
         public override string Email
         {
             get => _email;
-            set => SetField(ref _email, value);
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
         }
-        public override string DateBrith
+        public override DateTime Date
         {
-            get => _datebrith;
-            set => SetField(ref _datebrith, value);
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
         }
         public override string? Place
         {
             get => _place;
-            set => SetField(ref _place, value);
+            set
+            {
+                _place = value;
+                OnPropertyChanged();
+            }
         }
-        public override string YearsCreate { get; set; } // год создания
+        public override DateTime YearsCreate 
+        {
+            get => _yearsCreate;
+            set
+            {
+                _yearsCreate = value;
+                OnPropertyChanged();
+            }
+        } // год создания
         public string Salary
         {
             get => _salary;
-            set => SetField(ref _salary, value);
+            set
+            {
+                _salary = value;
+                OnPropertyChanged();
+            }
         }
         public ClinicRole Role
         {
             get => _role;
-            set => SetField(ref _role, value);
+            set
+            {
+                _role = value;
+                OnPropertyChanged();
+            }
         }
         public PeopleRegistration infoReg { get; set; }
 
@@ -84,13 +132,6 @@ namespace Clinic
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
 
         public ClinicRole CheckedRole()
         {

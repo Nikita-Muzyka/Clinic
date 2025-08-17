@@ -17,9 +17,9 @@ namespace Clinic
         public abstract string Gender { get; set; } // пол
         public abstract string Phone { get; set; } // телефон
         public abstract string Email { get; set; } // email
-        public abstract string DateBrith { get; set; } // возраст
+        public abstract DateTime Date { get; set; } // возраст
         public abstract string Place { get; set; } // место проживание 
-        public abstract string YearsCreate { get; set; } // год создания
+        public abstract DateTime YearsCreate { get; set; } // год создания
 
     }
 }

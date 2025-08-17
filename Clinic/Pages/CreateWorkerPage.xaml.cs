@@ -81,31 +81,31 @@ namespace Clinic.Pages
         }
         private void SaveWorker()
         {
-            ClinicRole role = workerValid.RoleConver(roleBox.SelectedValue.ToString());
-            Worker worker = new Worker()
-            {
-                FirstName = firstNameBox.Text,
-                LastName = lastNameBox.Text,
-                Patronymic = patronymicBox.Text,
-                DateBrith = datebirthBox.Text,
-                Gender = genderBox.Text,
-                Phone = phoneBox.Text,
-                Email = emailBox.Text,
-                Place = placeBox.Text,
-                Salary = salaryBox.Text,
-                YearsCreate = DateTime.Now.ToString(),
-                Role = role,
-                infoReg = new PeopleRegistration
-                {
-                    Login = logBox.Text,
-                    Password = passBox.Text,
-                }
-            };
+            //ClinicRole role = workerValid.RoleConver(roleBox.SelectedValue.ToString());
+            //Worker worker = new Worker()
+            //{
+            //    FirstName = firstNameBox.Text,
+            //    LastName = lastNameBox.Text,
+            //    Patronymic = patronymicBox.Text,
+            //    DateBrith = datebirthBox.Text,
+            //    Gender = genderBox.Text,
+            //    Phone = phoneBox.Text,
+            //    Email = emailBox.Text,
+            //    Place = placeBox.Text,
+            //    Salary = salaryBox.Text,
+            //    YearsCreate = DateTime.Now.ToString(),
+            //    Role = role,
+            //    infoReg = new PeopleRegistration
+            //    {
+            //        Login = logBox.Text,
+            //        Password = passBox.Text,
+            //    }
+            //};
 
             using(var db = new ClinicContext())
             {
-                db.Workers.Add(worker);
-                db.SaveChanges();
+                //db.Workers.Add(worker);
+                //db.SaveChanges();
             }
             MessageBox.Show("Пациент создан");
         }

@@ -31,17 +31,18 @@ namespace Clinic
 
         bool CheckValidation = false;
 
-        string _firstName;
-        string _lastName;
+        string? _firstName;
+        string? _lastName;
         string? _patronymic;
-        string _gender;
-        string _phone;
-        string _email;
-        string _dateBrith;
+        string? _gender;
+        string? _phone;
+        string? _email;
+        string? _dateFree;
+        DateTime? date;
         string? _place;
-        string _yearsCreate;
+        string? _yearsCreate;
         string? _diagnosis;
-        string _weight;
+        string? _weight;
 
         public ObservableCollection<Brush> BrushCollection
         {
@@ -71,7 +72,7 @@ namespace Clinic
             }
         }
 
-        public string FirstName
+        public string? FirstName
         {
             get => _firstName;
             set
@@ -80,7 +81,7 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string LastName
+        public string? LastName
         {
             get => _lastName;
             set
@@ -98,7 +99,16 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string Gender
+        public string? DateFree
+        {
+            get => _dateFree;
+            set
+            {
+                _dateFree = value;
+                OnPropertyChanged();
+            }
+        }
+        public string? Gender
         {
             get => _gender;
             set
@@ -107,7 +117,7 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string Phone
+        public string? Phone
         {
             get => _phone;
             set
@@ -116,21 +126,12 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string Email
+        public string? Email
         {
             get => _email;
             set
             {
                 _email = value;
-                OnPropertyChanged();
-            }
-        }
-        public string DateBrith
-        {
-            get => _dateBrith;
-            set
-            {
-                _dateBrith = value;
                 OnPropertyChanged();
             }
         }
@@ -143,15 +144,6 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string YearsCreate
-        {
-            get => _yearsCreate;
-            set
-            {
-                _yearsCreate = value;
-                OnPropertyChanged();
-            }
-        }
         public string? Diagnosis
         {
             get => _diagnosis;
@@ -161,7 +153,7 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string Weight
+        public string? Weight
         {
             get => _weight;
             set
@@ -171,6 +163,7 @@ namespace Clinic
             }
         }
 
+
         public CreatePatient_VM()
         {
             CreatePatientCommand = new RelayCommand(command2);
@@ -179,17 +172,16 @@ namespace Clinic
 
         private void command2()
         {
-            CheckValidation = patientValidation.Validation(FirstName, LastName, Patronymic, DateBrith, Gender, Weight, Phone, Email, Place, Diagnosis);
+            _patient = patientValidation.Validation(FirstName, LastName, Patronymic, DateFree, Gender, Weight, Phone, Email, Place, Diagnosis);
             bool resultCreatePatient = CreatePatient();
-            MessageBox.Show(resultCreatePatient ? "Пациент Создан" : "Пациент не создан");
+            MessageBox.Show(resultCreatePatient ? "Пациент Создан" : "Пациент не создан исправте ошибки");
         }
        
         private bool CreatePatient()
         {
             bool result = false;
-            if (CheckValidation == true)
+            if (_patient is not null)
             {
-                _patient = new Patient(FirstName,LastName,Patronymic,DateBrith,Gender,Weight,Phone,Email,Place,Diagnosis);
                 using (var db = new ClinicContext())
                 {
                     try
