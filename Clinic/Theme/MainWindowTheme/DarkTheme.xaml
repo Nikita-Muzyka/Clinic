@@ -1,21 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--Фон приложения-->
     <Color x:Key="BackgroundColor">#29283f</Color>
     <Color x:Key="ForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="BackgroundMainLineColor">#232236</Color>
+    
+    <!--Текста-->
+    <Color x:Key="BackgroudTextBoxColor">#FFFFFFFF</Color>
+    <Color x:Key="BackgroudTextBlockPlaicholderColor">#29283f</Color>
+    <Color x:Key="BrushFocusTextColor">#6386d9</Color>
 
+    <!--Кнопки главные приложения-->
     <Color x:Key="ForegroundRadioButtonPickColor">#6386d9</Color>
     <Color x:Key="ForegroundRadioButtonColor">#67658d</Color>
-    
-    <Color x:Key="BackgroundMainFrameColor">#25263c</Color>
-    <Color x:Key="BackgroundMainLineColor">#232236</Color>
 
+    <!--FRAME-->
+    <Color x:Key="BackgroundMainFrameColor">#25263c</Color>
+
+    
+    
+    
+    
+    
+    <!--Фон приложения-->
     <SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource BackgroundColor}"/>
     <SolidColorBrush x:Key="ForegroundBrush" Color="{DynamicResource ForegroundColor}"/>
-    
+    <SolidColorBrush x:Key="BackgroundMainLine" Color="{DynamicResource BackgroundMainLineColor}"/>
+
+    <!--Текста-->
+    <SolidColorBrush x:Key="BackgroundTextBox" Color="{DynamicResource BackgroudTextBoxColor}"/>
+    <SolidColorBrush x:Key="BackgroundTextBlockPlaicholder" Color="{DynamicResource BackgroudTextBlockPlaicholderColor}"/>
+    <SolidColorBrush x:Key="BrushFocusText" Color="{DynamicResource BrushFocusTextColor}"/>
+
+    <!--Кнопки главные приложения-->
     <SolidColorBrush x:Key="ForegroundRadioButtonPick" Color="{DynamicResource ForegroundRadioButtonPickColor}"/>
     <SolidColorBrush x:Key="ForegroundRadioButton" Color="{DynamicResource ForegroundRadioButtonColor}"/>
-    
+
+    <!--FRAME-->
     <SolidColorBrush x:Key="BackgroundMainFrame" Color="{DynamicResource BackgroundMainFrameColor}"/>
-    <SolidColorBrush x:Key="BackgroundMainLine" Color="{DynamicResource BackgroundMainLineColor}"/>
+
+    <FontFamily x:Key="FontsTextMainButton">/Resources/Font/Cascadia/CascadiaCode-Bold.ttf#Cascadia Code</FontFamily>
+    <FontFamily x:Key="FontsTextLight">/Resources/Font/Cascadia/CascadiaCode-ExtraLight.ttf#Cascadia Code ExtraLight</FontFamily>
 </ResourceDictionary>

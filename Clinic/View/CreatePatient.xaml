@@ -7,20 +7,17 @@
       xmlns:System="clr-namespace:System;assembly=System.Runtime"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="800"
-      Title="Создание пациента"
-      Background="#F0F0F0">
+      Title="Создание пациента">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Основная форма -->
         <Border Grid.Row="0"
-                CornerRadius="20"
-                Background="White"
-                Padding="15">
+                CornerRadius="20">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -36,120 +33,128 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Имя -->
-                    <TextBlock Grid.Row="0" Grid.Column="0"
+                    <TextBlock Grid.Row="0" 
+                               Grid.Column="1"
                                Text="Имя:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
+                               Style="{DynamicResource TextBlockTheme}"/>
                     <TextBox Grid.Row="0" 
-                             Grid.Column="1"
-                             Margin="5"
-                             Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}"/>
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             Text="{Binding FirstName}"
+                             BorderBrush="{Binding BrushCollection[0]}"
+                             ToolTip="{Binding ToolTipCollection[0]}"/>
 
                     <!-- Фамилия -->
-                    <TextBlock Grid.Row="1" Grid.Column="0"
+                    <TextBlock Grid.Row="1" 
+                               Grid.Column="1"
                                Text="Фамилия:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="1" Grid.Column="1"
-                             Margin="5"
-                             Name="lastNameBox"/>
+                                Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="1" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[1]}"
+                             ToolTip="{Binding ToolTipCollection[1]}"/>
 
                     <!-- Отчество -->
-                    <TextBlock Grid.Row="2" Grid.Column="0"
+                    <TextBlock Grid.Row="2" 
+                               Grid.Column="1"
                                Text="Отчество:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="2" Grid.Column="1"
-                             Margin="5"
-                             Name="patronymicBox"/>
+                               Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="2" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                            BorderBrush="{Binding BrushCollection[2]}"
+                             ToolTip="{Binding ToolTipCollection[2]}"/>
 
                     <!-- Дата рождения -->
-                    <TextBlock Grid.Row="3" Grid.Column="0"
+                    <TextBlock Grid.Row="3" 
+                               Grid.Column="1"
                                Text="Дата рождения:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
+                               Style="{DynamicResource TextBlockTheme}"/>
                     <DatePicker Grid.Row="3"
-                                Grid.Column="1"
-                                Name="datebirthBox"
+                                Grid.Column="2"
                                 SelectedDateFormat="Short"
                                 Text="Выберите дату роджения"
-                                ToolTip="Выберите дату рождения"
-                                Style="{StaticResource DatePickerCreatePatient}">
+                                Style="{StaticResource DatePickerCreatePatient}"
+                                BorderBrush="{Binding BrushCollection[3]}"
+                                ToolTip="{Binding ToolTipCollection[3]}">
                     </DatePicker>
 
                     <!-- Пол -->
-                    <TextBlock Grid.Row="4" Grid.Column="0"
+                    <TextBlock Grid.Row="4" 
+                               Grid.Column="1"
                                Text="Пол:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <ComboBox Grid.Row="4" Grid.Column="1"
+                                Style="{DynamicResource TextBlockTheme}"/>
+                    <ComboBox Grid.Row="4" 
+                              Grid.Column="2"
                               Margin="5"
-                              Name="genderBox">
+                              BorderBrush="{Binding BrushCollection[4]}"
+                              ToolTip="{Binding ToolTipCollection[4]}">
                         <ComboBoxItem>Мужской</ComboBoxItem>
                         <ComboBoxItem>Женский</ComboBoxItem>
                     </ComboBox>
 
                     <!-- Вес -->
-                    <TextBlock Grid.Row="5" Grid.Column="0"
+                    <TextBlock Grid.Row="5" 
+                               Grid.Column="1"
                                Text="Вес:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="5" Grid.Column="1"
-                             Margin="5"
-                             Name="weightBox"/>
+                               Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="5" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[5]}"
+                             ToolTip="{Binding ToolTipCollection[5]}"/>
 
                     <!-- Phone -->
-                    <TextBlock Grid.Row="6" Grid.Column="0"
+                    <TextBlock Grid.Row="6" 
+                               Grid.Column="1"
                                Text="Телефон:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
+                               Style="{DynamicResource TextBlockTheme}"/>
                     <TextBox Grid.Row="6" 
-                             Grid.Column="1"
-                             Margin="5"
-                             Text="+7"
-                             Name="phoneBox"/>
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[6]}"
+                             ToolTip="{Binding ToolTipCollection[6]}"/>
 
                     <!-- Email -->
-                    <TextBlock Grid.Row="7" Grid.Column="0"
+                    <TextBlock Grid.Row="7" 
+                               Grid.Column="1"
                                Text="Email:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="7" Grid.Column="1"
-                             Margin="5"
-                             Name="emailBox"/>
+                                Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="7" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[7]}"
+                             ToolTip="{Binding ToolTipCollection[7]}"/>
 
                     <!-- Место проживания -->
-                    <TextBlock Grid.Row="8" Grid.Column="0"
+                    <TextBlock Grid.Row="8" 
+                               Grid.Column="1"
                                Text="Место проживания:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="8" Grid.Column="1"
-                             Margin="5"
-                             Name="placeBox"/>
+                                Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="8" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[8]}"
+                             ToolTip="{Binding ToolTipCollection[8]}"/>
 
                     <!-- Диагноз -->
-                    <TextBlock Grid.Row="9" Grid.Column="0"
+                    <TextBlock Grid.Row="9" 
+                               Grid.Column="1"
                                Text="Диагноз:"
-                               Margin="5"
-                               VerticalAlignment="Center"
-                               FontSize="16"/>
-                    <TextBox Grid.Row="9" Grid.Column="1"
-                             Margin="5"
-                             Name="diagnosisBox"/>
+                                Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="9" 
+                             Grid.Column="2"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[9]}"
+                             ToolTip="{Binding ToolTipCollection[9]}"/>
 
                    
                 </Grid>
@@ -163,6 +168,6 @@
                 Margin="0,15,0,0"
                 Padding="30,0"
                 FontSize="16"
-                Command="{Binding command}"/>
+                Command="{Binding CreatePatientCommand}"/>
     </Grid>
 </Page>

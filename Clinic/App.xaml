@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="/Theme/MainWindowTheme/RadioButtonMainTheme.xaml"/>
                 <!-- Text -->
                 <ResourceDictionary Source="/Theme/MainWindowTheme/WelcomeTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/CreatePatient/TextTheme.xaml"/>
 
 
                 <ResourceDictionary Source="/Theme/RegistrationPage/RadioButtonRegPage.xaml"/>

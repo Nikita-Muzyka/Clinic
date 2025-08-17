@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Theme\Registration\**" />
+    <EmbeddedResource Remove="Theme\Registration\**" />
+    <None Remove="Theme\Registration\**" />
+    <Page Remove="Theme\Registration\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Font\Cascadia\CascadiaCode-Bold.ttf" />
     <None Remove="Resources\Font\Cascadia\CascadiaCode-BoldItalic.ttf" />
     <None Remove="Resources\Font\Cascadia\CascadiaCode-ExtraLight.ttf" />
@@ -69,10 +76,6 @@
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-Regular.ttf" />
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-SemiBold.ttf" />
     <Resource Include="Resources\Font\Cascadia\CascadiaCode-SemiBoldItalic.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Theme\Registration\" />
   </ItemGroup>
 
 </Project>

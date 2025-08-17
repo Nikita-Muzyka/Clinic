@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="{DynamicResource ForegroundRadioButton}"></Setter>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="14"></Setter>
-        <Setter Property="FontFamily" Value="/Resources/Font/Cascadia/CascadiaCode-Bold.ttf#Cascadia Code"></Setter>
+        <Setter Property="FontFamily" Value="{DynamicResource FontsTextMainButton}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
