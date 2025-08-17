@@ -21,26 +21,7 @@ namespace Clinic
         public MainWindow()
         {
             InitializeComponent();
-
-            Worker work = new Worker
-            {   
-                FirstName = "Admin",
-                Role = ClinicRole.Admin
-            };
-            Database.Instance.Worker = work;
-
             DataContext = new MainWindow_VM(MainFrame);
-        }
-
-
-        private void RegistrationPage_Button(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new RegistrationPage());
-        }
-
-        private void ClinicPersonal_Button(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ClinicPersonalPage());
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

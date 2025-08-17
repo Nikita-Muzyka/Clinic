@@ -8,12 +8,12 @@ namespace Clinic
         private string _firstName;
         private string _lastName;
         private string? _patronymic;
+        private DateTime _date;
         private string _gender;
         private string _phone;
         private string _email;
-        private string _dateBrith;
         private string? _place;
-        private string _yearsCreate;
+        private DateTime _yearsCreate;
         private string? _diagnosis;
         private int _weight;
 
@@ -49,6 +49,16 @@ namespace Clinic
             }
         }
 
+        public override DateTime Date
+        {
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
+        }
+
         public override string Gender
         {
             get => _gender;
@@ -78,16 +88,6 @@ namespace Clinic
             }
         }
 
-        public override string DateBrith
-        {
-            get => _dateBrith;
-            set
-            {
-                _dateBrith = value;
-                OnPropertyChanged();
-            }
-        }
-
         public override string? Place
         {
             get => _place;
@@ -98,7 +98,7 @@ namespace Clinic
             }
         }
 
-        public override string YearsCreate
+        public override DateTime YearsCreate
         {
             get => _yearsCreate;
             set
@@ -108,7 +108,7 @@ namespace Clinic
             }
         }
 
-        public string Diagnosis
+        public string? Diagnosis
         {
             get => _diagnosis;
             set
@@ -126,6 +126,31 @@ namespace Clinic
                 _weight = value;
                 OnPropertyChanged();
             }
+        }
+
+        public Patient()
+        {
+
+        }
+        public Patient(
+            string firstName, string lastName, 
+            string? patronymic, DateTime date,
+            string gender, int weight,
+            string phone, string email,  
+            string? place, string? diagnosis
+            )
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Patronymic = patronymic;
+            Gender = gender;
+            Phone = phone;
+            Email = email;
+            Date = date;
+            Place = place;
+            YearsCreate = DateTime.Now;
+            Diagnosis = diagnosis;
+            Weight = weight;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

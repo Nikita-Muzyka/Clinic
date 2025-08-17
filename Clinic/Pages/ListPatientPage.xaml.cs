@@ -48,15 +48,15 @@ namespace Clinic.Pages
             {
                 var dbPatient = db.Patients.Find(personChange.Id);
 
-                dbPatient.FirstName = firstNameBox.Text;
-                dbPatient.LastName = lastNameBox.Text;
-                dbPatient.Patronymic = patronymicBox.Text;
-                dbPatient.Gender = genderBox.Text;
-                dbPatient.Phone = phoneBox.Text;
-                dbPatient.Email = emailBox.Text;
-                dbPatient.DateBrith = dateBrithBox.Text;
-                dbPatient.Place = placeBox.Text;
-                dbPatient.Diagnosis = diagnosisBox.Text;
+                //dbPatient.FirstName = firstNameBox.Text;
+                //dbPatient.LastName = lastNameBox.Text;
+                //dbPatient.Patronymic = patronymicBox.Text;
+                //dbPatient.Gender = genderBox.Text;
+                //dbPatient.Phone = phoneBox.Text;
+                //dbPatient.Email = emailBox.Text;
+                //dbPatient.DateBrith = dateBrithBox.Text;
+                //dbPatient.Place = placeBox.Text;
+                //dbPatient.Diagnosis = diagnosisBox.Text;
 
                 db.SaveChanges();
             }
