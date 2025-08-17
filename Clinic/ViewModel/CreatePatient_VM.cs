@@ -1,4 +1,5 @@
 ﻿using Clinic.ClinicPersonal;
+using Clinic.Doctor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +20,12 @@ namespace Clinic
 
         ObservableCollection<Brush> _brushCollection = new ObservableCollection<Brush>();
         ObservableCollection<string> _toolTipCollection = new ObservableCollection<string>();
+        ObservableCollection<string> _genderCollection = new()
+        {
+            "Мужской",
+            "Женский"
+        };
+        Patient _patient;
         PatientValidation patientValidation { get; }
         public ICommand CreatePatientCommand { get; }
 
@@ -51,6 +58,15 @@ namespace Clinic
             set
             {
                 _toolTipCollection = value;
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<string> GenderCollection
+        {
+            get => _genderCollection;
+            set
+            {
+                _genderCollection = value;
                 OnPropertyChanged();
             }
         }
@@ -164,12 +180,34 @@ namespace Clinic
         private void command2()
         {
             CheckValidation = patientValidation.Validation(FirstName, LastName, Patronymic, DateBrith, Gender, Weight, Phone, Email, Place, Diagnosis);
-            MessageBox.Show(FirstName);
+            bool resultCreatePatient = CreatePatient();
+            MessageBox.Show(resultCreatePatient ? "Пациент Создан" : "Пациент не создан");
         }
        
+        private bool CreatePatient()
+        {
+            bool result = false;
+            if (CheckValidation == true)
+            {
+                _patient = new Patient(FirstName,LastName,Patronymic,DateBrith,Gender,Weight,Phone,Email,Place,Diagnosis);
+                using (var db = new ClinicContext())
+                {
+                    try
+                    {
+                        db.Patients.Add(_patient);
+                        db.SaveChanges();
+                        result = true;
+                                            }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            return result;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -28,7 +28,7 @@ namespace Clinic
 
         void BrushCollectionPull()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 10; i++)
             {
                 BrushCollection.Add(Brushes.Transparent);
                 ToolTipCollection.Add("");
@@ -42,6 +42,20 @@ namespace Clinic
                 BrushCollection[i] = Brushes.Transparent;
                 ToolTipCollection[i] = "";
                 Errors = 0;
+            }
+        }
+        void ChangeColorBrush()
+        {
+            for (int i = 0; i < BrushCollection.Count ; i++)
+            {
+                if (BrushCollection[i] == Brushes.Transparent)
+                {
+                    BrushCollection[i] = Brushes.LightGreen;
+                }
+                else
+                {
+                    Errors++;
+                }
             }
         }
 
@@ -131,29 +145,37 @@ namespace Clinic
             }
 
             //Patronymic
-            if (string.IsNullOrWhiteSpace(LastName) == false)
+            if (string.IsNullOrWhiteSpace(Patronymic) == false)
             {
-                bool result = false;
-                for (int i = 1; i < Patronymic.Length; i++)
+                if(Patronymic.Length >= 2)
                 {
-                    result = char.IsUpper(Patronymic[i]);
-                    if (result == true)
+                    bool result = false;
+                    for (int i = 1; i < Patronymic.Length; i++)
                     {
-                        BrushCollection[2] = Brushes.Red;
-                        ToolTipCollection[2] = "Отчество содержит заглавные буквы";
-                        break;
-                    }
-                }
-                if (result == false)
-                    for (int i = 0; i < 1; i++)
-                    {
-                        result = char.IsLower(FirstName[i]);
+                        result = char.IsUpper(Patronymic[i]);
                         if (result == true)
                         {
                             BrushCollection[2] = Brushes.Red;
-                            ToolTipCollection[2] = "Отчество должно начинаться с заглавной буквы";
+                            ToolTipCollection[2] = "Отчество содержит заглавные буквы";
+                            break;
                         }
                     }
+                    if (result == false)
+                        for (int i = 0; i < 1; i++)
+                        {
+                            result = char.IsLower(Patronymic[i]);
+                            if (result == true)
+                            {
+                                BrushCollection[2] = Brushes.Red;
+                                ToolTipCollection[2] = "Отчество должно начинаться с заглавной буквы";
+                            }
+                        }
+                }
+                else
+                {
+                    BrushCollection[2] = Brushes.Red;
+                    ToolTipCollection[2] = "Отчество должно содержать больше 1 символа";
+                }
             }
 
             //DateBirth
@@ -203,6 +225,15 @@ namespace Clinic
                 ToolTipCollection[6] = "Минимально 5 символов номера";
             }
 
+            //Email
+            if (string.IsNullOrWhiteSpace(Email) == true)
+            {
+                BrushCollection[7] = Brushes.Red;
+                ToolTipCollection[7] = "Email обязателен для заполнения";
+
+            }
+
+            ChangeColorBrush();
             if (Errors is 0) CheckValidation = true;
             return CheckValidation;
         }

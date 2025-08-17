@@ -108,7 +108,7 @@ namespace Clinic
             }
         }
 
-        public string Diagnosis
+        public string? Diagnosis
         {
             get => _diagnosis;
             set
@@ -126,6 +126,32 @@ namespace Clinic
                 _weight = value;
                 OnPropertyChanged();
             }
+        }
+
+        public Patient()
+        {
+
+        }
+        public Patient(
+            string firstName, string lastName, 
+            string? patronymic, string dateBrith,
+            string gender, string weight,
+            string phone, string email,  
+            string? place, string? diagnosis
+            )
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Patronymic = patronymic;
+            Gender = gender;
+            Phone = phone;
+            Email = email;
+            DateBrith = dateBrith;
+            Place = place;
+            YearsCreate = DateTime.Now.ToString();
+            Diagnosis = diagnosis;
+            int Iweight = int.Parse(weight);
+            Weight = Iweight;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
