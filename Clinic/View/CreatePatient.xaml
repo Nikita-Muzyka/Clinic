@@ -82,7 +82,7 @@
                                Style="{DynamicResource TextBlockTheme}"/>
                     <DatePicker Grid.Row="3"
                                 Grid.Column="2"
-                                SelectedDate="{Binding date}"
+                                SelectedDate="{Binding Date, Mode=TwoWay}"
                                 Style="{StaticResource DatePickerCreatePatient}">
                     </DatePicker>
 

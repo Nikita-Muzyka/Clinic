@@ -21,8 +21,7 @@
                     <StackPanel>
                         <TextBlock Text="{Binding LastName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding FirstName}"/>
-                        <TextBlock Text="{Binding Patronymic}"/>
-                        <TextBlock Text="{Binding Date}"/>
+                        <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

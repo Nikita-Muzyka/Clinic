@@ -37,7 +37,7 @@ namespace Clinic
         string? _gender;
         string? _phone;
         string? _email;
-        DateTime? date;
+        DateTime _date = DateTime.Now;
         string? _place;
         string? _yearsCreate;
         string? _diagnosis;
@@ -152,6 +152,15 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
+        public DateTime Date
+        {
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public CreatePatient_VM()
@@ -162,7 +171,7 @@ namespace Clinic
 
         private async void CreatePatient()
         {
-            _patient = patientValidation.Validation(FirstName, LastName, Patronymic, date, Gender, Weight, Phone, Email, Place, Diagnosis);
+            _patient = patientValidation.Validation(FirstName, LastName, Patronymic, Date, Gender, Weight, Phone, Email, Place, Diagnosis);
             await CreatePatientAsync();
 
         }

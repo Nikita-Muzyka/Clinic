@@ -18,16 +18,11 @@ namespace Clinic
         ObservableCollection<Brush> BrushCollection;
         ObservableCollection<string> ToolTipCollection;
         Patient _patient;
+        DateTime Date;
 
-        byte Errors = 0;
-        DateTime _date;
+        byte Errors = 0;     
         int WeightConvert;
 
-        DateTime Date
-        {
-            get => _date;
-            set => _date = value.Date;
-        }
 
         public PatientValidation(ObservableCollection<Brush> _brushCollection, ObservableCollection<string> _toolTipCollection) 
         {
@@ -71,7 +66,7 @@ namespace Clinic
             string? FirstName,
             string? LastName,
             string? Patronymic,
-            DateTime? date,
+            DateTime date,
             string? Gender,
             string? Weight,
             string? Phone,
@@ -191,6 +186,10 @@ namespace Clinic
             {
                 BrushCollection[3] = Brushes.Red;
                 ToolTipCollection[3] = "Дата рождения не может быть в будущем или дата пуста";
+            }
+            else
+            {
+                Date = date.Date;
             }
 
             //Gender
