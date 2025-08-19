@@ -37,7 +37,6 @@ namespace Clinic
         string? _gender;
         string? _phone;
         string? _email;
-        string? _dateFree;
         DateTime? date;
         string? _place;
         string? _yearsCreate;
@@ -99,15 +98,6 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-        public string? DateFree
-        {
-            get => _dateFree;
-            set
-            {
-                _dateFree = value;
-                OnPropertyChanged();
-            }
-        }
         public string? Gender
         {
             get => _gender;
@@ -166,29 +156,28 @@ namespace Clinic
 
         public CreatePatient_VM()
         {
-            CreatePatientCommand = new RelayCommand(command2);
+            CreatePatientCommand = new RelayCommand(CreatePatient);
             patientValidation = new PatientValidation(BrushCollection, ToolTipCollection);
         }
 
-        private void command2()
+        private async void CreatePatient()
         {
-            _patient = patientValidation.Validation(FirstName, LastName, Patronymic, DateFree, Gender, Weight, Phone, Email, Place, Diagnosis);
-            bool resultCreatePatient = CreatePatient();
-            MessageBox.Show(resultCreatePatient ? "Пациент Создан" : "Пациент не создан исправте ошибки");
+            _patient = patientValidation.Validation(FirstName, LastName, Patronymic, date, Gender, Weight, Phone, Email, Place, Diagnosis);
+            await CreatePatientAsync();
+
         }
        
-        private bool CreatePatient()
+        private async Task CreatePatientAsync()
         {
-            bool result = false;
             if (_patient is not null)
             {
                 using (var db = new ClinicContext())
                 {
                     try
                     {
-                        db.Patients.Add(_patient);
-                        db.SaveChanges();
-                        result = true;
+                        await db.Patients.AddAsync(_patient);
+                        await db.SaveChangesAsync();
+                        MessageBox.Show("Пациента создан");
                                             }
                     catch (Exception ex)
                     {
@@ -196,7 +185,6 @@ namespace Clinic
                     }
                 }
             }
-            return result;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

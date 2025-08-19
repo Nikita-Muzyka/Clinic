@@ -20,17 +20,11 @@ namespace Clinic.Pages
     /// </summary>
     public partial class RegistrationPage : Page
     {
+        ListPatientPage ListPatient;
         public RegistrationPage()
         {
             InitializeComponent();
             DataContext = new RegistrationPage_VM(RegFrame);
-        }
-
-        private void AppointmentCreate_Button(object sender, RoutedEventArgs e)
-        {
-            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.Register)
-                RegFrame.Navigate(new AppointmentPage());
-              else MessageBox.Show("Доступ запрещен");
         }
     }
 }

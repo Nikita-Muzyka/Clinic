@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO.Packaging;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -70,7 +71,7 @@ namespace Clinic
             string? FirstName,
             string? LastName,
             string? Patronymic,
-            string? date,
+            DateTime? date,
             string? Gender,
             string? Weight,
             string? Phone,
@@ -186,19 +187,10 @@ namespace Clinic
             }
 
             //DateBirth
-                if (string.IsNullOrWhiteSpace(date) == true)
-                {
-                    BrushCollection[3] = Brushes.Red;
-                    ToolTipCollection[3] = "Выберите дату";
-                }
-            else
+            if (date > DateTime.Now)
             {
-                Date = DateTime.Parse(date);
-                if(Date > DateTime.Now)
-                {
-                    BrushCollection[3] = Brushes.Red;
-                    ToolTipCollection[3] = "Дата рождения не может быть в будущем";
-                }
+                BrushCollection[3] = Brushes.Red;
+                ToolTipCollection[3] = "Дата рождения не может быть в будущем или дата пуста";
             }
 
             //Gender
