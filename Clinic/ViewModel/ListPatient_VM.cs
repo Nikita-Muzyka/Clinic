@@ -61,13 +61,13 @@ namespace Clinic.ViewModel
 
         async void LoadPatient()
         {
-            await CheckedDBpatient();
+            await CheckedDBpatientAsync();
         }
         async void DeletePatient()
         {
-            await DeletePatientDB();
+            await DeletePatientDBAsync();
         }
-        async Task CheckedDBpatient()
+        async Task CheckedDBpatientAsync()
         {
             using (var db = new ClinicContext())
             {
@@ -86,7 +86,7 @@ namespace Clinic.ViewModel
                 }
             }
         }
-        async Task DeletePatientDB()
+        async Task DeletePatientDBAsync()
         {
             _patient = SelectedPatient;
 
@@ -100,9 +100,9 @@ namespace Clinic.ViewModel
                 {
                     using (var db = new ClinicContext())
                     {
-                        var dbPatient = db.Patients.Find(_patient.Id);
+                        var dbPatient = await db.Patients.FindAsync(_patient.Id);
                         db.Patients.Remove(dbPatient);
-                        db.SaveChanges();
+                        await db.SaveChangesAsync();
                     }
                     Patients.Remove(_patient);
                 }

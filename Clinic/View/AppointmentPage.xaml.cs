@@ -33,62 +33,14 @@ namespace Clinic.Pages
         DateTime DateBrith;
         delegate void LoadDateDel();
         LoadDateDel loadDt;
+
+      
         public AppointmentPage()
         {
             InitializeComponent();
             DataContext = new AppointmentPage_VM();
-            LoadPeople();
         }
 
-        private void LoadPeople()
-        {
-            using (var db = new ClinicContext())
-            {
-                var patients = db.Patients.ToList();
-                patientList.ItemsSource = patients;
-                var workers = db.Workers.ToList();
-                workerList.ItemsSource = workers;
-            }
-            loadDt += LoadDate;
-
-            //Worker worker = new Worker
-            //{
-            //    FirstName = "Dima",
-            //    LastName = "Burov",
-            //    Contact = "2232323",
-            //    DateBrith = "11.11.11",
-            //    Gender = "Myj",
-            //    Place = "dadada",
-            //    Title = "adadad",
-            //    YearsCreate = "awdawd",
-            //    Salary = "dwad",
-            //    infoReg = new PeopleRegistration
-            //    {
-            //        Login = "11",
-            //        Password = "11"
-            //    }
-
-            //};
-            //using (var db = new ClinicContext())
-            //{
-            //    db.Add(worker);
-            //    db.SaveChanges();
-            //}
-
-        }
-
-        private void patientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            patient = patientList.SelectedItem as Patient;
-            loadDt();
-        }
-
-        private void workerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            worker = workerList.SelectedItem as Worker;
-            loadDt();
-
-        }
 
         private void GenerateTime()
         {

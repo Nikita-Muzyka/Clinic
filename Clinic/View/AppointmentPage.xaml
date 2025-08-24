@@ -22,10 +22,8 @@
         <!--Пациенты-->
         <GroupBox Grid.Row="0"
                   Header="Пациент">
-             <ListBox x:Name="patientList"
-          Grid.Row="1"
-          Focusable="False"
-          SelectionChanged="patientList_SelectionChanged">
+             <ListBox Grid.Row="1"
+                      ItemsSource="{Binding Patients}">
      <ListBox.ItemTemplate>
          <DataTemplate>
              <StackPanel>
@@ -43,10 +41,8 @@
                   Grid.Column="1"
            Header="Врачи">
             <ListBox Grid.Column="1"
-           Grid.Row="1"
-           Name="workerList"
-           SelectionChanged="workerList_SelectionChanged"
-           Focusable="False">
+                     Grid.Row="1"
+                     ItemsSource="{Binding Workers}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
