@@ -9,15 +9,24 @@ namespace Clinic.Model.FrameServise
 {
     internal class FrameServise
     {
-        Frame _frame;
-        public FrameServise(Frame frame)
+        public Frame _Frame;
+        public static event Action NavigateEvent;
+        public FrameServise(Frame _frame)
         {
-            _frame = frame;
+            _Frame = _frame;
         }
 
         public void NavigateTo<T>() where T : Page, new()
         {
-            _frame?.Navigate(new T());  
+            _Frame?.Navigate(new T());
+        }
+        public void GoBack()
+        {
+            _Frame?.GoBack();
+        }
+        public static void NavigateInvoke()
+        {
+            NavigateEvent?.Invoke();
         }
     }
 }

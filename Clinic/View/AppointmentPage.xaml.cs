@@ -36,6 +36,7 @@ namespace Clinic.Pages
         public AppointmentPage()
         {
             InitializeComponent();
+            DataContext = new AppointmentPage_VM();
             LoadPeople();
         }
 

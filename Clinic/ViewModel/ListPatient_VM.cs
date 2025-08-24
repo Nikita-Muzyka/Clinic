@@ -1,4 +1,6 @@
 ﻿using Clinic.Doctor;
+using Clinic.Model.FrameServise;
+using Clinic.Pages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,14 +12,20 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace Clinic.ViewModel
 {
     internal class ListPatient_VM : INotifyPropertyChanged
     {
         ObservableCollection<Patient> _patients;
-        public ICommand ChangePatientCommand;
+        Patient _patient;
+        FrameServise _frameServise;
+        public ICommand ChangePatientCommand { get; }
+        public ICommand DeletePatientCommand { get; }
+
         public ObservableCollection<Patient> Patients
         {
             get => _patients;
@@ -27,15 +35,37 @@ namespace Clinic.ViewModel
                 OnPropetyChanged();
             }
         }
+        public Patient SelectedPatient { get; set; }
+        public Patient Patient { get; set; }
+
+        Action<Patient> ChangePatient = (SelectedPatient) =>
+        {
+            if(SelectedPatient is not null)
+            {
+                Database.Instance.Patient = SelectedPatient;
+                FrameServise.NavigateInvoke();
+            }
+            else
+            {
+                MessageBox.Show("Выберите Карточку");
+            }
+        };
+
+
         public ListPatient_VM() 
         {
             LoadPatient();
-            ChangePatientCommand = new RelayCommand(ChangePatient);
+            ChangePatientCommand = new RelayCommand(() => ChangePatient(SelectedPatient));
+            DeletePatientCommand = new RelayCommand(DeletePatient);
         }
 
         async void LoadPatient()
         {
             await CheckedDBpatient();
+        }
+        async void DeletePatient()
+        {
+            await DeletePatientDB();
         }
         async Task CheckedDBpatient()
         {
@@ -47,7 +77,6 @@ namespace Clinic.ViewModel
                     if (freePatients is not null)
                     {
                         Patients = new ObservableCollection<Patient>(freePatients);
-                        MessageBox.Show("Созданы");
                     }
                     else MessageBox.Show("Пациентов нету");
                 }
@@ -57,10 +86,31 @@ namespace Clinic.ViewModel
                 }
             }
         }
-
-        void ChangePatient()
+        async Task DeletePatientDB()
         {
-            MessageBox.Show("111");
+            _patient = SelectedPatient;
+
+            var result = MessageBox.Show($"Удалить пациента {_patient.LastName}?",
+                                      "Подтверждение",
+                                      MessageBoxButton.YesNo,
+                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    using (var db = new ClinicContext())
+                    {
+                        var dbPatient = db.Patients.Find(_patient.Id);
+                        db.Patients.Remove(dbPatient);
+                        db.SaveChanges();
+                    }
+                    Patients.Remove(_patient);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message); 
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

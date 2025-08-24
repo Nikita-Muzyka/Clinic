@@ -31,27 +31,5 @@ namespace Clinic.Pages
             InitializeComponent();
             DataContext = new ListPatient_VM();
         }
-
-        
-        //private void DeletePatient_btn(object sender, RoutedEventArgs e)
-        //{
-        //    personChange = patientListBox.SelectedItem as Patient;
-
-        //    var result = MessageBox.Show($"Удалить пациента {personChange.LastName}?",
-        //                              "Подтверждение",
-        //                              MessageBoxButton.YesNo,
-        //                              MessageBoxImage.Question);
-        //    if (result == MessageBoxResult.Yes)
-        //    {
-        //        using (var db = new ClinicContext())
-        //        {
-        //            var dbPatient = db.Patients.Find(personChange.Id);
-        //            db.Patients.Remove(dbPatient);
-        //            db.SaveChanges();
-        //        }
-        //        patients.Remove(personChange);
-        //    }
-
-        //}
     }
 }

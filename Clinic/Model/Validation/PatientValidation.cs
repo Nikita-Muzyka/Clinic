@@ -206,11 +206,16 @@ namespace Clinic
                 || Weight.Any(char.IsSymbol) == true)
             {
                 BrushCollection[5] = Brushes.Red;
-                ToolTipCollection[5] = "Контакты обязательны для заполнения или должны содежрать только цифры";
+                ToolTipCollection[5] = "Вес обязателен для заполнения или должны содежрать только цифры";
             }
             else
             {
                 WeightConvert = int.Parse(Weight);
+                if (WeightConvert > 300 || WeightConvert < 0)
+                {
+                    BrushCollection[5] = Brushes.Red;
+                    ToolTipCollection[5] = "Вес не может быть ниже нуля и больше 300";
+                }
             }
 
             //Phone

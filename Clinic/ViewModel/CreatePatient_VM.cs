@@ -29,8 +29,8 @@ namespace Clinic
         PatientValidation patientValidation { get; }
         public ICommand CreatePatientCommand { get; }
 
-        bool CheckValidation = false;
-
+        bool CheckHappen = false;
+        int saveIdPatient;
         string? _firstName;
         string? _lastName;
         string? _patronymic;
@@ -42,6 +42,8 @@ namespace Clinic
         string? _yearsCreate;
         string? _diagnosis;
         string? _weight;
+
+        string _buttonText = "Создать";
 
         public ObservableCollection<Brush> BrushCollection
         {
@@ -161,38 +163,107 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
-
+        public string ButtonText
+        {
+            get => _buttonText;
+            set
+            {
+                _buttonText = value;
+                OnPropertyChanged();
+            }
+        }
 
         public CreatePatient_VM()
         {
             CreatePatientCommand = new RelayCommand(CreatePatient);
             patientValidation = new PatientValidation(BrushCollection, ToolTipCollection);
+            CopyDatePatient();
         }
-
         private async void CreatePatient()
         {
             _patient = patientValidation.Validation(FirstName, LastName, Patronymic, Date, Gender, Weight, Phone, Email, Place, Diagnosis);
             await CreatePatientAsync();
 
         }
-       
         private async Task CreatePatientAsync()
         {
             if (_patient is not null)
             {
-                using (var db = new ClinicContext())
+                if(CheckHappen is true)
                 {
-                    try
+                    using (var db = new ClinicContext())
                     {
-                        await db.Patients.AddAsync(_patient);
-                        await db.SaveChangesAsync();
-                        MessageBox.Show("Пациента создан");
-                                            }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        try
+                        {
+                            var patient = await db.Patients.FindAsync(saveIdPatient);
+
+                            if (patient != null)
+                            {
+                                // Обновляем данные
+                                patient.FirstName = _patient.FirstName;
+                                patient.LastName = _patient.LastName;
+                                patient.Gender = _patient.Gender;
+                                patient.Phone = _patient.Phone;
+                                patient.Email = _patient.Email;
+                                patient.Place = _patient.Place;
+                                patient.Diagnosis = _patient.Diagnosis;
+                                patient.Patronymic = _patient.Patronymic;
+                                patient.Date = _patient.Date;
+                                patient.Weight = _patient.Weight;
+                                // Сохраняем изменения
+                                await db.SaveChangesAsync();
+                                MessageBox.Show("Пациента изменен");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Пациента не изменен");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
+                else
+                {
+                    using (var db = new ClinicContext())
+                    {
+                        try
+                        {
+                            await db.Patients.AddAsync(_patient);
+                            await db.SaveChangesAsync();
+                            MessageBox.Show("Пациента создан");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+        void CopyDatePatient()
+        {
+            if(Database.Instance.Patient is not null)
+            {
+                _patient = Database.Instance.Patient;
+                saveIdPatient = _patient.Id;
+                FirstName = _patient.FirstName;
+                LastName = _patient.LastName;
+                Patronymic = _patient.Patronymic;
+                Date = _patient.Date;
+                Gender = _patient.Gender;
+                Phone = _patient.Phone;
+                Email = _patient.Email;
+                Weight = _patient.Weight.ToString();
+                Place = _patient.Place;
+                Diagnosis = _patient.Diagnosis;
+
+
+                Database.Instance.Patient = null;
+                ButtonText = "Изменить";
+                CheckHappen = true;
             }
         }
 
