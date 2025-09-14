@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Clinic.Doctor;
+using Clinic.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,15 +20,16 @@ using System.Windows.Shapes;
 namespace Clinic.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для RegistrationPage.xaml
+    /// Логика взаимодействия для ListPatientPage.xaml
     /// </summary>
-    public partial class RegistrationPage : Page
+    public partial class ListPatientPage : Page
     {
-        ListPatientPage ListPatient;
-        public RegistrationPage()
+       
+
+        public ListPatientPage()
         {
             InitializeComponent();
-            DataContext = new RegistrationPage_VM(RegFrame);
+            DataContext = new ListPatient_VM();
         }
     }
 }

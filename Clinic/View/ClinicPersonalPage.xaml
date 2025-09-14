@@ -1,0 +1,52 @@
+﻿<Page x:Class="Clinic.Pages.ClinicPersonalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      xmlns:local="clr-namespace:Clinic.Pages"
+      xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="ClinicPersonalPage">
+
+    <Grid>
+        <!-- Используем пропорциональное распределение пространства -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Панель меню -->
+        <Border Grid.Row="0">
+            <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+
+                <RadioButton Content="Создать Врача"
+                         IsChecked="{Binding CheckedCreatePatientButton}"
+                         Command="{Binding CreatePatientCommand}"
+                         Style="{StaticResource RadioButtonRegistrationPage}"
+                         Margin="5,5,10,5"/>
+
+                <RadioButton Content="Врачи"
+                         Command="{Binding ListPatientCommand}"
+                         Style="{StaticResource RadioButtonRegistrationPage}"
+                          Margin="5,5,10,5"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Вертикальный разделитель -->
+        <Border Grid.Row="1"
+     Grid.Column="1"
+     Background="{DynamicResource BackgroundMainLine}">
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Frame NavigationUIVisibility="Hidden"
+               Name="RegFrame"
+               BorderBrush="Transparent"></Frame>
+        </Grid>
+    </Grid>
+</Page>

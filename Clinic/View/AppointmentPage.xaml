@@ -22,10 +22,9 @@
         <!--Пациенты-->
         <GroupBox Grid.Row="0"
                   Header="Пациент">
-             <ListBox x:Name="patientList"
-          Grid.Row="1"
-          Focusable="False"
-          SelectionChanged="patientList_SelectionChanged">
+             <ListBox Grid.Row="1"
+                      ItemsSource="{Binding Patients}"
+                      SelectedItem="{Binding SelectedPatient}">
      <ListBox.ItemTemplate>
          <DataTemplate>
              <StackPanel>
@@ -43,10 +42,9 @@
                   Grid.Column="1"
            Header="Врачи">
             <ListBox Grid.Column="1"
-           Grid.Row="1"
-           Name="workerList"
-           SelectionChanged="workerList_SelectionChanged"
-           Focusable="False">
+                     Grid.Row="1"
+                     ItemsSource="{Binding Workers}"
+                     SelectedItem="{Binding SelectedWorker}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -60,9 +58,7 @@
         </GroupBox>
 
         <!--Date-->
-        <Grid Grid.Column="2"
-              Name="gridDate"
-              Visibility="Collapsed">
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -73,12 +69,12 @@
                 <DatePicker Name="datebirthBox"
                             SelectedDateFormat="Short"
                             Style="{StaticResource DatePickerCreatePatient}"
-                            SelectedDateChanged="datebirthBox_SelectedDateChanged">
+                            SelectedDate="{Binding Date, Mode=TwoWay}">
                 </DatePicker>
             </GroupBox>
             <ListBox Grid.Row="1"
-                     Name="timeListBox"
-                     SelectionChanged="timeListBox_SelectionChanged">
+                     ItemsSource="{Binding TimeSlotsCollection}"
+                     SelectedItem="{Binding SelectedTimeSlot}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -90,8 +86,8 @@
         </Grid>
 
         <!--Button Create-->
-        <Button Content="Create"
-                Click="CreateApp"
+        <Button Content="Создать прием"
+                Command="{Binding CreateAppointmentCommand}"
                 Grid.Column="1"
                 Grid.Row="2"/>
     </Grid>

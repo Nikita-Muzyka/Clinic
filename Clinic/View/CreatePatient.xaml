@@ -82,7 +82,7 @@
                                Style="{DynamicResource TextBlockTheme}"/>
                     <DatePicker Grid.Row="3"
                                 Grid.Column="2"
-                                SelectedDate="{Binding DateFree}"
+                                SelectedDate="{Binding Date, Mode=TwoWay}"
                                 Style="{StaticResource DatePickerCreatePatient}">
                     </DatePicker>
 
@@ -167,7 +167,7 @@
 
         <!-- Кнопка создания -->
         <Button Grid.Row="1"
-                Content="Создать"
+                Content="{Binding ButtonText}"
                 HorizontalAlignment="Center"
                 Margin="0,15,0,0"
                 Padding="30,0"

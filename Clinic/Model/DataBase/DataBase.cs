@@ -14,6 +14,7 @@ namespace Clinic
 
         // Список пациентов
         public Worker Worker { get; set; } = new Worker();
+        public Patient Patient { get; set; } = new Patient();
 
         // Приватный конструктор (чтобы нельзя было создать новый экземпляр)
         private Database()

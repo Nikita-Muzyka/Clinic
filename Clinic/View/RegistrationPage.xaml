@@ -22,6 +22,7 @@
                         Orientation="Horizontal">
                 
                 <RadioButton Content="Создать карточку"
+                             IsChecked="{Binding CheckedCreatePatientButton}"
                              Command="{Binding CreatePatientCommand}"
                              Style="{StaticResource RadioButtonRegistrationPage}"
                              Margin="5,5,10,5"/>
@@ -33,6 +34,7 @@
 
                 <RadioButton Content="Запись на прием"
                              Style="{StaticResource RadioButtonRegistrationPage}"
+                             Command="{Binding AppointmentCommand}"
                               Margin="5,5,10,5"/>
                 
             </StackPanel>

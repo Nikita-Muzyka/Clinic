@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Clinic.ClinicPersonal.Appointment;
+using Clinic.Doctor;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +15,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Clinic.Pages.AppointmentPage;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Clinic.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AppointmentsListPage.xaml
+    /// Логика взаимодействия для AppointmentPage.xaml
     /// </summary>
-    public partial class AppointmentsListPage : Page
+    public partial class AppointmentPage : Page
     {
-        public AppointmentsListPage()
+        public AppointmentPage()
         {
             InitializeComponent();
+            DataContext = new AppointmentPage_VM();
         }
     }
 }

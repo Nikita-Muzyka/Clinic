@@ -42,20 +42,20 @@
                 <RadioButton Grid.Row="0" 
                              Command="{Binding StatisticsCommand}"
                              Style="{DynamicResource MainRadioButton}" 
-                             >Статистика</RadioButton>
+                             >Статистика(NOT)</RadioButton>
                 <RadioButton Grid.Row="1"
                              Command="{Binding RegistrationPatientCommand}"
                              Style="{DynamicResource MainRadioButton}"
                              >Регистрация</RadioButton>
                 <RadioButton Grid.Row="2" 
                       Style="{DynamicResource MainRadioButton}"
-                      >Персонал</RadioButton>
+                      >Персонал(NOT)</RadioButton>
                 <RadioButton Grid.Row="3" 
                              Style="{DynamicResource MainRadioButton}"
-                             >Анализы</RadioButton>
+                             >Анализы(NOT)</RadioButton>
                 <RadioButton Grid.Row="4" 
                              Style="{DynamicResource MainRadioButton}"
-                             >Отдел</RadioButton>
+                             >Отдел(NOT)</RadioButton>
             </Grid>
 
             <!--Column 1 | Страницы--> 
