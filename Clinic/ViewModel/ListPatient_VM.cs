@@ -98,7 +98,7 @@ namespace Clinic.ViewModel
             {
                 try
                 {
-                    using (var db = new ClinicContext())
+                    await using (var db = new ClinicContext())
                     {
                         var dbPatient = await db.Patients.FindAsync(_patient.Id);
                         db.Patients.Remove(dbPatient);

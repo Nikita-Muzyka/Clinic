@@ -23,7 +23,8 @@
         <GroupBox Grid.Row="0"
                   Header="Пациент">
              <ListBox Grid.Row="1"
-                      ItemsSource="{Binding Patients}">
+                      ItemsSource="{Binding Patients}"
+                      SelectedItem="{Binding SelectedPatient}">
      <ListBox.ItemTemplate>
          <DataTemplate>
              <StackPanel>
@@ -42,7 +43,8 @@
            Header="Врачи">
             <ListBox Grid.Column="1"
                      Grid.Row="1"
-                     ItemsSource="{Binding Workers}">
+                     ItemsSource="{Binding Workers}"
+                     SelectedItem="{Binding SelectedWorker}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -67,12 +69,12 @@
                 <DatePicker Name="datebirthBox"
                             SelectedDateFormat="Short"
                             Style="{StaticResource DatePickerCreatePatient}"
-                            SelectedDateChanged="datebirthBox_SelectedDateChanged">
+                            SelectedDate="{Binding Date, Mode=TwoWay}">
                 </DatePicker>
             </GroupBox>
             <ListBox Grid.Row="1"
-                     Name="timeListBox"
-                     SelectionChanged="timeListBox_SelectionChanged">
+                     ItemsSource="{Binding TimeSlotsCollection}"
+                     SelectedItem="{Binding SelectedTimeSlot}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -84,8 +86,8 @@
         </Grid>
 
         <!--Button Create-->
-        <Button Content="Create"
-                Click="CreateApp"
+        <Button Content="Создать прием"
+                Command="{Binding CreateAppointmentCommand}"
                 Grid.Column="1"
                 Grid.Row="2"/>
     </Grid>
