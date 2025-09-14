@@ -57,14 +57,14 @@ namespace Clinic.Pages
             timeListBox.ItemsSource = timeSlotsCollection;
         }
 
-        void LoadDate()
-        {
-            if (patient != null && worker != null)
-            {
-                gridDate.Visibility = Visibility.Visible;
-            }
+        //void LoadDate()
+        //{
+        //    if (patient != null && worker != null)
+        //    {
+        //        gridDate.Visibility = Visibility.Visible;
+        //    }
 
-        }
+        //}
 
         private void CreateApp(object sender, RoutedEventArgs e)
         {

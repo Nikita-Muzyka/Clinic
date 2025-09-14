@@ -56,9 +56,7 @@
         </GroupBox>
 
         <!--Date-->
-        <Grid Grid.Column="2"
-              Name="gridDate"
-              Visibility="Collapsed">
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>

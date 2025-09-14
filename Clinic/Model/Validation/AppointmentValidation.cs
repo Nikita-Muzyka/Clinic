@@ -1,10 +1,12 @@
 ﻿using Clinic.Doctor;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Clinic
 {
@@ -12,7 +14,7 @@ namespace Clinic
     {
         Appointment Appointment;
         bool result = false;
-        public void ValidationApp(Patient patient, Worker worker, string date,string CheckTime)
+        public async void ValidationApp(Patient patient, Worker worker, string date,string CheckTime)
         {
             if (string.IsNullOrWhiteSpace(date) == false || string.IsNullOrWhiteSpace(CheckTime) == false)
             {
@@ -20,29 +22,7 @@ namespace Clinic
                 TimeSpan timeSpan = TimeSpan.Parse(CheckTime);
                 if (dateBrith > DateTime.Now)
                 {
-                    using (var db = new ClinicContext())
-                    {
-                        var App = db.Appointments
-                             .Where(p => patient.Id == p.PatientId & worker.Id == p.WorkerId & dateBrith == p.Date && timeSpan == p.Time)
-                             .ToList();
-                        if (App.Count == 0)
-                        {
-                            Appointment = new Appointment
-                            {
-                                PatientId = patient.Id,
-                                WorkerId = worker.Id,
-                                Date = dateBrith,
-                                Time = timeSpan
-                            };
-                            db.Appointments.Add(Appointment);
-                            db.SaveChanges();
-                            MessageBox.Show("Прием назначен");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Такой прием уже существует");
-                        }
-                    }
+                    await CheckedValidationAsync(dateBrith,timeSpan,patient,worker);
                 }
                 else
                 {
@@ -52,6 +32,32 @@ namespace Clinic
             else
             {
                 MessageBox.Show("Выберите дату или время");
+            }
+        }
+        async Task CheckedValidationAsync(DateTime dateBrith,TimeSpan timeSpan, Patient patient, Worker worker)
+        {
+            await using (var db = new ClinicContext())
+            {
+                var App = await db.Appointments
+                     .Where(p => patient.Id == p.PatientId & worker.Id == p.WorkerId & dateBrith == p.Date && timeSpan == p.Time)
+                     .ToListAsync();
+                if (App.Count == 0)
+                {
+                    Appointment = new Appointment
+                    {
+                        PatientId = patient.Id,
+                        WorkerId = worker.Id,
+                        Date = dateBrith,
+                        Time = timeSpan
+                    };
+                    await db.Appointments.AddAsync(Appointment);
+                    await db.SaveChangesAsync();
+                    MessageBox.Show("Прием назначен");
+                }
+                else
+                {
+                    MessageBox.Show("Такой прием уже существует");
+                }
             }
         }
     }
