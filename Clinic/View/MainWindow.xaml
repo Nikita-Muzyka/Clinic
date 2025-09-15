@@ -48,8 +48,9 @@
                              Style="{DynamicResource MainRadioButton}"
                              >Регистрация</RadioButton>
                 <RadioButton Grid.Row="2" 
-                      Style="{DynamicResource MainRadioButton}"
-                      >Персонал(NOT)</RadioButton>
+                             Style="{DynamicResource MainRadioButton}"
+                             Command="{Binding RegistrationPersonalClinicCommand}"
+                             >Персонал</RadioButton>
                 <RadioButton Grid.Row="3" 
                              Style="{DynamicResource MainRadioButton}"
                              >Анализы(NOT)</RadioButton>

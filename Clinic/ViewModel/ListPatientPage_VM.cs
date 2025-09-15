@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 
 namespace Clinic.ViewModel
 {
-    internal class ListPatient_VM : INotifyPropertyChanged
+    internal class ListPatientPage_VM : INotifyPropertyChanged
     {
         ObservableCollection<Patient> _patients;
         Patient _patient;
@@ -52,7 +52,7 @@ namespace Clinic.ViewModel
         };
 
 
-        public ListPatient_VM() 
+        public ListPatientPage_VM() 
         {
             LoadPatient();
             ChangePatientCommand = new RelayCommand(() => ChangePatient(SelectedPatient));

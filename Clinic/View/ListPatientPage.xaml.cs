@@ -29,7 +29,7 @@ namespace Clinic.Pages
         public ListPatientPage()
         {
             InitializeComponent();
-            DataContext = new ListPatient_VM();
+            DataContext = new ListPatientPage_VM();
         }
     }
 }
