@@ -134,9 +134,7 @@
                     <TextBox Grid.Row="7" 
                           Grid.Column="2"
                            Text="{Binding Place}"
-                          Style="{DynamicResource TextBoxTheme}"
-                          BorderBrush="{Binding BrushCollection[7]}"
-                          ToolTip="{Binding ToolTipCollection[7]}"/>
+                          Style="{DynamicResource TextBoxTheme}"/>
 
                     <!-- Зарплата -->
                     <TextBlock Grid.Row="8" 
@@ -147,8 +145,8 @@
                           Grid.Column="2"
                            Text="{Binding Salary}"
                           Style="{DynamicResource TextBoxTheme}"
-                          BorderBrush="{Binding BrushCollection[8]}"
-                          ToolTip="{Binding ToolTipCollection[8]}"/>
+                          BorderBrush="{Binding BrushCollection[7]}"
+                          ToolTip="{Binding ToolTipCollection[7]}"/>
 
                     <!-- Роль -->
                     <TextBlock Grid.Row="9" 
@@ -159,8 +157,8 @@
                              Grid.Column="2"
                              Text="{Binding Role}"
                              Style="{DynamicResource TextBoxTheme}"
-                             BorderBrush="{Binding BrushCollection[9]}"
-                             ToolTip="{Binding ToolTipCollection[9]}"/>
+                             BorderBrush="{Binding BrushCollection[8]}"
+                             ToolTip="{Binding ToolTipCollection[8]}"/>
 
                     <!-- Login -->
                     <TextBlock Grid.Row="10" 
@@ -171,8 +169,8 @@
                              Grid.Column="2"
                              Text="{Binding Login}"
                              Style="{DynamicResource TextBoxTheme}"
-                             BorderBrush="{Binding BrushCollection[10]}"
-                             ToolTip="{Binding ToolTipCollection[10]}"/>
+                             BorderBrush="{Binding BrushCollection[9]}"
+                             ToolTip="{Binding ToolTipCollection[9]}"/>
 
                     <!-- Пароль -->
                     <TextBlock Grid.Row="11" 
@@ -183,8 +181,8 @@
                              Grid.Column="2"
                              Text="{Binding Password}"
                              Style="{DynamicResource TextBoxTheme}"
-                             BorderBrush="{Binding BrushCollection[11]}"
-                             ToolTip="{Binding ToolTipCollection[11]}"/>
+                             BorderBrush="{Binding BrushCollection[10]}"
+                             ToolTip="{Binding ToolTipCollection[10]}"/>
 
                 </Grid>
             </ScrollViewer>

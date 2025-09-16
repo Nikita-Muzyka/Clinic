@@ -124,6 +124,11 @@ namespace Clinic
             }
         }
         public PeopleRegistration infoReg { get; set; }
+
+        public Worker()
+        {
+
+        }
         public Worker(string firstname, string lastname, string? patronymic, 
             DateTime date, string gender, string phone, 
             string email, string? place, string salary,
@@ -146,8 +151,9 @@ namespace Clinic
             };
         }
 
-        public string CheckRoleName(ClinicRole Role)
+        public string CheckRoleName()
         {
+            ClinicRole Role = this.Role;
             string RoleReturn = "";
             switch (Role)
             {

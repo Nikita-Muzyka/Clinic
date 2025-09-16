@@ -197,7 +197,7 @@ namespace Clinic
         {
             CreateWorkerCommand = new RelayCommand(CreateWorker);
             workerValidation = new WorkerValidation(BrushCollection, ToolTipCollection);
-            CopyDatePatient();
+            //CopyDateWorker();
         }
         private async void CreateWorker()
         {
@@ -279,13 +279,11 @@ namespace Clinic
                 Phone = _worker.Phone;
                 Email = _worker.Email;
                 Place = _worker.Place;
-                Role = _worker.Role;
-                Place = _worker.infoReg.Login;
-                Place = _worker.infoReg.Password;
+                Role = _worker.CheckRoleName();
+                Login = _worker.infoReg.Login;
+                Password = _worker.infoReg.Password;
 
-
-
-                Database.Instance.Patient = null;
+                Database.Instance.Worker = null;
                 ButtonText = "Изменить";
                 CheckHappen = true;
             }

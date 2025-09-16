@@ -1,6 +1,5 @@
 ﻿using Clinic.Doctor;
 using Clinic.Model.FrameServise;
-using Clinic.Pages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,42 +7,39 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace Clinic.ViewModel
 {
-    internal class ListPatientPage_VM : INotifyPropertyChanged
+    internal class WorkerListPage_VM
     {
-        ObservableCollection<Patient> _patients;
-        Patient _patient;
+        ObservableCollection<Worker> _workers;
+        Worker _worker;
         FrameServise _frameServise;
-        public ICommand ChangePatientCommand { get; }
-        public ICommand DeletePatientCommand { get; }
+        public ICommand ChangeWorkerCommand { get; }
+        public ICommand DeleteWorkerCommand { get; }
 
-        public ObservableCollection<Patient> Patients
+        public ObservableCollection<Worker> Workers
         {
-            get => _patients;
+            get => _workers;
             set
             {
-                _patients = value;
+                _workers = value;
                 OnPropetyChanged();
             }
         }
-        public Patient SelectedPatient { get; set; }
-        public Patient Patient { get; set; }
+        public Worker SelectedWorker { get; set; }
+        public Worker Worker { get; set; }
 
-        Action<Patient> ChangePatient = (SelectedPatient) =>
+        Action<Worker> ChangeWorker = (SelectedWorker) =>
         {
-            if(SelectedPatient is not null)
+            if (SelectedWorker is not null)
             {
-                Database.Instance.Patient = SelectedPatient;
-                FrameServise.NavigateCreatePatientInvoke();
+                Database.Instance.Worker = SelectedWorker;
+                FrameServise.NavigateCreateWorkerInvoke();
             }
             else
             {
@@ -52,31 +48,31 @@ namespace Clinic.ViewModel
         };
 
 
-        public ListPatientPage_VM() 
+        public WorkerListPage_VM()
         {
-            LoadPatient();
-            ChangePatientCommand = new RelayCommand(() => ChangePatient(SelectedPatient));
-            DeletePatientCommand = new RelayCommand(DeletePatient);
+            LoadWorker();
+            ChangeWorkerCommand = new RelayCommand(() => ChangeWorker(SelectedWorker));
+            DeleteWorkerCommand = new RelayCommand(DeleteWorker);
         }
 
-        async void LoadPatient()
+        async void LoadWorker()
         {
-            await CheckedDBpatientAsync();
+            await CheckedDBWorkerAsync();
         }
-        async void DeletePatient()
+        async void DeleteWorker()
         {
-            await DeletePatientDBAsync();
+            await DeleteWorkerDBAsync();
         }
-        async Task CheckedDBpatientAsync()
+        async Task CheckedDBWorkerAsync()
         {
             using (var db = new ClinicContext())
             {
                 try
                 {
-                    var freePatients = await db.Patients.ToListAsync();
-                    if (freePatients is not null)
+                    var freeWorkers = await db.Workers.ToListAsync();
+                    if (freeWorkers is not null)
                     {
-                        Patients = new ObservableCollection<Patient>(freePatients);
+                        Workers = new ObservableCollection<Worker>(freeWorkers);
                     }
                     else MessageBox.Show("Пациентов нету");
                 }
@@ -86,11 +82,11 @@ namespace Clinic.ViewModel
                 }
             }
         }
-        async Task DeletePatientDBAsync()
+        async Task DeleteWorkerDBAsync()
         {
-            _patient = SelectedPatient;
+            _worker = SelectedWorker;
 
-            var result = MessageBox.Show($"Удалить пациента {_patient.LastName}?",
+            var result = MessageBox.Show($"Удалить пациента {_worker.LastName}?",
                                       "Подтверждение",
                                       MessageBoxButton.YesNo,
                                       MessageBoxImage.Question);
@@ -100,15 +96,15 @@ namespace Clinic.ViewModel
                 {
                     await using (var db = new ClinicContext())
                     {
-                        var dbPatient = await db.Patients.FindAsync(_patient.Id);
+                        var dbPatient = await db.Patients.FindAsync(_worker.Id);
                         db.Patients.Remove(dbPatient);
                         await db.SaveChangesAsync();
                     }
-                    Patients.Remove(_patient);
+                    Workers.Remove(_worker);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message); 
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

@@ -31,7 +31,7 @@ namespace Clinic
 
         void BrushCollectionPull()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 11; i++)
             {
                 BrushCollection.Add(Brushes.Transparent);
                 ToolTipCollection.Add("");
@@ -253,8 +253,8 @@ namespace Clinic
             //Salary
             if (string.IsNullOrWhiteSpace(Salary) == true || Salary.Any(char.IsNumber) == false)
             {
-                BrushCollection[8] = Brushes.Red;
-                ToolTipCollection[8] = "Зарплата не может быть пустой или должна содержать только цифры";
+                BrushCollection[7] = Brushes.Red;
+                ToolTipCollection[7] = "Зарплата не может быть пустой или должна содержать только цифры";
             }
 
             //Role
@@ -264,44 +264,50 @@ namespace Clinic
                 if (Database.Instance.Worker.CheckedRole() > RoleChange) ;
                 else
                 {
-                    BrushCollection[9] = Brushes.Red;
-                    ToolTipCollection[9] = "Ваша должность ниже или равна выбранной";
+                    BrushCollection[8] = Brushes.Red;
+                    ToolTipCollection[8] = "Ваша должность ниже или равна выбранной";
                 }
             }
             else
             {
-                BrushCollection[9] = Brushes.Red;
-                ToolTipCollection[9] = "Выберите должность";
+                BrushCollection[8] = Brushes.Red;
+                ToolTipCollection[8] = "Выберите должность";
             }
 
             //Login
 
-            if (Login.Length < 5)
+            if (string.IsNullOrWhiteSpace(Login) == true)
             {
-                BrushCollection[10] = Brushes.Red;
-                ToolTipCollection[10] = "Логин не может быть короче 5 символов";
+                BrushCollection[9] = Brushes.Red;
+                ToolTipCollection[9] = "Login обязателен для заполнения";
             }
-            else if (string.IsNullOrWhiteSpace(Login) == true)
+            else
             {
-                BrushCollection[10] = Brushes.Red;
-                ToolTipCollection[10] = "Логин не может быть пустым";
+                if (Login.Length < 5)
+                {
+                    BrushCollection[9] = Brushes.Red;
+                    ToolTipCollection[9] = "Логин не может быть короче 5 символов";
+                }
             }
 
             //Password
-            if (Password.Length < 5)
+            if (string.IsNullOrWhiteSpace(Password) == true)
             {
-                BrushCollection[11] = Brushes.Red;
-                ToolTipCollection[11] = "Пароль не может быть короче 5 символов";
+                BrushCollection[10] = Brushes.Red;
+                ToolTipCollection[10] = "Login обязателен для заполнения";
             }
-            else if (string.IsNullOrWhiteSpace(Password) == true)
+            else
             {
-                BrushCollection[11] = Brushes.Red;
-                ToolTipCollection[11] = "Пароль не может быть пустым";
-            }
-            else if (Password.Any(char.IsUpper) == false || Password.Any(char.IsSymbol) == false || Password.Any(char.IsNumber) == false)
-            {
-                BrushCollection[11] = Brushes.Red;
-                ToolTipCollection[11] = "Пароль должен содержать хотя - бы одну заглавнуюб букву,один символ(+, &, © и т. д.), и хотя-бы одну цифру";
+                if (Password.Length < 5)
+                {
+                    BrushCollection[10] = Brushes.Red;
+                    ToolTipCollection[10] = "Пароль не может быть короче 5 символов";
+                }
+                else if (Password.Any(char.IsUpper) == false || Password.Any(char.IsSymbol) == false || Password.Any(char.IsNumber) == false)
+                {
+                    BrushCollection[10] = Brushes.Red;
+                    ToolTipCollection[10] = "Пароль должен содержать хотя - бы одну заглавнуюб букву,один символ(+, &, © и т. д.), и хотя-бы одну цифру";
+                }
             }
 
             ChangeColorBrush();

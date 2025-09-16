@@ -9,97 +9,35 @@
       Title="WorkersListPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <ListBox Name="workersListBox" 
-                Grid.Column="0"
-                Margin="5"
-                SelectionChanged="workersListBox_SelectionChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.Row="0"
+               Margin="5"
+               ItemsSource="{Binding Workers}"
+               SelectedItem="{Binding SelectedWorker}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding LastName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding FirstName}"/>
-                        <TextBlock Text="{Binding Patronymic}"/>
+                        <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}"/>
                         <TextBlock Text="{Binding Role}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1"
-                   Name="infoWorkers"
-                   Background="White"
-                   Margin ="5"
-                   DataContext="{Binding SelectedItem, ElementName=workersListBox}"
-                   Visibility="Visible">
-
-            <TextBlock Text="Имя"
-                      FontWeight="Bold"/>
-            <TextBox Name="firstNameBox"
-                    Text="{Binding FirstName}"/>
-
-
-            <TextBlock Text="Фамилия"
-          FontWeight="Bold"/>
-            <TextBox Name="lastNameBox"
-                    Text="{Binding LastName}"/>
-
-
-            <TextBlock Text="Отчество"
-          FontWeight="Bold"/>
-            <TextBox Name="patronymicBox"
-                    Text="{Binding Patronymic}"/>
-
-
-            <TextBlock Text="Пол"
-          FontWeight="Bold"/>
-            <TextBox Name="genderBox"
-                    Text="{Binding Gender}"/>
-
-
-            <TextBlock Text="Телефон"
-          FontWeight="Bold"/>
-            <TextBox Name="phoneBox"
-                    Text="{Binding Phone}"/>
-
-
-            <TextBlock Text="Email"
-                      FontWeight="Bold"/>
-            <TextBox Name="emailBox"
-                    Text="{Binding Email}"/>
-
-
-            <TextBlock Text="Дата Рождения"
-          FontWeight="Bold"/>
-            <TextBox Name="dateBrithBox"
-                    Text="{Binding DateBrith}"/>
-
-
-
-            <TextBlock Text="Место проживания"
-          FontWeight="Bold"/>
-            <TextBox Name="placeBox"
-                    Text="{Binding Place}"/>
-
-
-            <TextBlock Text="Должность"
-          FontWeight="Bold"/>
-            <ComboBox Name="roleBox">
-                
-            </ComboBox>
-
-            <TextBlock Text="Зарплата"
-          FontWeight="Bold"/>
-            <TextBox Name="salaryBox"
-                    Text="{Binding Salary}"/>
-
-
-            <Button Content="Сохранить изменения"
-                   Click ="SaveWorker_btn"/>
-            <Button Content="Удалить пациента"
-        Click ="DeleteWorker_btn"/>
+        <StackPanel Grid.Row="1"
+                  Orientation="Horizontal"
+                  HorizontalAlignment="Center">
+            <Button Content="Удалить Работника"
+                  Margin="5"
+                  Command="{Binding DeleteWorkerCommand}"/>
+            <Button Content="Изменить"
+                   Margin="5"
+                  Command="{Binding ChangeWorkerCommand}"/>
 
         </StackPanel>
     </Grid>

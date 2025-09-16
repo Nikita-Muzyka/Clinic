@@ -34,7 +34,7 @@ namespace Clinic
             frameServise = new FrameServise(_frame);
             CreateWorkerCommand = new RelayCommand(CreateWorkerTo);
             ListWorkerCommand = new RelayCommand(ListWorkerTo);
-            FrameServise.NavigateEvent += CreateWorkerTo;
+            FrameServise.NavigateCreateWorker += CreateWorkerTo;
         }
 
         private void CreateWorkerTo()
