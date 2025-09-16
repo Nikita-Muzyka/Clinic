@@ -197,11 +197,11 @@ namespace Clinic
         {
             CreateWorkerCommand = new RelayCommand(CreateWorker);
             workerValidation = new WorkerValidation(BrushCollection, ToolTipCollection);
-            //CopyDatePatient();
+            CopyDatePatient();
         }
         private async void CreateWorker()
         {
-            //_patient = patientValidation.Validation(FirstName, LastName, Patronymic, Date, Gender, Weight, Phone, Email, Place, Diagnosis);
+            _worker = workerValidation.Validation(FirstName, LastName, Patronymic, Date, Gender, Phone, Email, Place, Salary, Role, Login, Password);
             await CreatePatientAsync();
 
         }
@@ -220,16 +220,18 @@ namespace Clinic
                             if (worker != null)
                             {
                                 // Обновляем данные
-                                //worker.FirstName = _worker.FirstName;
-                                //worker.LastName = _worker.LastName;
-                                //worker.Patronymic = _worker.Patronymic;
-                                //worker.Date = _worker.Date;
-                                //worker.Gender = _worker.Gender;
-                                //worker.Phone = _worker.Phone;
-                                //worker.Email = _worker.Email;
-                                //worker.Place = _worker.Place;
-                                //worker.Salary = _worker.Salary;
-                                //worker.Role = _worker.Role;
+                                worker.FirstName = _worker.FirstName;
+                                worker.LastName = _worker.LastName;
+                                worker.Patronymic = _worker.Patronymic;
+                                worker.Date = _worker.Date;
+                                worker.Gender = _worker.Gender;
+                                worker.Phone = _worker.Phone;
+                                worker.Email = _worker.Email;
+                                worker.Place = _worker.Place;
+                                worker.Salary = _worker.Salary;
+                                worker.Role = _worker.Role;
+                                worker.infoReg.Login = _worker.infoReg.Login;
+                                worker.infoReg.Password = _worker.infoReg.Password;
                                 // Сохраняем изменения
                                 await db.SaveChangesAsync();
                                 MessageBox.Show("Работник изменен");
@@ -263,28 +265,31 @@ namespace Clinic
                 }
             }
         }
-        //void CopyDatePatient()
-        //{
-        //    if (Database.Instance.Patient is not null)
-        //    {
-        //        _worker = Database.Instance.Worker;
-        //        saveIdWorker = _patient.Id;
-        //        FirstName = _patient.FirstName;
-        //        LastName = _patient.LastName;
-        //        Patronymic = _patient.Patronymic;
-        //        Date = _patient.Date;
-        //        Gender = _patient.Gender;
-        //        Phone = _patient.Phone;
-        //        Email = _patient.Email;
-        //        Place = _patient.Place;
-               
+        void CopyDateWorker()
+        {
+            if (Database.Instance.Worker is not null)
+            {
+                _worker = Database.Instance.Worker;
+                saveIdWorker = _worker.Id;
+                FirstName = _worker.FirstName;
+                LastName = _worker.LastName;
+                Patronymic = _worker.Patronymic;
+                Date = _worker.Date;
+                Gender = _worker.Gender;
+                Phone = _worker.Phone;
+                Email = _worker.Email;
+                Place = _worker.Place;
+                Role = _worker.Role;
+                Place = _worker.infoReg.Login;
+                Place = _worker.infoReg.Password;
 
 
-        //        Database.Instance.Patient = null;
-        //        ButtonText = "Изменить";
-        //        CheckHappen = true;
-        //    }
-        //}
+
+                Database.Instance.Patient = null;
+                ButtonText = "Изменить";
+                CheckHappen = true;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -51,6 +51,15 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
+        public override DateTime Date
+        {
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
+        }
         public override string Gender
         {
             get => _gender;
@@ -75,15 +84,6 @@ namespace Clinic
             set
             {
                 _email = value;
-                OnPropertyChanged();
-            }
-        }
-        public override DateTime Date
-        {
-            get => _date;
-            set
-            {
-                _date = value;
                 OnPropertyChanged();
             }
         }
@@ -124,6 +124,59 @@ namespace Clinic
             }
         }
         public PeopleRegistration infoReg { get; set; }
+        public Worker(string firstname, string lastname, string? patronymic, 
+            DateTime date, string gender, string phone, 
+            string email, string? place, string salary,
+            ClinicRole role,string login,string password)
+        {
+            FirstName = firstname;
+            LastName = lastname;
+            Patronymic = patronymic;
+            Date = date;
+            Gender = gender;
+            Phone = phone;
+            Email = email;
+            Place = place;
+            Salary = salary;
+            Role = role;
+            infoReg = new PeopleRegistration
+            {
+                Login = login,
+                Password = password
+            };
+        }
+
+        public string CheckRoleName(ClinicRole Role)
+        {
+            string RoleReturn = "";
+            switch (Role)
+            {
+                case ClinicRole.HDoctor:
+                    RoleReturn = "Глав.Врач";
+                    break;
+                case ClinicRole.MDoctor:
+                    RoleReturn = "Зам.Глав.Врача";
+                    break;
+                case ClinicRole.LDoctor:
+                    RoleReturn = "Зав.Отделения";
+                    break;
+                case ClinicRole.Doctor:
+                    RoleReturn = "Доктор";
+                    break;
+                case ClinicRole.Register:
+                    RoleReturn = "Регистратура";
+                    break;
+                case ClinicRole.Nurse:
+                    RoleReturn = "Мед.Сестра";
+                    break;
+            }
+            return RoleReturn;
+        }
+
+             public ClinicRole CheckedRole()
+        {
+            return _role;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -131,12 +184,5 @@ namespace Clinic
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        public ClinicRole CheckedRole()
-        {
-            return _role;
-        }
-
     }
 }
