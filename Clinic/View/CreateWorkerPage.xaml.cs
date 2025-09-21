@@ -1,9 +1,6 @@
 ﻿using Clinic.Doctor;
-using Clinic.ViewModel;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +17,14 @@ using System.Windows.Shapes;
 namespace Clinic.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ListPatientPage.xaml
+    /// Логика взаимодействия для CreateWorkerPage.xaml
     /// </summary>
-    public partial class ListPatientPage : Page
+    public partial class CreateWorkerPage : Page
     {
-       
-
-        public ListPatientPage()
+        public CreateWorkerPage()
         {
             InitializeComponent();
-            DataContext = new ListPatientPage_VM();
-        }
+            DataContext = new CreateWorkerPage_VM();
+        }  
     }
 }

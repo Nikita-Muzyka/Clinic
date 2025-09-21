@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public class PeopleRegistration
+    internal class PeopleRegistration
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

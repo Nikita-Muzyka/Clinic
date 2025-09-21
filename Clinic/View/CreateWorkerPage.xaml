@@ -1,0 +1,202 @@
+﻿<Page x:Class="Clinic.Pages.CreateWorkerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Clinic.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="CreateWorkerPage">
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Основная форма -->
+        <Border Grid.Row="0"
+             CornerRadius="20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Имя -->
+                    <TextBlock Grid.Row="0" 
+                            Grid.Column="1"
+                            Text="Имя:"
+                            Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="0" 
+                          Grid.Column="2"
+                          Style="{DynamicResource TextBoxTheme}"
+                          Text="{Binding FirstName}"
+                          BorderBrush="{Binding BrushCollection[0]}"
+                          ToolTip="{Binding ToolTipCollection[0]}"/>
+
+                    <!-- Фамилия -->
+                    <TextBlock Grid.Row="1" 
+                            Grid.Column="1"
+                            Text="Фамилия:"
+                             Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="1" 
+                          Grid.Column="2"
+                           Text="{Binding LastName}"
+                          Style="{DynamicResource TextBoxTheme}"
+                          BorderBrush="{Binding BrushCollection[1]}"
+                          ToolTip="{Binding ToolTipCollection[1]}"/>
+
+                    <!-- Отчество -->
+                    <TextBlock Grid.Row="2" 
+                            Grid.Column="1"
+                            Text="Отчество:"
+                            Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="2" 
+                          Grid.Column="2"
+                           Text="{Binding Patronymic}"
+                          Style="{DynamicResource TextBoxTheme}"
+                         BorderBrush="{Binding BrushCollection[2]}"
+                          ToolTip="{Binding ToolTipCollection[2]}"/>
+
+                    <!-- Дата рождения -->
+                    <TextBlock Grid.Row="3" 
+                            Grid.Column="1"
+                            Text="Дата рождения:"
+                            Style="{DynamicResource TextBlockTheme}"/>
+                    <DatePicker Grid.Row="3"
+                             Grid.Column="2"
+                             SelectedDate="{Binding Date, Mode=TwoWay}"
+                             Style="{StaticResource DatePickerCreatePatient}">
+                    </DatePicker>
+
+                    <!-- Пол -->
+                    <TextBlock Grid.Row="4" 
+                            Grid.Column="1"
+                            Text="Пол:"
+                             Style="{DynamicResource TextBlockTheme}"/>
+                    <ComboBox Grid.Row="4" 
+                           Grid.Column="2"
+                           Margin="5"
+                           BorderBrush="{Binding BrushCollection[4]}"
+                           ToolTip="{Binding ToolTipCollection[4]}"
+                           SelectedItem="{Binding Gender}"
+                           ItemsSource="{Binding GenderCollection}">
+                    </ComboBox>
+
+                    <!-- Phone -->
+                    <TextBlock Grid.Row="5" 
+                            Grid.Column="1"
+                            Text="Телефон:"
+                            Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="5" 
+                          Grid.Column="2"
+                           Text="{Binding Phone}"
+                          Style="{DynamicResource TextBoxTheme}"
+                          BorderBrush="{Binding BrushCollection[5]}"
+                          ToolTip="{Binding ToolTipCollection[5]}"/>
+
+                    <!-- Email -->
+                    <TextBlock Grid.Row="6" 
+                            Grid.Column="1"
+                            Text="Email:"
+                             Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="6" 
+                          Grid.Column="2"
+                           Text="{Binding Email}"
+                          Style="{DynamicResource TextBoxTheme}"
+                          BorderBrush="{Binding BrushCollection[6]}"
+                          ToolTip="{Binding ToolTipCollection[6]}"/>
+
+                    <!-- Место проживания -->
+                    <TextBlock Grid.Row="7" 
+                            Grid.Column="1"
+                            Text="Место проживания:"
+                             Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="7" 
+                          Grid.Column="2"
+                           Text="{Binding Place}"
+                          Style="{DynamicResource TextBoxTheme}"/>
+
+                    <!-- Зарплата -->
+                    <TextBlock Grid.Row="8" 
+                            Grid.Column="1"
+                            Text="Зарплата:"
+                             Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="8" 
+                          Grid.Column="2"
+                           Text="{Binding Salary}"
+                          Style="{DynamicResource TextBoxTheme}"
+                          BorderBrush="{Binding BrushCollection[7]}"
+                          ToolTip="{Binding ToolTipCollection[7]}"/>
+
+                    <!-- Роль -->
+                    <TextBlock Grid.Row="9" 
+                               Grid.Column="1"
+                               Text="Должность:"
+                               Style="{DynamicResource TextBlockTheme}"/>
+                    <ComboBox Grid.Column="2"
+                              Grid.Row="9"
+                              Margin="5"
+                              BorderBrush="{Binding BrushCollection[8]}"
+                              ToolTip="{Binding ToolTipCollection[8]}"
+                              SelectedItem="{Binding Role}"
+                              ItemsSource="{Binding RoleCollection}">
+                    </ComboBox>
+
+                    <!-- Login -->
+                    <TextBlock Grid.Row="10" 
+                               Grid.Column="1"
+                               Text="Логин:"
+                               Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="10" 
+                             Grid.Column="2"
+                             Text="{Binding Login}"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[9]}"
+                             ToolTip="{Binding ToolTipCollection[9]}"/>
+
+                    <!-- Пароль -->
+                    <TextBlock Grid.Row="11" 
+                               Grid.Column="1"
+                               Text="Пароль:"
+                               Style="{DynamicResource TextBlockTheme}"/>
+                    <TextBox Grid.Row="11" 
+                             Grid.Column="2"
+                             Text="{Binding Password}"
+                             Style="{DynamicResource TextBoxTheme}"
+                             BorderBrush="{Binding BrushCollection[10]}"
+                             ToolTip="{Binding ToolTipCollection[10]}"/>
+
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Кнопка создания -->
+        <Button Grid.Row="1"
+             Content="{Binding ButtonText}"
+             HorizontalAlignment="Center"
+             Margin="0,15,0,0"
+             Padding="30,0"
+             FontSize="16"
+             Command="{Binding CreateWorkerCommand}"/>
+    </Grid>
+</Page>

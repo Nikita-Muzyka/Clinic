@@ -24,13 +24,13 @@
                     Orientation="Horizontal">
 
                 <RadioButton Content="Создать Врача"
-                         IsChecked="{Binding CheckedCreatePatientButton}"
-                         Command="{Binding CreatePatientCommand}"
+                         IsChecked="{Binding CheckedCreateWorkerButton}"
+                         Command="{Binding CreateWorkerCommand}"
                          Style="{StaticResource RadioButtonRegistrationPage}"
                          Margin="5,5,10,5"/>
 
                 <RadioButton Content="Врачи"
-                         Command="{Binding ListPatientCommand}"
+                         Command="{Binding ListWorkerCommand}"
                          Style="{StaticResource RadioButtonRegistrationPage}"
                           Margin="5,5,10,5"/>
 

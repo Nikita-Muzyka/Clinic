@@ -10,7 +10,8 @@ namespace Clinic.Model.FrameServise
     internal class FrameServise
     {
         public Frame _Frame;
-        public static event Action NavigateEvent;
+        public static event Action NavigateCreatePatient;
+        public static event Action NavigateCreateWorker;
         public FrameServise(Frame _frame)
         {
             _Frame = _frame;
@@ -24,9 +25,13 @@ namespace Clinic.Model.FrameServise
         {
             _Frame?.GoBack();
         }
-        public static void NavigateInvoke()
+        public static void NavigateCreatePatientInvoke()
         {
-            NavigateEvent?.Invoke();
+            NavigateCreatePatient?.Invoke();
+        }
+        public static void NavigateCreateWorkerInvoke()
+        {
+            NavigateCreateWorker?.Invoke();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Clinic
             CreatePatientCommand = new RelayCommand(CreatePatientTo);
             ListPatientCommand = new RelayCommand(ListPatientTo);
             AppointmentCommand = new RelayCommand(AppointmentTo);
-            FrameServise.NavigateEvent += CreatePatientTo;
+            FrameServise.NavigateCreatePatient += CreatePatientTo;
         }
 
         private void CreatePatientTo()
