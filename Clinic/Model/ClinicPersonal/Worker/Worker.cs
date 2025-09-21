@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,7 +24,10 @@ namespace Clinic
         private DateTime _yearsCreate;
         private string _salary;
         private ClinicRole _role;
+        private int _infoRegId;
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
         public override string FirstName
         {
@@ -123,6 +128,15 @@ namespace Clinic
                 OnPropertyChanged();
             }
         }
+        public int infoRegId
+        {
+            get => _infoRegId;
+            set
+            {
+                _infoRegId = value;
+                OnPropertyChanged();
+            }
+        }
         public PeopleRegistration infoReg { get; set; }
 
         public Worker()
@@ -149,6 +163,7 @@ namespace Clinic
                 Login = login,
                 Password = password
             };
+            YearsCreate = DateTime.Now;
         }
 
         public string CheckRoleName()

@@ -23,7 +23,6 @@
                     <StackPanel>
                         <TextBlock Text="{Binding LastName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding FirstName}"/>
-                        <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

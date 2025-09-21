@@ -14,11 +14,10 @@ using System.Windows.Input;
 
 namespace Clinic.ViewModel
 {
-    internal class WorkerListPage_VM
+    internal class WorkerListPage_VM : INotifyPropertyChanged
     {
         ObservableCollection<Worker> _workers;
         Worker _worker;
-        FrameServise _frameServise;
         public ICommand ChangeWorkerCommand { get; }
         public ICommand DeleteWorkerCommand { get; }
 
@@ -38,7 +37,7 @@ namespace Clinic.ViewModel
         {
             if (SelectedWorker is not null)
             {
-                Database.Instance.Worker = SelectedWorker;
+                Database.Instance.WorkerChange = SelectedWorker;
                 FrameServise.NavigateCreateWorkerInvoke();
             }
             else
@@ -57,13 +56,14 @@ namespace Clinic.ViewModel
 
         async void LoadWorker()
         {
-            await CheckedDBWorkerAsync();
+            await LoadWorkersAsync();
         }
         async void DeleteWorker()
         {
+            
             await DeleteWorkerDBAsync();
         }
-        async Task CheckedDBWorkerAsync()
+        async Task LoadWorkersAsync()
         {
             using (var db = new ClinicContext())
             {
@@ -96,8 +96,8 @@ namespace Clinic.ViewModel
                 {
                     await using (var db = new ClinicContext())
                     {
-                        var dbPatient = await db.Patients.FindAsync(_worker.Id);
-                        db.Patients.Remove(dbPatient);
+                        var dbWorker = await db.Workers.FindAsync(_worker.Id);
+                        db.Workers.Remove(dbWorker);
                         await db.SaveChangesAsync();
                     }
                     Workers.Remove(_worker);

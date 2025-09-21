@@ -39,7 +39,7 @@ namespace Clinic
 
         private void CreateWorkerTo()
         {
-            if (Database.Instance.Worker.CheckedRole() >= ClinicRole.MDoctor)
+             if (Database.Instance.Worker.CheckedRole() >= ClinicRole.MDoctor)
             {
                 frameServise.NavigateTo<CreateWorkerPage>();
                 CheckedCreateWorkerButton = true;

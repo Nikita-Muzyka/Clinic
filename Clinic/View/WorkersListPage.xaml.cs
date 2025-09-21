@@ -1,4 +1,5 @@
 ﻿using Clinic.Doctor;
+using Clinic.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +26,7 @@ namespace Clinic.Pages
         public WorkersListPage()
         {
             InitializeComponent();
-            DataContext = new CreateWorkerPage_VM();
+            DataContext = new WorkerListPage_VM();
         }
     }
 }

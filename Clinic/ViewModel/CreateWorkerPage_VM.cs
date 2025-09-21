@@ -1,4 +1,5 @@
 ﻿using Clinic.Doctor;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,15 @@ namespace Clinic
         {
             "Мужской",
             "Женский"
+        };
+        ObservableCollection<string> _roleCollection = new()
+        {
+            "Глав.Врач",
+            "Зам.Глав.Врача",
+            "Зав.Отделения",
+            "Доктор",
+            "Регистратура",
+            "Мед.Сестра",
         };
         Worker _worker;
         WorkerValidation workerValidation { get; }
@@ -70,6 +80,15 @@ namespace Clinic
             set
             {
                 _genderCollection = value;
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<string> RoleCollection
+        {
+            get => _roleCollection;
+            set
+            {
+                _roleCollection = value;
                 OnPropertyChanged();
             }
         }
@@ -197,7 +216,7 @@ namespace Clinic
         {
             CreateWorkerCommand = new RelayCommand(CreateWorker);
             workerValidation = new WorkerValidation(BrushCollection, ToolTipCollection);
-            //CopyDateWorker();
+            ChangeWorker();
         }
         private async void CreateWorker()
         {
@@ -265,27 +284,48 @@ namespace Clinic
                 }
             }
         }
-        void CopyDateWorker()
+        async void ChangeWorker()
         {
-            if (Database.Instance.Worker is not null)
+            await ChangeWorkerAsync();
+        }
+        async Task ChangeWorkerAsync()
+        {
+            if (Database.Instance.WorkerChange is not null)
             {
-                _worker = Database.Instance.Worker;
-                saveIdWorker = _worker.Id;
-                FirstName = _worker.FirstName;
-                LastName = _worker.LastName;
-                Patronymic = _worker.Patronymic;
-                Date = _worker.Date;
-                Gender = _worker.Gender;
-                Phone = _worker.Phone;
-                Email = _worker.Email;
-                Place = _worker.Place;
-                Role = _worker.CheckRoleName();
-                Login = _worker.infoReg.Login;
-                Password = _worker.infoReg.Password;
+                try
+                {
+                    using (var db = new ClinicContext())
+                    {
+                        var worker = db.Workers
+                            .Include(w => w.infoReg)
+                            .FirstOrDefault(w => w.Id == Database.Instance.WorkerChange.infoRegId);
 
-                Database.Instance.Worker = null;
-                ButtonText = "Изменить";
-                CheckHappen = true;
+                        var peopleReg = worker?.infoReg;
+
+                        _worker = Database.Instance.WorkerChange;
+                        saveIdWorker = _worker.Id;
+                        FirstName = _worker.FirstName;
+                        LastName = _worker.LastName;
+                        Patronymic = _worker.Patronymic;
+                        Date = _worker.Date;
+                        Gender = _worker.Gender;
+                        Phone = _worker.Phone;
+                        Email = _worker.Email;
+                        Place = _worker.Place;
+                        Role = _worker.CheckRoleName();
+                        Login = peopleReg.Login;
+                        Password = peopleReg.Password;
+
+
+                        Database.Instance.WorkerChange = null;
+                        ButtonText = "Изменить";
+                        CheckHappen = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

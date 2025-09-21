@@ -22,7 +22,6 @@ namespace Clinic.ViewModel
     {
         ObservableCollection<Patient> _patients;
         Patient _patient;
-        FrameServise _frameServise;
         public ICommand ChangePatientCommand { get; }
         public ICommand DeletePatientCommand { get; }
 

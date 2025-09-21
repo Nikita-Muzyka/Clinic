@@ -153,12 +153,14 @@
                                Grid.Column="1"
                                Text="Должность:"
                                Style="{DynamicResource TextBlockTheme}"/>
-                    <TextBox Grid.Row="9" 
-                             Grid.Column="2"
-                             Text="{Binding Role}"
-                             Style="{DynamicResource TextBoxTheme}"
-                             BorderBrush="{Binding BrushCollection[8]}"
-                             ToolTip="{Binding ToolTipCollection[8]}"/>
+                    <ComboBox Grid.Column="2"
+                              Grid.Row="9"
+                              Margin="5"
+                              BorderBrush="{Binding BrushCollection[8]}"
+                              ToolTip="{Binding ToolTipCollection[8]}"
+                              SelectedItem="{Binding Role}"
+                              ItemsSource="{Binding RoleCollection}">
+                    </ComboBox>
 
                     <!-- Login -->
                     <TextBlock Grid.Row="10" 
